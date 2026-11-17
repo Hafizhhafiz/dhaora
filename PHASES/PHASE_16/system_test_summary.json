@@ -116,11 +116,11 @@
   "Category_08_Visualization_and_Aggregation": {
     "status": "PASS",
     "details": {
-      "summary": "Aggregated statistics: 58 analyses, 159 total fish",
+      "summary": "Aggregated statistics: 78 analyses, 215 total fish",
       "species_totals": {
-        "brachysoma": 46,
-        "leptolepis": 73,
-        "sulphureus": 36
+        "brachysoma": 61,
+        "leptolepis": 100,
+        "sulphureus": 50
       }
     }
   },
@@ -139,10 +139,10 @@
   "Category_10_Performance_and_Latency": {
     "status": "PASS",
     "details": {
-      "summary": "Average end-to-end CPU API latency: 180.60 ms (~5.5 req/s)",
-      "warmup_ms": 203.92,
-      "avg_steady_ms": 180.6,
-      "fps_estimate": 5.54
+      "summary": "Average end-to-end CPU API latency: 244.78 ms (~4.1 req/s)",
+      "warmup_ms": 289.36,
+      "avg_steady_ms": 244.78,
+      "fps_estimate": 4.09
     }
   },
   "Category_11_Usability_and_Scientific_Disclaimers": {

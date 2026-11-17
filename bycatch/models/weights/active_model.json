@@ -1,0 +1,12 @@
+{
+  "model_name": "YOLO11n-ByCatch-Smoke",
+  "weight_path": "runs/detect/results/_smoke/exp_yolo11n_smoke_s42_1794929727/weights/best.pt",
+  "architecture": "yolo11n",
+  "classes": [
+    "kembung_perempuan",
+    "selar_kuning",
+    "kuniran"
+  ],
+  "dataset": "fishguard_v001",
+  "status": "ready"
+}

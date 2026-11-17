@@ -75,3 +75,83 @@ export async function measureFishLength(payload, analysisId = null) {
 
   return await res.json();
 }
+
+// ==========================================
+// BYCATCH AI MODULE API METHODS
+// ==========================================
+
+export async function checkByCatchHealth() {
+  try {
+    const res = await fetchWithFallback("/api/bycatch/health");
+    if (!res.ok) throw new Error("ByCatch AI module offline");
+    return await res.json();
+  } catch (err) {
+    return { status: "error", message: err.message };
+  }
+}
+
+export async function detectByCatch(file, targetSpecies = "", fishingGear = "Jaring Insang / Gillnet", catchHandling = "retained", confidence = 0.25) {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("target_species", targetSpecies);
+  formData.append("fishing_gear", fishingGear);
+  formData.append("catch_handling", catchHandling);
+  formData.append("confidence", confidence.toString());
+
+  const res = await fetchWithFallback("/api/bycatch/detect", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || "Gagal melakukan deteksi ByCatch");
+  }
+
+  return await res.json();
+}
+
+export async function evaluateCatchRole(payload) {
+  const res = await fetchWithFallback("/api/bycatch/roles", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || "Gagal mengevaluasi aturan peran tangkapan");
+  }
+
+  return await res.json();
+}
+
+export async function getConservationProfile(scientificName) {
+  const res = await fetchWithFallback(`/api/bycatch/conservation/${encodeURIComponent(scientificName)}`);
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Gagal mengambil profil konservasi untuk ${scientificName}`);
+  }
+  return await res.json();
+}
+
+export async function getByCatchRecords(limit = 50) {
+  const res = await fetchWithFallback(`/api/bycatch/records?limit=${limit}`);
+  if (!res.ok) throw new Error("Gagal mengambil catatan riwayat ByCatch");
+  return await res.json();
+}
+
+export async function createByCatchTrip(payload) {
+  const res = await fetchWithFallback("/api/bycatch/trips", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || "Gagal menyimpan catatan trip");
+  }
+
+  return await res.json();
+}

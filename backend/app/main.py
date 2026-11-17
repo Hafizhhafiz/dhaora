@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
 from .config import STATIC_DIR, ALLOWED_ORIGINS, UPLOAD_DIR, RESULT_DIR, CUSTOM_WEIGHTS_PATH, PRETRAINED_FALLBACK
-from .routers import detection, measurement, history
+from .routers import detection, measurement, history, bycatch
 from .services.storage_service import init_db
 from .services.yolo_service import yolo_service_instance
 
@@ -12,9 +12,9 @@ from .services.yolo_service import yolo_service_instance
 init_db()
 
 app = FastAPI(
-    title="FishGuard AI - Fisheries Monitoring API",
-    description="Backend API untuk deteksi, penghitungan, dan estimasi panjang ikan berbasis AI & Computer Vision",
-    version="1.0.0"
+    title="ASIK VOL VI Unified Platform API",
+    description="Unified API untuk FishGuard AI (Monitoring Perikanan) dan ByCatch AI (Deteksi Tangkapan Sampingan & Konservasi)",
+    version="1.1.0"
 )
 
 # CORS Configuration
@@ -29,17 +29,24 @@ app.add_middleware(
 # Mount static files for uploads and annotated results
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
-# Include Routers
+# Include Routers (FishGuard legacy endpoints preserved 100%, ByCatch added cleanly)
 app.include_router(detection.router)
 app.include_router(measurement.router)
 app.include_router(history.router)
+app.include_router(bycatch.router)
 
 @app.get("/")
 def root():
     return {
         "project": "FishGuard AI",
-        "description": "AI-Based Fisheries Monitoring and Conservation Support System",
+        "platform": "ASIK VOL VI Unified Fisheries Platform",
+        "description": "Unified AI Platform for Fisheries Monitoring and Conservation Support",
         "status": "online",
+        "modules": {
+            "fishguard": {"status": "active", "prefix": "/api"},
+            "bycatch": {"status": "active", "prefix": "/api/bycatch"},
+            "oceansense": {"status": "planned", "prefix": None}
+        },
         "docs": "/docs"
     }
 
