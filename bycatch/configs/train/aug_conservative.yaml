@@ -1,0 +1,26 @@
+# Conservative Augmentation Configuration for ByCatch AI (Phase 5)
+# Designed to protect critical diagnostic morphological markers
+# CRITICAL: hsv_h is strictly capped at 0.015 so it does NOT distort
+# the yellow lateral stripe of Selaroides leptolepis (selar_kuning).
+
+augmentations:
+  # Geometric
+  fliplr: 0.5
+  flipud: 0.0
+  degrees: 10.0
+  translate: 0.1
+  scale: 0.5
+  shear: 2.0
+  perspective: 0.0
+
+  # Color / Photometric
+  hsv_h: 0.015  # Strictly low to preserve golden-yellow stripe
+  hsv_s: 0.4
+  hsv_v: 0.3
+
+  # Composite
+  mosaic: 0.5
+  mixup: 0.0
+  copy_paste: 0.0
+  auto_augment: ""
+  erasing: 0.0

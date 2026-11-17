@@ -1,0 +1,414 @@
+{
+  "direct_urls_tested": {
+    "https://fishbase.se/images/species/Rabra_u0.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "19435",
+      "record_ids": [
+        "FG-C0-001"
+      ]
+    },
+    "https://fishbase.se/images/species/Rabra_u6.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "43428",
+      "record_ids": [
+        "FG-C0-002"
+      ]
+    },
+    "https://fishbase.se/images/species/Rabra_u7.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "53176",
+      "record_ids": [
+        "FG-C0-003"
+      ]
+    },
+    "https://fishbase.se/images/species/Rabra_u2.gif": {
+      "status": "HTTP_200",
+      "content_type": "image/gif",
+      "content_length": "67219",
+      "record_ids": [
+        "FG-C0-004"
+      ]
+    },
+    "https://fishbase.se/images/species/Rabra_u1.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "64526",
+      "record_ids": [
+        "FG-C0-005"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1563770378_162.158.167.130.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C0-006"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1712568778_172.68.225.216.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C0-007"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1772873908_157.85.206.228.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C0-008"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1486612840_172.68.106.90.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C0-009"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1623748101_172.68.106.126.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C0-010"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/224681954/small.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "25767",
+      "record_ids": [
+        "FG-C0-011"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/138104718/small.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "15450",
+      "record_ids": [
+        "FG-C0-012"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/8403176/small.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "25945",
+      "record_ids": [
+        "FG-C0-013"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/55367539/small.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "26300",
+      "record_ids": [
+        "FG-C0-014"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/67754798/small.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "23837",
+      "record_ids": [
+        "FG-C0-015"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/172508374/small.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "50170",
+      "record_ids": [
+        "FG-C0-016"
+      ]
+    },
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/172508385/small.jpeg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "37967",
+      "record_ids": [
+        "FG-C0-017"
+      ]
+    },
+    "https://content.eol.org/data/media/f6/aa/33/509.90091daaebcabae36c1bee70776362c3.580x360.jpg": {
+      "status": "HTTP_403",
+      "content_type": null,
+      "content_length": 0,
+      "record_ids": [
+        "FG-C0-018"
+      ]
+    },
+    "https://www.kahaku.go.jp/research/db/zoology/Fishes_of_Andaman_Sea/contents/scombridae/Rastrelliger_brachysoma.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "7572",
+      "record_ids": [
+        "FG-C0-020"
+      ]
+    },
+    "https://mdpi-res.com/fishes/fishes-09-00103/article_deploy/html/images/fishes-09-00103-g001.png": {
+      "status": "HTTP_200",
+      "content_type": "image/png",
+      "content_length": "4944367",
+      "record_ids": [
+        "FG-C0-023"
+      ]
+    },
+    "https://www.kahaku.go.jp/research/db/zoology/Fishes_of_Libong/images_data/pb034_03.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "29558",
+      "record_ids": [
+        "FG-C1-034"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u5.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "339684",
+      "record_ids": [
+        "FG-C2-001"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u0.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "32240",
+      "record_ids": [
+        "FG-C2-002"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u1.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "51386",
+      "record_ids": [
+        "FG-C2-003"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u2.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "37518",
+      "record_ids": [
+        "FG-C2-004"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u3.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "49347",
+      "record_ids": [
+        "FG-C2-005"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u4.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "51823",
+      "record_ids": [
+        "FG-C2-006"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u1.gif": {
+      "status": "HTTP_200",
+      "content_type": "image/gif",
+      "content_length": "20386",
+      "record_ids": [
+        "FG-C2-007"
+      ]
+    },
+    "https://fishbase.se/images/species/Upsul_u0.gif": {
+      "status": "HTTP_200",
+      "content_type": "image/gif",
+      "content_length": "17082",
+      "record_ids": [
+        "FG-C2-008"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1721708468_172.71.186.92.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-009"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1759110322_106.205.165.92.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-010"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1712305887_162.158.190.122.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-011"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1609863355_162.158.165.186.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-012"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1486612395_172.68.106.90.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-013"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1486712563_172.68.106.90.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-014"
+      ]
+    },
+    "https://fishbase.se/tools/display_image.php?fw=n&imgName=1624421740_172.68.234.200.jpg": {
+      "status": "HTTP_200",
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": 0,
+      "record_ids": [
+        "FG-C2-015"
+      ]
+    },
+    "https://artedi.nrm.se/nrmfish/images/tNRM10647.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "450815",
+      "record_ids": [
+        "FG-C2-016"
+      ]
+    },
+    "https://artedi.nrm.se/nrmfish/images/tNRM1439a.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "311933",
+      "record_ids": [
+        "FG-C2-017"
+      ]
+    },
+    "https://artedi.nrm.se/nrmfish/images/tNRM1439b.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "70830",
+      "record_ids": [
+        "FG-C2-018"
+      ]
+    },
+    "https://fishesofaustralia.net.au/images/image/UpenSulphureusffish.asia.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "141020",
+      "record_ids": [
+        "FG-C2-019"
+      ]
+    },
+    "https://fishesofaustralia.net.au/Images/Image/UpenSulphur3JTW.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "850890",
+      "record_ids": [
+        "FG-C2-020"
+      ]
+    },
+    "https://fishesofaustralia.net.au/Images/Image/UpenSulphur2JTW.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "858860",
+      "record_ids": [
+        "FG-C2-021"
+      ]
+    },
+    "https://fishesofaustralia.net.au/Images/Image/UpenSulphurJTW.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "820643",
+      "record_ids": [
+        "FG-C2-022"
+      ]
+    },
+    "https://fishesofaustralia.net.au/Images/Image/UpenSulphurCSIRO.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "99407",
+      "record_ids": [
+        "FG-C2-023"
+      ]
+    },
+    "https://fishesofaustralia.net.au/Images/Image/UpenSulphurFAO.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "67425",
+      "record_ids": [
+        "FG-C2-024"
+      ]
+    },
+    "https://www.kahaku.go.jp/research/db/zoology/Fishes_of_Andaman_Sea/contents/mullidae/Upeneus_sulphureus.jpg": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "8421",
+      "record_ids": [
+        "FG-C2-025"
+      ]
+    },
+    "https://images.ala.org.au/store/5/3/0/9/21a10883-d429-445b-a02b-ae19010d9035/original": {
+      "status": "HTTP_200",
+      "content_type": "image/jpeg",
+      "content_length": "92974",
+      "record_ids": [
+        "FG-C2-026"
+      ]
+    }
+  },
+  "domain_reachability": {
+    "fishbase.se": "HTTP_200",
+    "www.inaturalist.org": "HTTP_403",
+    "media.eol.org": "HTTP_403",
+    "www.wikipedia.org": "HTTP_200",
+    "www.kahaku.go.jp": "HTTP_200",
+    "morphobank.org": "HTTP_200",
+    "www.mdpi.com": "HTTP_403",
+    "download.osmand.net": "HTTP_404",
+    "reeflifesurvey.com": "HTTP_200",
+    "marinebiodiversity.ntu.edu.vn": "HTTP_200",
+    "fishesofaustralia.net.au": "HTTP_404",
+    "images.ala.org.au": "HTTP_200",
+    "beta.eol.org": "URLError_[Errno 11001] getaddrinfo failed",
+    "data.mendeley.com": "HTTP_200",
+    "universe.roboflow.com": "HTTP_403"
+  },
+  "source_domains_count": {
+    "fishbase.se": 58,
+    "www.inaturalist.org": 7,
+    "media.eol.org": 1,
+    "www.wikipedia.org": 1,
+    "www.kahaku.go.jp": 4,
+    "morphobank.org": 1,
+    "www.mdpi.com": 2,
+    "download.osmand.net": 3,
+    "reeflifesurvey.com": 1,
+    "marinebiodiversity.ntu.edu.vn": 1,
+    "fishesofaustralia.net.au": 6,
+    "images.ala.org.au": 1,
+    "beta.eol.org": 1,
+    "data.mendeley.com": 2,
+    "universe.roboflow.com": 2
+  }
+}

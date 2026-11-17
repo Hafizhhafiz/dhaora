@@ -1,0 +1,9 @@
+# Synthetic Dataset for Testing Pipeline Functionality
+# DILARANG DIGUNAKAN UNTUK KLAIM RISET / MODEL RISET
+synthetic: true
+path: C:/ali/tugas/asik/bycatch/tests/fixtures/synthetic_yolo_dataset
+train: images/train
+val: images/val
+
+nc: 3
+names: ['kembung_perempuan', 'selar_kuning', 'kuniran']

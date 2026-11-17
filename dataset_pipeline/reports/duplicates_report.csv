@@ -1,0 +1,6 @@
+file_1,file_2,hamming_distance,is_exact_match,similarity_pct,recommendation
+test_audit_variations\1_horizontal.jpg,test_audit_variations\2_slanted_30deg.jpg,5,False,92.19,Tinjau manual sebelum pemisahan train/test
+test_audit_variations\1_horizontal.jpg,test_audit_variations\3_open_tail.jpg,2,False,96.88,Tinjau manual sebelum pemisahan train/test
+test_audit_variations\1_horizontal.jpg,test_audit_variations\4_folded_tail.jpg,2,False,96.88,Tinjau manual sebelum pemisahan train/test
+test_audit_variations\2_slanted_30deg.jpg,test_audit_variations\4_folded_tail.jpg,5,False,92.19,Tinjau manual sebelum pemisahan train/test
+test_audit_variations\3_open_tail.jpg,test_audit_variations\4_folded_tail.jpg,4,False,93.75,Tinjau manual sebelum pemisahan train/test

@@ -1,0 +1,11 @@
+species_id,recorded_class_id,scientific_name,local_name_id,verification_status,mvp_decision_alignment,audit_action_required,auditor_scientific_rationale
+SP-01,0,Rastrelliger kanagurta,Ikan Kembung Lelaki,VERIFIED,HISTORICAL_ARCHIVE,REASSIGN_CLASS_ID_TO_MINUS_ONE,HISTORIS: Kelas 0 awal (R. kanagurta). Harus diubah class_id = -1 karena digantikan oleh R. brachysoma pada MVP.
+SP-02,1,Decapterus macarellus,Ikan Layang / Mackerel Scad,VERIFIED,HISTORICAL_ARCHIVE,REASSIGN_CLASS_ID_TO_MINUS_ONE,HISTORIS: Kelas 1 awal (D. macarellus). Harus diubah class_id = -1 karena digantikan oleh Selaroides leptolepis pada MVP.
+SP-03,-1,Rastrelliger brachysoma,Ikan Kembung Perempuan,NEEDS_REVIEW,HISTORICAL_ARCHIVE,RECONCILE_WITH_SP06,DUPLIKASI: SP-03 mencatat R. brachysoma dengan class_id: -1. Di Phase 11 ditambahkan SP-06 untuk spesies yang sama dengan class_id: 0. Terjadi redundansi takson.
+SP-04,-1,Decapterus russelli,Ikan Layang Benggol,NEEDS_REVIEW,HISTORICAL_ARCHIVE,MAINTAIN_REFERENCE,HISTORIS: Decapterus russelli (spesies pembanding layang). Tetap class_id = -1.
+SP-05,-1,Actinopterygii indet.,Ikan Campuran / Belum Teridentifikasi,UNKNOWN,HISTORICAL_ARCHIVE,MAINTAIN_REFERENCE,HISTORIS: Actinopterygii indet. (ikan belum teridentifikasi). Tetap class_id = -1.
+SP-06,0,Rastrelliger brachysoma,Ikan Kembung Perempuan,PRIORITY_CANDIDATE,ACTIVE_MVP_TARGET,CONFIRMED_MVP_CLASS_0,MVP TARGET: Kelas 0 Baru (Rastrelliger brachysoma). Status valid.
+SP-07,1,Selaroides leptolepis,Ikan Selar Kuning,PRIORITY_CANDIDATE,ACTIVE_MVP_TARGET,CONFIRMED_MVP_CLASS_1,MVP TARGET: Kelas 1 Baru (Selaroides leptolepis). Status valid.
+SP-08,2,Upeneus sulphureus,Ikan Kuniran,PRIORITY_CANDIDATE,ACTIVE_MVP_TARGET,CONFIRMED_MVP_CLASS_2,MVP TARGET: Kelas 2 Baru (Upeneus sulphureus). Status valid.
+SP-09,3,Equulites leuciscus,Ikan Peperek / Peperek Topang,PROPOSED_AUXILIARY,CANDIDATE_PHASE_2_OR_EXCLUDED,REASSIGN_CLASS_ID_TO_MINUS_ONE_FOR_MVP,"AUXILIARY: Equulites leuciscus (Peperek). Disimpan sebagai cadangan Phase 2, class_id = -1."
+SP-10,-1,Stolephorus commersonii,Ikan Teri / Teri Nasi,EXCLUDED_UNSUITABLE_FOR_MVP,CANDIDATE_PHASE_2_OR_EXCLUDED,MAINTAIN_EXCLUDED,"EXCLUDED: Stolephorus commersonii (Teri). Status eksklusi valid, class_id = -1."

@@ -1,0 +1,4 @@
+class_id,species_label,scientific_name,common_name,family,order,class,habitat,target_features,conservation_status_iucn
+0,kembung_perempuan,Rastrelliger brachysoma,Kembung perempuan,Scombridae,Scombriformes,Actinopterygii,Pelagis kecil,"Tubuh tinggi kompak (deep body); operkulum lebar; sisik halus; tapis insang panjang rapat; finlet dorsal dan anal",Vulnerable (VU 2023)
+1,selar_kuning,Selaroides leptolepis,Selar kuning,Carangidae,Carangiformes,Actinopterygii,Pelagis kecil,"Garis kuning lebar memanjang dari atas mata ke pangkal ekor; bintik hitam tepi atas operkulum; tubuh pipih lonjong; sisik scute pada linea lateralis",Least Concern (LC)
+2,kuniran,Upeneus sulphureus,Kuniran,Mullidae,Mulliformes,Actinopterygii,Demersal,"Sepasang sungut dagu (barbels); dua sirip dorsal terpisah jelas; garis membujur kekuningan/oranye pada sisi tubuh; mulut subterminal",Least Concern (LC)

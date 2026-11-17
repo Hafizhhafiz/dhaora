@@ -1,0 +1,68 @@
+{
+  "Rastrelliger brachysoma": {
+    "total_occurrences_with_image": 35,
+    "sample_licenses": {
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 7,
+      "http://creativecommons.org/licenses/by/4.0/legalcode": 2,
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode": 1
+    },
+    "sample_basis_of_record": {
+      "HUMAN_OBSERVATION": 9,
+      "PRESERVED_SPECIMEN": 1
+    }
+  },
+  "Leiognathus leuciscus": {
+    "total_occurrences_with_image": 14,
+    "sample_licenses": {
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 5,
+      "http://creativecommons.org/licenses/by/4.0/legalcode": 2,
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode": 3
+    },
+    "sample_basis_of_record": {
+      "HUMAN_OBSERVATION": 5,
+      "MACHINE_OBSERVATION": 1,
+      "MATERIAL_SAMPLE": 1,
+      "PRESERVED_SPECIMEN": 3
+    }
+  },
+  "Equulites leuciscus": {
+    "total_occurrences_with_image": 14,
+    "sample_licenses": {
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 5,
+      "http://creativecommons.org/licenses/by/4.0/legalcode": 2,
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode": 3
+    },
+    "sample_basis_of_record": {
+      "HUMAN_OBSERVATION": 5,
+      "MACHINE_OBSERVATION": 1,
+      "MATERIAL_SAMPLE": 1,
+      "PRESERVED_SPECIMEN": 3
+    }
+  },
+  "Upeneus sulphureus": {
+    "total_occurrences_with_image": 67,
+    "sample_licenses": {
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 8,
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode": 1,
+      "http://creativecommons.org/licenses/by/4.0/legalcode": 1
+    },
+    "sample_basis_of_record": {
+      "HUMAN_OBSERVATION": 9,
+      "MATERIAL_SAMPLE": 1
+    }
+  },
+  "Selaroides leptolepis": {
+    "total_occurrences_with_image": 179,
+    "sample_licenses": {
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 10
+    },
+    "sample_basis_of_record": {
+      "HUMAN_OBSERVATION": 10
+    }
+  },
+  "Stolephorus commersonii": {
+    "total_occurrences_with_image": 0,
+    "sample_licenses": {},
+    "sample_basis_of_record": {}
+  }
+}

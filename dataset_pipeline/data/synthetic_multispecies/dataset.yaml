@@ -1,0 +1,9 @@
+# FishGuard AI - Synthetic Multi-Species Dataset
+path: C:/TUGAS-TUGAS KULIAH/SEMESTER 5/ASIK VOL VI/dataset_pipeline/data/synthetic_multispecies
+train: images/train
+val: images/val
+
+names:
+  0: Rastrelliger brachysoma
+  1: Selaroides leptolepis
+  2: Upeneus sulphureus

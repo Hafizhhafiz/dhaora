@@ -1,0 +1,7 @@
+specimen_id,class_id,observer_id,measurement_round,total_length_mm,fork_length_mm,standard_length_mm,body_depth_mm,caliper_accuracy_mm,measurement_timestamp
+SPEC_C0_001,0,Observer_A,1,182.45,165.20,151.10,64.80,0.02,2026-11-20 08:35:00
+SPEC_C0_001,0,Observer_B,2,182.10,165.40,150.90,65.00,0.02,2026-11-20 08:40:00
+SPEC_C1_001,1,Observer_A,1,145.30,132.50,122.10,41.20,0.02,2026-11-20 08:50:00
+SPEC_C1_001,1,Observer_B,2,145.60,132.20,122.40,41.00,0.02,2026-11-20 08:55:00
+SPEC_C2_001,2,Observer_A,1,138.80,126.10,116.50,38.90,0.02,2026-11-20 09:05:00
+SPEC_C2_001,2,Observer_B,2,138.50,126.30,116.20,39.10,0.02,2026-11-20 09:10:00

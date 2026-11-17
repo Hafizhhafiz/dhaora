@@ -1,0 +1,10 @@
+# FishGuard AI - Dataset v001
+path: C:/TUGAS-TUGAS KULIAH/SEMESTER 5/ASIK VOL VI/datasets/fishguard_v001
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: Rastrelliger brachysoma
+  1: Selaroides leptolepis
+  2: Upeneus sulphureus

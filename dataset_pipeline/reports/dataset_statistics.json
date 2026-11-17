@@ -1,0 +1,33 @@
+{
+  "total_images": 8,
+  "unique_specimens_count": 3,
+  "species_distribution": {
+    "Rastrelliger kanagurta": 7,
+    "Mixed (R. kanagurta & D. macarellus)": 1
+  },
+  "source_types": {
+    "SYNTHETIC_TEST": 8
+  },
+  "source_names": {
+    "FishGuard CV Generator": 8
+  },
+  "quality_distribution": {
+    "HIGH": 6,
+    "LOW": 2
+  },
+  "verification_status": {
+    "VERIFIED": 8
+  },
+  "split_distribution": {
+    "TEST": 8
+  },
+  "total_length_metrics": {
+    "count_measured": 7,
+    "mean_tl_cm": 22.0,
+    "min_tl_cm": 22.0,
+    "max_tl_cm": 22.0
+  },
+  "raw_data_ready_for_training": false,
+  "field_specimens_count": 0,
+  "synthetic_test_count": 8
+}

@@ -1,0 +1,2 @@
+record_id,class_id,scientific_name,priority_tier,attempted_url,failure_stage,http_status,error_reason,timestamp
+FG-C0-009,0,Rastrelliger brachysoma,P2,https://fishbase.se/tools/display_image.php?fw=n&imgName=1486612840_172.68.106.90.jpeg,HTTP_RESPONSE_VALIDATION,200,SERVER_EMPTY_RESPONSE (0 bytes received; asset deleted or missing on server backend),2026-11-16T11:26:59.208545

@@ -1,0 +1,23 @@
+# FishGuard AI - YOLO Dataset Configuration for Teluk Banten Target Species
+# Species:
+# 0: Ikan Kembung (Rastrelliger kanagurta)
+# 1: Ikan Layang (Decapterus macarellus)
+
+path: ../dataset_pipeline/data/processed
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: kembung
+  1: layang
+
+taxonomy:
+  0:
+    scientific_name: "Rastrelliger kanagurta"
+    family: "Scombridae"
+    common_id: "Ikan Kembung"
+  1:
+    scientific_name: "Decapterus macarellus"
+    family: "Carangidae"
+    common_id: "Ikan Layang"

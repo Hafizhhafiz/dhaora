@@ -1,0 +1,37 @@
+# Backups & Environment
+_backups/
+.env
+*.env
+*.env.local
+
+# Virtual Environments
+venv/
+.venv/
+env/
+bycatch/venv/
+
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.vite/
+
+# Python cache & testing
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+bycatch/.pytest_cache/
+
+# Upload and temporary caches
+backend/static/uploads/*
+!backend/static/uploads/.gitkeep
+backend/static/results/*
+!backend/static/results/.gitkeep
+bycatch/runs/
+*.cache
+*.log
+
+# Large public archives (untracked)
+dataset_pipeline/data/public/deepfish/raw/*.zip

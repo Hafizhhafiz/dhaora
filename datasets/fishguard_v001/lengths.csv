@@ -1,0 +1,4 @@
+specimen_id,class_id,scientific_name,total_length_mm,fork_length_mm,standard_length_mm,caliper_accuracy_mm,observer
+SPEC_C0_SYNTH_01,0,Rastrelliger brachysoma,182.4,165.2,151.0,0.02,GroundTruthEngine
+SPEC_C1_SYNTH_01,1,Selaroides leptolepis,145.3,132.5,122.1,0.02,GroundTruthEngine
+SPEC_C2_SYNTH_01,2,Upeneus sulphureus,138.8,126.1,116.5,0.02,GroundTruthEngine

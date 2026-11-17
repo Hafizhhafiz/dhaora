@@ -1,0 +1,9 @@
+source_id,source_name,source_type,platform_url,access_date,license_type,notes
+SRC-01,PPN Karangantu (Primary),primary,N/A,2026-11-17,Proprietary / In-house,Dokumentasi visual langsung di pendaratan TPI Karangantu
+SRC-02,FishBase,secondary,https://www.fishbase.se/,2026-11-17,Per-image copyright (Photographer),Visual reference & morphological validation
+SRC-03,iNaturalist,secondary,https://www.inaturalist.org/,2026-11-17,Varies (CC0 / CC BY / CC BY-NC),Field observation photos per taxon
+SRC-04,GBIF,secondary,https://www.gbif.org/,2026-11-17,Varies per occurrence publisher,Darwin Core occurrence & media links
+SRC-05,Wikimedia Commons,secondary,https://commons.wikimedia.org/,2026-11-17,CC0 / CC BY / CC BY-SA,Freely licensed community media
+SRC-06,Fish-gres (Mendeley Data),secondary,https://data.mendeley.com/datasets/76cr3wfhff/1,2026-11-17,CC BY 4.0,Comparison dataset (R. faughni & U. moluccensis)
+SRC-07,FishNet (MBARI/Ocean Vision),secondary,https://github.com/mbari-org/fish-datasets,2026-11-17,Open Images / Research,On-deck fisheries detector baseline
+SRC-08,LILA Community Fish Detection,secondary,https://lila.science/datasets/community-fish-detection-dataset/,2026-11-17,Varies by contributing dataset,COCO benchmark for general fish detection

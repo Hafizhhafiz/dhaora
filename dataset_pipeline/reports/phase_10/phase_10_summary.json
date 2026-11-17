@@ -1,0 +1,48 @@
+{
+  "phase": "Phase 10 \u2014 GBIF Dataset Acquisition, Validation & Curation",
+  "timestamp": "2026-11-13 23:49:26",
+  "gbif_api_endpoint": "https://api.gbif.org/v1/occurrence/search",
+  "species_targets": {
+    "Rastrelliger_kanagurta": {
+      "common_name": "Ikan Kembung Lelaki",
+      "family": "Scombridae",
+      "gbif_total_occurrences_with_image": 707,
+      "metadata_media_extracted": 937,
+      "candidates_attempted": 120,
+      "download_success": 107,
+      "download_failed": 13,
+      "curation_breakdown": {
+        "VERIFIED": 75,
+        "CANDIDATE": 20,
+        "NEEDS_REVIEW": 10,
+        "REJECTED": 2
+      }
+    },
+    "Decapterus_macarellus": {
+      "common_name": "Ikan Layang",
+      "family": "Carangidae",
+      "gbif_total_occurrences_with_image": 256,
+      "metadata_media_extracted": 403,
+      "candidates_attempted": 120,
+      "download_success": 100,
+      "download_failed": 20,
+      "curation_breakdown": {
+        "VERIFIED": 0,
+        "CANDIDATE": 80,
+        "NEEDS_REVIEW": 16,
+        "REJECTED": 4
+      }
+    }
+  },
+  "duplicates_found": {
+    "exact_duplicates": 3,
+    "perceptual_near_duplicates": 0
+  },
+  "total_candidates_appended_to_master": 175,
+  "contact_sheets_generated": [
+    "c:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\dataset_pipeline\\reports\\phase_10\\contact_sheet_rkan.jpg",
+    "c:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\dataset_pipeline\\reports\\phase_10\\contact_sheet_dmac.jpg"
+  ],
+  "training_readiness_status": "NOT_READY_FOR_TRAINING",
+  "training_readiness_reason": "GBIF provides image occurrences without bounding boxes or TL calibration; domain shift towards underwater observations; field specimen images from Teluk Banten required."
+}

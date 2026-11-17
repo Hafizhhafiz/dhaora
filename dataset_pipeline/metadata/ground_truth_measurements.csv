@@ -1,0 +1,3 @@
+measurement_id,specimen_id,scientific_name,total_length_cm,fork_length_cm,standard_length_cm,measurement_method,measuring_instrument,measurement_date,operator,calibration_marker,image_id,repeat_index,measurement_notes
+M-SYNTH-01,SPEC-SYNTH-001,Rastrelliger kanagurta,22.0,20.5,18.8,PHYSICAL_CALIPER_GROUND_TRUTH,Papan Ukur Kayu Metrik 0.1cm,2026-11-09,ASIK_V_RESEARCHER,Grid Metrik 20px_per_cm,IMG-SYNTH-001,1,Data uji spesimen sintetis terkalibrasi untuk audit teknis Fase 7-8
+M-SYNTH-02,SPEC-SYNTH-001,Rastrelliger kanagurta,22.0,20.4,18.9,PHYSICAL_CALIPER_GROUND_TRUTH,Papan Ukur Kayu Metrik 0.1cm,2026-11-09,ASIK_V_RESEARCHER,Grid Metrik 20px_per_cm,IMG-SYNTH-001,2,Pengukuran ulangan ke-2 untuk uji reliabilitas intra-observer

@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-11-17T21:01:00+07:00",
+  "os": {
+    "caption": "Microsoft Windows 11 Home",
+    "version": "10.0.26100",
+    "architecture": "64-bit"
+  },
+  "hardware": {
+    "cpu": "Intel / AMD x64",
+    "ram_total_kb": 7614532,
+    "ram_free_kb": 730464,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "driver_version": "573.05",
+      "cuda_driver_version": "12.8",
+      "vram_total_mb": 4096,
+      "temperature_c": 41
+    },
+    "disk": {
+      "drive": "C:",
+      "used_gb": 354.26,
+      "free_gb": 93.22
+    }
+  },
+  "python_environment": {
+    "system_python": "Python 3.14.7 (C:\\Users\\Muhammad Ali Husen\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe)",
+    "venv_path": "C:\\ali\\tugas\\asik\\bycatch\\venv",
+    "venv_python": "C:\\ali\\tugas\\asik\\bycatch\\venv\\Scripts\\python.exe",
+    "target_torch_wheel": "torch-2.11.0+cu128 (PyTorch official wheel for Python 3.14 on CUDA 12.8)"
+  },
+  "tools": {
+    "winget": "v1.29.380",
+    "git": "Not found in PATH (logged in KNOWN_ISSUES.md)"
+  }
+}

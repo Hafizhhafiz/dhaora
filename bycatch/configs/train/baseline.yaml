@@ -1,0 +1,28 @@
+# Baseline Training Configuration for ByCatch AI (Phase 6 / 7)
+# Validated against NVIDIA GeForce RTX 3050 Laptop GPU (4 GB VRAM) & 8 GB RAM
+
+experiment:
+  name: "baseline_yolo11n"
+  model: "yolo11n.pt"  # Baseline detector (or yolo26n when weights published)
+  seed: 42
+  deterministic: true
+
+dataset:
+  imgsz: 640
+  batch: 4
+  workers: 0      # Critical for 8 GB RAM stability
+  cache: false    # Do not cache images in RAM to prevent thrashing
+
+training:
+  epochs: 100
+  patience: 20
+  save_period: 1
+  amp: true       # Automatic mixed precision
+  optimizer: "auto"
+  lr0: 0.01
+  lrf: 0.01
+
+resource_guards:
+  max_vram_mb: 3500
+  min_free_ram_gb: 1.0
+  gpu_temp_threshold_c: 85

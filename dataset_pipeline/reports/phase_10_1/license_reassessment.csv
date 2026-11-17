@@ -1,0 +1,6 @@
+license_standard,total_gbif_occurrences,downloaded_images_count,visual_reference_allowed,annotation_allowed,preprocessing_allowed,model_training_allowed,redistribution_allowed,compliance_status,auditor_guidance
+CC BY 4.0,168,43,YES,YES,YES,YES,YES_WITH_ATTRIBUTION,FULLY_COMPLIANT,Permits all forms of derivative work and training; requires persistent attribution of creator/publisher.
+CC BY-NC 4.0,1011,158,YES,YES,YES,YES_ACADEMIC_ONLY,NON_COMMERCIAL_ONLY,ACADEMIC_RESEARCH_COMPLIANT,Strictly permitted for ASIK V academic research; cannot be commercialized or embedded in proprietary paid software.
+CC0 1.0,76,6,YES,YES,YES,YES,YES,FULLY_COMPLIANT,Public domain equivalent; unencumbered for all research and commercial applications.
+No Rights Reserved,3,0,YES,YES,YES,YES,YES,FULLY_COMPLIANT,Public domain equivalent; unencumbered for all research and commercial applications.
+RESTRICTIVE_COPYRIGHT,82,0,VIEW_ONLY,NO,NO,PROHIBITED,PROHIBITED,NON_COMPLIANT,Explicit copyright or unclear terms. Must be strictly excluded from dataset and training.

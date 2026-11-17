@@ -1,0 +1,4585 @@
+{
+  "ood_benchmark_name": "GBIF Out-of-Distribution Look-Alike Evaluation",
+  "total_images_evaluated": 177,
+  "false_positive_rate_conf_025_pct": 88.14,
+  "false_positive_rate_conf_050_pct": 61.58,
+  "specificity_conf_025_pct": 11.86,
+  "specificity_conf_050_pct": 38.42,
+  "species_breakdown": {
+    "RKAN": {
+      "name": "Rastrelliger kanagurta",
+      "total_tested": 95,
+      "fp_count_025": 83,
+      "fpr_pct_025": 87.37,
+      "fp_count_050": 62,
+      "fpr_pct_050": 65.26,
+      "specificity_pct_050": 34.74
+    },
+    "DMAC": {
+      "name": "Decapterus macarellus",
+      "total_tested": 82,
+      "fp_count_025": 73,
+      "fpr_pct_025": 89.02,
+      "fp_count_050": 47,
+      "fpr_pct_050": 57.32,
+      "specificity_pct_050": 42.68
+    }
+  },
+  "detailed_results": [
+    {
+      "image_id": "IMG-GBIF-RKAN-6451548174",
+      "filename": "GBIF_RKAN_6451548174.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8077,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8077
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4153
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6320620720",
+      "filename": "GBIF_RKAN_6320620720.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 9,
+      "fp_at_conf_050": true,
+      "fp_count_050": 6,
+      "max_confidence": 0.9528,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.9528
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8497
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6814
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6614
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5928
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5392
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4189
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3813
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3233
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6550791319",
+      "filename": "GBIF_RKAN_6550791319.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4695,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4695
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4318
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6885268849",
+      "filename": "GBIF_RKAN_6885268849.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.611,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.611
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5441
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4787
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6187991242",
+      "filename": "GBIF_RKAN_6187991242.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3859,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3859
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3338
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2598
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6422351023",
+      "filename": "GBIF_RKAN_6422351023.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6244,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6244
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5063217540",
+      "filename": "GBIF_RKAN_5063217540.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6551273540",
+      "filename": "GBIF_RKAN_6551273540.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 6,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.92,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.92
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7238
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4065
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3463
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2606
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2577
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6178810639",
+      "filename": "GBIF_RKAN_6178810639.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7878,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7878
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3693
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3509
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2929
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6178612082",
+      "filename": "GBIF_RKAN_6178612082.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5201,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5201
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5071
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3379
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3326
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2732
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6185413688",
+      "filename": "GBIF_RKAN_6185413688.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3367,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3367
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3113
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6870948958",
+      "filename": "GBIF_RKAN_6870948958.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4991,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4991
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.414
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3848
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5134859696",
+      "filename": "GBIF_RKAN_5134859696.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5087663516",
+      "filename": "GBIF_RKAN_5087663516.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8022,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.8022
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3954
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3382
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5063644238",
+      "filename": "GBIF_RKAN_5063644238.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6446,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6446
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4851
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147211772",
+      "filename": "GBIF_RKAN_6147211772.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6153,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6153
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4073
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6552448446",
+      "filename": "GBIF_RKAN_6552448446.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5495,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5495
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5361
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.373
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5154661760",
+      "filename": "GBIF_RKAN_5154661760.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.759,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.759
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5897
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5571
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.32
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3105
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5140282021",
+      "filename": "GBIF_RKAN_5140282021.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6179482885",
+      "filename": "GBIF_RKAN_6179482885.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.322,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.322
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2543
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5920209758",
+      "filename": "GBIF_RKAN_5920209758.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.2995,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2995
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5153708901",
+      "filename": "GBIF_RKAN_5153708901.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147284124",
+      "filename": "GBIF_RKAN_6147284124.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.751,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.751
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3957
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3002
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5291887234",
+      "filename": "GBIF_RKAN_5291887234.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5349,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5349
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3929
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6552353649",
+      "filename": "GBIF_RKAN_6552353649.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5259,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5259
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5172
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2627
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147443764",
+      "filename": "GBIF_RKAN_6147443764.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7562,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7562
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3697
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5759563775",
+      "filename": "GBIF_RKAN_5759563775.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7754,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7754
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4872261286",
+      "filename": "GBIF_RKAN_4872261286.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.2657,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2657
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2557
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147487741",
+      "filename": "GBIF_RKAN_6147487741.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.695,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.695
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3417
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4528276603",
+      "filename": "GBIF_RKAN_4528276603.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147478318",
+      "filename": "GBIF_RKAN_6147478318.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.89,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.89
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3335
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4954544563",
+      "filename": "GBIF_RKAN_4954544563.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.2964,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2964
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5897753545",
+      "filename": "GBIF_RKAN_5897753545.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4959,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4959
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4982345452",
+      "filename": "GBIF_RKAN_4982345452.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8322,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8322
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2638
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147333554",
+      "filename": "GBIF_RKAN_6147333554.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 14,
+      "fp_at_conf_050": true,
+      "fp_count_050": 11,
+      "max_confidence": 0.7988,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7988
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7805
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7721
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6987
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6783
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.669
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6291
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6284
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5972
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5625
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5341
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4958
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4553
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3144
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4973942489",
+      "filename": "GBIF_RKAN_4973942489.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4337,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4337
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4982131335",
+      "filename": "GBIF_RKAN_4982131335.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 6,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.7713,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7713
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5559
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5405
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4724
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3494
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3135
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5759619826",
+      "filename": "GBIF_RKAN_5759619826.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8202,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8202
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3582
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5008084672",
+      "filename": "GBIF_RKAN_5008084672.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.8295,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8295
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.6008
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4232
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3991
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5760467437",
+      "filename": "GBIF_RKAN_5760467437.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.747,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.747
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4336
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4058
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5935565258",
+      "filename": "GBIF_RKAN_5935565258.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3408,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3408
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4987677199",
+      "filename": "GBIF_RKAN_4987677199.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 12,
+      "fp_at_conf_050": true,
+      "fp_count_050": 4,
+      "max_confidence": 0.8249,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8249
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7176
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.6296
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5285
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.397
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3098
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2972
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2972
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2791
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2745
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2742
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2614
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4596745212",
+      "filename": "GBIF_RKAN_4596745212.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7712,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7712
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3844
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4015282088",
+      "filename": "GBIF_RKAN_4015282088.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4902,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4902
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4994333325",
+      "filename": "GBIF_RKAN_4994333325.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5571,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5571
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.367
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5006947412",
+      "filename": "GBIF_RKAN_5006947412.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6336,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6336
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3829
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4430515762",
+      "filename": "GBIF_RKAN_4430515762.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.593,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.593
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4032
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4994271821",
+      "filename": "GBIF_RKAN_4994271821.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 6,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.8585,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8585
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7305
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6048
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3368
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2667
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2571
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4096980461",
+      "filename": "GBIF_RKAN_4096980461.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 7,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6007,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6007
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5745
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4041
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3885
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3473
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2929
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2558
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4091914993",
+      "filename": "GBIF_RKAN_4091914993.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4646,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4646
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3534
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5154632860",
+      "filename": "GBIF_RKAN_5154632860.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6195358041",
+      "filename": "GBIF_RKAN_6195358041.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6761,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6761
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5844
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3406
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4431000767",
+      "filename": "GBIF_RKAN_4431000767.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8867,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8867
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2885
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4035007356",
+      "filename": "GBIF_RKAN_4035007356.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4712,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4712
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3129
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2646
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5134800959",
+      "filename": "GBIF_RKAN_5134800959.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5153334357",
+      "filename": "GBIF_RKAN_5153334357.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5154511150",
+      "filename": "GBIF_RKAN_5154511150.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3734,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3734
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5154209482",
+      "filename": "GBIF_RKAN_5154209482.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5048,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5048
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-3947369057",
+      "filename": "GBIF_RKAN_3947369057.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6184,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6184
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4867893331",
+      "filename": "GBIF_RKAN_4867893331.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7235,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7235
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3172
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5828549499",
+      "filename": "GBIF_RKAN_5828549499.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 10,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.9176,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.9176
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.549
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4411
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4237
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4007
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2842
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2724
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2703
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2675
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2581
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4080913310",
+      "filename": "GBIF_RKAN_4080913310.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7803,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7803
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3817
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3511
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2891
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2859
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-1914237540",
+      "filename": "GBIF_RKAN_1914237540.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5825,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5825
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5766
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3582
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.314
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-3903554739",
+      "filename": "GBIF_RKAN_3903554739.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.6681,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6681
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5424
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5059
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3684
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-5087623182",
+      "filename": "GBIF_RKAN_5087623182.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4054835554",
+      "filename": "GBIF_RKAN_4054835554.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7336,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.7336
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4684
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3537
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3456
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2548
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-2813999589",
+      "filename": "GBIF_RKAN_2813999589.png",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6996,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6996
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4039369958",
+      "filename": "GBIF_RKAN_4039369958.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.474,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.474
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4080730433",
+      "filename": "GBIF_RKAN_4080730433.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 4,
+      "max_confidence": 0.9799,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.9799
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8426
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8348
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.658
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4535920167",
+      "filename": "GBIF_RKAN_4535920167.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5762,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5762
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4959
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-2609187023",
+      "filename": "GBIF_RKAN_2609187023.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5685,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5685
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3787
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3573
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-4015237324",
+      "filename": "GBIF_RKAN_4015237324.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5533,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5533
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-3113410567",
+      "filename": "GBIF_RKAN_3113410567.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 7,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.8701,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8701
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7461
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6559
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4165
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3362
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3098
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2708
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6131287326",
+      "filename": "GBIF_RKAN_6131287326.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6130064040",
+      "filename": "GBIF_RKAN_6130064040.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6523,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6523
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5751
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3986
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3543
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.268
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6133182858",
+      "filename": "GBIF_RKAN_6133182858.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6452,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6452
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4916
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-2856560193",
+      "filename": "GBIF_RKAN_2856560193.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4938,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4938
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6131387007",
+      "filename": "GBIF_RKAN_6131387007.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5727,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5727
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5318
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3336
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3166
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147188053",
+      "filename": "GBIF_RKAN_6147188053.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.5757,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5757
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5272
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5039
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3109
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6178413899",
+      "filename": "GBIF_RKAN_6178413899.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6131456168",
+      "filename": "GBIF_RKAN_6131456168.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8262,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.8262
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3416
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-1914355571",
+      "filename": "GBIF_RKAN_1914355571.jpeg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7317,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7317
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4439
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2724
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147360290",
+      "filename": "GBIF_RKAN_6147360290.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7391,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7391
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2881
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.286
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6159590402",
+      "filename": "GBIF_RKAN_6159590402.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6177,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6177
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6147408637",
+      "filename": "GBIF_RKAN_6147408637.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7316,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7316
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3681
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2552
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6235495362",
+      "filename": "GBIF_RKAN_6235495362.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7418,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7418
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3893
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2793
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2567
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6431353506",
+      "filename": "GBIF_RKAN_6431353506.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6252395428",
+      "filename": "GBIF_RKAN_6252395428.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.456,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.456
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2726
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6170902618",
+      "filename": "GBIF_RKAN_6170902618.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 7,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5271,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5271
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3484
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.339
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3266
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2854
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2785
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2579
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6186091675",
+      "filename": "GBIF_RKAN_6186091675.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3532,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3532
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2974
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6251651738",
+      "filename": "GBIF_RKAN_6251651738.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6379,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6379
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5906
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6273935457",
+      "filename": "GBIF_RKAN_6273935457.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8553,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8553
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4094
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.273
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6274256436",
+      "filename": "GBIF_RKAN_6274256436.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.51,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.51
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2854
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6334199781",
+      "filename": "GBIF_RKAN_6334199781.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.2561,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2561
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5276459256",
+      "filename": "GBIF_DMAC_5276459256.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5335,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5335
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5226
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3873
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5276645323",
+      "filename": "GBIF_DMAC_5276645323.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4917,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4917
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4157
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3176
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1057083216",
+      "filename": "GBIF_DMAC_1057083216.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6764,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6764
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5116
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4952
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2807
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1057528720",
+      "filename": "GBIF_DMAC_1057528720.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4707,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4707
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3904
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.379
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-RKAN-6400499608",
+      "filename": "GBIF_RKAN_6400499608.jpg",
+      "true_species": "Rastrelliger kanagurta",
+      "species_code": "RKAN",
+      "fp_at_conf_025": true,
+      "fp_count_025": 7,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4764,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4764
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.392
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3771
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3514
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3072
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2796
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.256
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1230364175",
+      "filename": "GBIF_DMAC_1230364175.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.283,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.283
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1055345222",
+      "filename": "GBIF_DMAC_1055345222.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.8315,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.8315
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7511
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4332
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4174
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1055826719",
+      "filename": "GBIF_DMAC_1055826719.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.7146,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7146
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6607
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5345
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2512
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1100683971",
+      "filename": "GBIF_DMAC_1100683971.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.8845,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.8845
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.6191
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3351
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1055404981",
+      "filename": "GBIF_DMAC_1055404981.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.8111,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.8111
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5829
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4795
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2534
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1056609797",
+      "filename": "GBIF_DMAC_1056609797.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.7071,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7071
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6215
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5045
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3486
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3114
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1057242108",
+      "filename": "GBIF_DMAC_1057242108.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.6836,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6836
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5429
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5327
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.437
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4228
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6179154619",
+      "filename": "GBIF_DMAC_6179154619.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5752,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5752
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5614
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6352264502",
+      "filename": "GBIF_DMAC_6352264502.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6195236476",
+      "filename": "GBIF_DMAC_6195236476.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3404,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3404
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6178506526",
+      "filename": "GBIF_DMAC_6178506526.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3026,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3026
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6479960790",
+      "filename": "GBIF_DMAC_6479960790.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5794,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5794
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3989
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-1230407541",
+      "filename": "GBIF_DMAC_1230407541.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6422710740",
+      "filename": "GBIF_DMAC_6422710740.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6498299662",
+      "filename": "GBIF_DMAC_6498299662.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5987,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5987
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5077057619",
+      "filename": "GBIF_DMAC_5077057619.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5309,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5309
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4659
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6885903432",
+      "filename": "GBIF_DMAC_6885903432.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6945,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6945
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4116
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5167397859",
+      "filename": "GBIF_DMAC_5167397859.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 8,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4988,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4988
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4329
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4019
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3876
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3719
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.349
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3406
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3078
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6552415776",
+      "filename": "GBIF_DMAC_6552415776.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7721,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7721
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3451
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5134644854",
+      "filename": "GBIF_DMAC_5134644854.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5078,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5078
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6551118783",
+      "filename": "GBIF_DMAC_6551118783.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6325,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6325
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6519372567",
+      "filename": "GBIF_DMAC_6519372567.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6574,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6574
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.6332
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4942
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2921
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5291820722",
+      "filename": "GBIF_DMAC_5291820722.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7504,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7504
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5134280160",
+      "filename": "GBIF_DMAC_5134280160.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 10,
+      "fp_at_conf_050": true,
+      "fp_count_050": 5,
+      "max_confidence": 0.7661,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.7661
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6538
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.6294
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5521
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.5268
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3731
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3549
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3265
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2735
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2517
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5759850202",
+      "filename": "GBIF_DMAC_5759850202.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6967,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6967
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5932213742",
+      "filename": "GBIF_DMAC_5932213742.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5087553366",
+      "filename": "GBIF_DMAC_5087553366.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5897289788",
+      "filename": "GBIF_DMAC_5897289788.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.6668,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6668
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5973
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5892717026",
+      "filename": "GBIF_DMAC_5892717026.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3084,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3084
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6431583646",
+      "filename": "GBIF_DMAC_6431583646.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3795,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3795
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4522765351",
+      "filename": "GBIF_DMAC_4522765351.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3426,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3426
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4600193627",
+      "filename": "GBIF_DMAC_4600193627.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3509,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3509
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2696
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4935695488",
+      "filename": "GBIF_DMAC_4935695488.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6585,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6585
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4522798338",
+      "filename": "GBIF_DMAC_4522798338.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.5523,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5523
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.536
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4901706581",
+      "filename": "GBIF_DMAC_4901706581.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3433,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3433
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4911133192",
+      "filename": "GBIF_DMAC_4911133192.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3097,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3097
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4522769860",
+      "filename": "GBIF_DMAC_4522769860.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7274,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7274
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4475
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2549
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4600014965",
+      "filename": "GBIF_DMAC_4600014965.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.8283,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8283
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5007200954",
+      "filename": "GBIF_DMAC_5007200954.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6174,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6174
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3858
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3837
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4936647087",
+      "filename": "GBIF_DMAC_4936647087.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.336,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.336
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6185794356",
+      "filename": "GBIF_DMAC_6185794356.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 4,
+      "max_confidence": 0.751,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.751
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6138
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5877
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5064
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3616
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4976221094",
+      "filename": "GBIF_DMAC_4976221094.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4917,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4917
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2997
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2621
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5007371823",
+      "filename": "GBIF_DMAC_5007371823.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3363,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3363
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2961
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5166778527",
+      "filename": "GBIF_DMAC_5166778527.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4091944741",
+      "filename": "GBIF_DMAC_4091944741.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.7812,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7812
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5742
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6185188451",
+      "filename": "GBIF_DMAC_6185188451.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4386,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.4386
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2689
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4994052071",
+      "filename": "GBIF_DMAC_4994052071.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5140351057",
+      "filename": "GBIF_DMAC_5140351057.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4803,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4803
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4945933101",
+      "filename": "GBIF_DMAC_4945933101.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4564,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4564
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4994478832",
+      "filename": "GBIF_DMAC_4994478832.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6869213112",
+      "filename": "GBIF_DMAC_6869213112.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3957,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3957
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3378
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3183
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2754
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3747080487",
+      "filename": "GBIF_DMAC_3747080487.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5263,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5263
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4146
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4980747501",
+      "filename": "GBIF_DMAC_4980747501.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.886,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.886
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8491
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2853
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3784710204",
+      "filename": "GBIF_DMAC_3784710204.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.6392,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6392
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3988455528",
+      "filename": "GBIF_DMAC_3988455528.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 8,
+      "fp_at_conf_050": true,
+      "fp_count_050": 6,
+      "max_confidence": 0.7163,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7163
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6336
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.598
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5823
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.57
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5616
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4997
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4315
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5828495079",
+      "filename": "GBIF_DMAC_5828495079.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.7306,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7306
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.7192
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4307
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3293
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3236
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4430378972",
+      "filename": "GBIF_DMAC_4430378972.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4486,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4486
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4458335511",
+      "filename": "GBIF_DMAC_4458335511.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.283,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.283
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3456421014",
+      "filename": "GBIF_DMAC_3456421014.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.607,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.607
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5016
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-2963957752",
+      "filename": "GBIF_DMAC_2963957752.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.7922,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7922
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5801
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5153551522",
+      "filename": "GBIF_DMAC_5153551522.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.3795,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3795
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.368
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2643
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3947676385",
+      "filename": "GBIF_DMAC_3947676385.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": false,
+      "fp_count_025": 0,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.0,
+      "detections_025": []
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5087249538",
+      "filename": "GBIF_DMAC_5087249538.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7305,
+      "detections_025": [
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.7305
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3994335622",
+      "filename": "GBIF_DMAC_3994335622.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.36,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.36
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3475
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2717
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-2988655007",
+      "filename": "GBIF_DMAC_2988655007.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5506,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5506
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3915564520",
+      "filename": "GBIF_DMAC_3915564520.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4957,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4957
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3079563725",
+      "filename": "GBIF_DMAC_3079563725.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5458,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5458
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3575
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3303
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3902814790",
+      "filename": "GBIF_DMAC_3902814790.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 7,
+      "fp_at_conf_050": true,
+      "fp_count_050": 7,
+      "max_confidence": 0.9309,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.9309
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8875
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6932
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6561
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.654
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5664
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5428
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-2397693192",
+      "filename": "GBIF_DMAC_2397693192.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.667,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.667
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4006653663",
+      "filename": "GBIF_DMAC_4006653663.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4985,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4985
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4522
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-2596083129",
+      "filename": "GBIF_DMAC_2596083129.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.9309,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.9309
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-4937156452",
+      "filename": "GBIF_DMAC_4937156452.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 1,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.7724,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7724
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3712503320",
+      "filename": "GBIF_DMAC_3712503320.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.5997,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.5997
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4662
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4396
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.3116
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-6185253875",
+      "filename": "GBIF_DMAC_6185253875.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 3,
+      "fp_at_conf_050": true,
+      "fp_count_050": 1,
+      "max_confidence": 0.844,
+      "detections_025": [
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.844
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3646
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.2834
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5827976102",
+      "filename": "GBIF_DMAC_5827976102.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 2,
+      "fp_at_conf_050": false,
+      "fp_count_050": 0,
+      "max_confidence": 0.4502,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4502
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.3194
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-2529311263",
+      "filename": "GBIF_DMAC_2529311263.jpg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 5,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.7525,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.7525
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.6149
+        },
+        {
+          "class_id": 0,
+          "class_name": "Rastrelliger brachysoma",
+          "conf": 0.4261
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3717
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2867
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-3859087151",
+      "filename": "GBIF_DMAC_3859087151.png",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 6,
+      "fp_at_conf_050": true,
+      "fp_count_050": 3,
+      "max_confidence": 0.5501,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5501
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5327
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5309
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.3901
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.354
+        },
+        {
+          "class_id": 2,
+          "class_name": "Upeneus sulphureus",
+          "conf": 0.2667
+        }
+      ]
+    },
+    {
+      "image_id": "IMG-GBIF-DMAC-5844044682",
+      "filename": "GBIF_DMAC_5844044682.jpeg",
+      "true_species": "Decapterus macarellus",
+      "species_code": "DMAC",
+      "fp_at_conf_025": true,
+      "fp_count_025": 4,
+      "fp_at_conf_050": true,
+      "fp_count_050": 2,
+      "max_confidence": 0.8684,
+      "detections_025": [
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.8684
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.5763
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.4714
+        },
+        {
+          "class_id": 1,
+          "class_name": "Selaroides leptolepis",
+          "conf": 0.2711
+        }
+      ]
+    }
+  ]
+}

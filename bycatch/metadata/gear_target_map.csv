@@ -1,0 +1,5 @@
+gear_id,gear_name,standard_target_species,validation_status,notes
+G-01,Jaring Insang (Gillnet),Selar kuning; Kembung perempuan,pending_owner_validation,Berdasarkan studi Triyono et al. (2020) di PPN Karangantu
+G-02,Bagan Perahu (Lift Net),Ikan teri; Kembung perempuan,pending_owner_validation,Berdasarkan studi Triyono et al. (2020) di PPN Karangantu
+G-03,Jaring Rampus / Apollo,Campuran pelagis & demersal kecil,pending_owner_validation,Berdasarkan studi Nurdin (2022) di PPN Karangantu
+G-04,Pancing Ulur (Handline),Ikan pelagis besar & karang,pending_owner_validation,Target bukan pelagis kecil

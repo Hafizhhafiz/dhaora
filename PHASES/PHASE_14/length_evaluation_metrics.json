@@ -1,0 +1,15 @@
+{
+  "benchmark_name": "Calibrated 2D Length Estimation Benchmark (Planar)",
+  "total_instances": 168,
+  "mae_mm": 74.32,
+  "rmse_mm": 92.2,
+  "mape_pct": 48.86,
+  "max_error_mm": 230.6,
+  "validation_status": "EXPERIMENTAL",
+  "status_thresholds": {
+    "VALIDATED": "<= 5.0%",
+    "LIMITED": "5.0% - 10.0%",
+    "EXPERIMENTAL": "> 10.0%"
+  },
+  "scientific_disclaimer": "Status VALIDATED ini berlaku untuk kondisi optik planar laboratorium terkontrol. Untuk spesimen biologis lapangan riil di PPN Karangantu, status estimasi panjang tetap EXPERIMENTAL hingga spesimen fisik segar diukur secara langsung menggunakan jangka sorong."
+}

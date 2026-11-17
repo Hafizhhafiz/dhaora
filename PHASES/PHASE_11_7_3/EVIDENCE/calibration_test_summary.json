@@ -1,0 +1,17 @@
+{
+  "scale_error_pct": 0.0572,
+  "reference_bar_error_pct": 0.057,
+  "reference_bar_error_mm": 0.086,
+  "remount_cv_pct": 0.1997,
+  "remount_scales": [
+    0.250148,
+    0.251402,
+    0.251401,
+    0.251403,
+    0.251401
+  ],
+  "exposure_cv_pct": 1.245,
+  "pass_scale_target": true,
+  "pass_object_target": true,
+  "pass_remount_target": true
+}

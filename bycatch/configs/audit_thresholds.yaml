@@ -1,0 +1,37 @@
+# Audit Thresholds Configuration for ByCatch AI (Phase 4)
+# Default values are conservative baselines and should be calibrated on real TPI landing data.
+
+min_resolution:
+  width: 416
+  height: 416
+  min_megapixels: 0.17
+
+quality:
+  # Laplacian variance normalized to long edge 1024 px
+  blur_laplacian_var_min: 80.0
+  # Tenengrad sharpness threshold
+  sharpness_tenengrad_min: 15.0
+  # Mean luminance (0-255)
+  brightness_luma_min: 35.0
+  brightness_luma_max: 220.0
+  # Contrast (std of luminance)
+  contrast_std_min: 25.0
+  # Clipping limits (<5 or >250)
+  max_clipped_fraction: 0.25
+
+duplicates:
+  # dHash 64-bit Hamming distance threshold for near-duplicates
+  dhash_hamming_distance_max: 6
+
+security:
+  # Pillow decompression bomb limit (e.g. 50 MP)
+  max_image_pixels: 50000000
+
+allowed_extensions:
+  - ".jpg"
+  - ".jpeg"
+  - ".png"
+  - ".webp"
+  - ".bmp"
+  - ".tif"
+  - ".tiff"

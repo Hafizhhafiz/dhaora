@@ -1,0 +1,17 @@
+{
+  "total_scanned": 16,
+  "valid_images": 14,
+  "corrupt_or_invalid": 2,
+  "needs_review": 16,
+  "exact_duplicates_count": 11,
+  "near_duplicates_count": 14,
+  "by_class": {
+    "corrupt": 2,
+    "duplicates": 2,
+    "extreme_lighting": 2,
+    "small": 1,
+    "kembung_perempuan": 3,
+    "kuniran": 3,
+    "selar_kuning": 3
+  }
+}

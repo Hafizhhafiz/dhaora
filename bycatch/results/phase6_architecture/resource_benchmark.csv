@@ -1,0 +1,9 @@
+model_name,device,imgsz,batch_size,params_million,peak_vram_mb,process_ram_mb,latency_p50_ms,latency_p95_ms,latency_avg_ms,fps,vram_limit_4gb_safe
+yolo11n.pt,cuda,640,2,2.62,139.95,726.93,21.42,25.08,21.13,94.7,True
+yolo11n.pt,cuda,640,4,2.62,177.38,583.76,23.97,27.79,24.34,164.3,True
+yolo11n.pt,cuda,512,2,2.62,90.16,529.54,15.79,22.33,16.67,120.0,True
+yolo11n.pt,cuda,512,4,2.62,126.76,514.88,17.61,22.13,17.93,223.1,True
+yolov8n.pt,cuda,640,2,3.16,124.71,436.45,13.21,16.87,13.67,146.3,True
+yolov8n.pt,cuda,640,4,3.16,173.98,416.63,23.83,26.02,24.08,166.1,True
+yolov8n.pt,cuda,512,2,3.16,104.0,409.48,12.72,16.96,13.16,151.9,True
+yolov8n.pt,cuda,512,4,3.16,147.58,402.53,15.77,18.03,16.09,248.7,True

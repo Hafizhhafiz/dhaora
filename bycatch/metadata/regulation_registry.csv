@@ -1,0 +1,4 @@
+regulation_id,jenis,nomor,tahun,judul,pasal_atau_lampiran,tanggal_berlaku,status_berlaku,sumber_resmi_url,retrieved_at,verified_by
+REG-01,Keputusan Menteri Kelautan dan Perikanan,1/KEPMEN-KP,2021,Jenis Ikan yang Dilindungi,Lampiran I,2021-01-04,Berlaku,https://jdih.kkp.go.id,2026-11-17,unverified
+REG-02,Peraturan Menteri Kelautan dan Perikanan,36/PERMEN-KP,2023,Jalur Penangkapan Ikan dan Alat Penangkapan Ikan,Pasal 12,2023-10-15,Berlaku,https://jdih.kkp.go.id,2026-11-17,unverified
+REG-03,Keputusan Menteri Kelautan dan Perikanan,19/KEPMEN-KP,2022,Estimasi Potensi Sumber Daya Ikan WPPNRI 712,Tabel 4,2022-03-01,Berlaku,https://jdih.kkp.go.id,2026-11-17,unverified

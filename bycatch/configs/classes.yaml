@@ -1,0 +1,48 @@
+# ByCatch AI — Canonical Species Class Definition
+# Single Source of Truth for Model Classes & Labels
+
+classes:
+  0:
+    class_id: 0
+    name: "kembung_perempuan"
+    scientific_name: "Rastrelliger brachysoma"
+    common_name_id: "Kembung perempuan"
+    family: "Scombridae"
+    order: "Scombriformes"
+    habitat: "pelagic"
+    diagnostic_features:
+      - "deep body ratio (tubuh tinggi dan agak pipih)"
+      - "panjang tapis insang (gill rakers)"
+      - "corak dorsal biru kehijauan dengan finlet"
+
+  1:
+    class_id: 1
+    name: "selar_kuning"
+    scientific_name: "Selaroides leptolepis"
+    common_name_id: "Selar kuning"
+    family: "Carangidae"
+    order: "Carangiformes"
+    habitat: "pelagic"
+    diagnostic_features:
+      - "garis kuning lebar memanjang dari mata ke ekor"
+      - "bintik hitam pada tepi atas operkulum"
+      - "tubuh memanjang pipih keperakan"
+
+  2:
+    class_id: 2
+    name: "kuniran"
+    scientific_name: "Upeneus sulphureus"
+    common_name_id: "Kuniran"
+    family: "Mullidae"
+    order: "Mulliformes"
+    habitat: "demersal"
+    diagnostic_features:
+      - "sepasang sungut dagu (chin barbels)"
+      - "garis membujur oranye/kuning pada sisi lateral"
+      - "dua sirip dorsal terpisah"
+
+total_classes: 3
+names:
+  - "kembung_perempuan"
+  - "selar_kuning"
+  - "kuniran"

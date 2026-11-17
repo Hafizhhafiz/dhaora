@@ -1,0 +1,534 @@
+{
+  "dataset_name": "fishguard_v001_test",
+  "num_test_images": 25,
+  "total_gt_instances": 168,
+  "total_pred_instances": 112,
+  "detection_metrics": {
+    "precision": 0.6067,
+    "recall": 0.4315,
+    "f1_score": 0.5043,
+    "map50": 0.3673,
+    "map50_95": 0.2336,
+    "per_class": {
+      "0": {
+        "species_name": "Rastrelliger brachysoma",
+        "precision": 0.6842,
+        "recall": 0.4483,
+        "f1_score": 0.5417,
+        "map50": 0.4104,
+        "map50_95": 0.2713
+      },
+      "1": {
+        "species_name": "Selaroides leptolepis",
+        "precision": 0.6744,
+        "recall": 0.5,
+        "f1_score": 0.5743,
+        "map50": 0.4194,
+        "map50_95": 0.2813
+      },
+      "2": {
+        "species_name": "Upeneus sulphureus",
+        "precision": 0.4615,
+        "recall": 0.3462,
+        "f1_score": 0.3956,
+        "map50": 0.2722,
+        "map50_95": 0.1482
+      }
+    }
+  },
+  "counting_metrics": {
+    "overall_mae": 2.4,
+    "overall_rmse": 2.993,
+    "exact_count_accuracy_pct": 20.0,
+    "within_plus_minus_1_accuracy_pct": 36.0,
+    "class_mae": {
+      "Rastrelliger brachysoma": 1.04,
+      "Selaroides leptolepis": 1.12,
+      "Upeneus sulphureus": 1.2
+    }
+  },
+  "speed_benchmark_cpu": {
+    "preprocess_ms": 2.94,
+    "inference_ms": 76.95,
+    "postprocess_ms": 1.45,
+    "total_latency_ms": 81.34,
+    "fps": 12.29
+  },
+  "granular_results": [
+    {
+      "image": "synth_val_0001_ice.jpg",
+      "gt_total": 4,
+      "pred_total": 4,
+      "abs_count_error": 0,
+      "exact_match": true,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 1,
+        "1": 2,
+        "2": 1
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 2,
+        "2": 1
+      },
+      "num_detections": 4
+    },
+    {
+      "image": "synth_val_0002_stainless.jpg",
+      "gt_total": 6,
+      "pred_total": 3,
+      "abs_count_error": 3,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 4,
+        "1": 1,
+        "2": 1
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 1,
+        "2": 0
+      },
+      "num_detections": 3
+    },
+    {
+      "image": "synth_val_0003_ice.jpg",
+      "gt_total": 7,
+      "pred_total": 3,
+      "abs_count_error": 4,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 1,
+        "1": 2,
+        "2": 4
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 1,
+        "2": 1
+      },
+      "num_detections": 3
+    },
+    {
+      "image": "synth_val_0004_ice.jpg",
+      "gt_total": 8,
+      "pred_total": 6,
+      "abs_count_error": 2,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 2,
+        "1": 4,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 3,
+        "1": 2,
+        "2": 1
+      },
+      "num_detections": 6
+    },
+    {
+      "image": "synth_val_0005_wood_board.jpg",
+      "gt_total": 6,
+      "pred_total": 6,
+      "abs_count_error": 0,
+      "exact_match": true,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 2,
+        "1": 1,
+        "2": 3
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 1,
+        "2": 4
+      },
+      "num_detections": 6
+    },
+    {
+      "image": "synth_val_0006_wood_board.jpg",
+      "gt_total": 9,
+      "pred_total": 5,
+      "abs_count_error": 4,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 1,
+        "1": 5,
+        "2": 3
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 3,
+        "2": 0
+      },
+      "num_detections": 5
+    },
+    {
+      "image": "synth_val_0007_wood_board.jpg",
+      "gt_total": 4,
+      "pred_total": 4,
+      "abs_count_error": 0,
+      "exact_match": true,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 3,
+        "1": 1,
+        "2": 0
+      },
+      "pred_by_class": {
+        "0": 3,
+        "1": 1,
+        "2": 0
+      },
+      "num_detections": 4
+    },
+    {
+      "image": "synth_val_0008_stainless.jpg",
+      "gt_total": 7,
+      "pred_total": 4,
+      "abs_count_error": 3,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 3,
+        "1": 3,
+        "2": 1
+      },
+      "pred_by_class": {
+        "0": 4,
+        "1": 0,
+        "2": 0
+      },
+      "num_detections": 4
+    },
+    {
+      "image": "synth_val_0009_blue_crate.jpg",
+      "gt_total": 4,
+      "pred_total": 3,
+      "abs_count_error": 1,
+      "exact_match": false,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 2,
+        "1": 0,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 0,
+        "2": 2
+      },
+      "num_detections": 3
+    },
+    {
+      "image": "synth_val_0010_blue_crate.jpg",
+      "gt_total": 5,
+      "pred_total": 5,
+      "abs_count_error": 0,
+      "exact_match": true,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 1,
+        "1": 0,
+        "2": 4
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 1,
+        "2": 3
+      },
+      "num_detections": 5
+    },
+    {
+      "image": "synth_val_0011_ice.jpg",
+      "gt_total": 8,
+      "pred_total": 4,
+      "abs_count_error": 4,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 3,
+        "1": 5,
+        "2": 0
+      },
+      "pred_by_class": {
+        "0": 0,
+        "1": 2,
+        "2": 2
+      },
+      "num_detections": 4
+    },
+    {
+      "image": "synth_val_0012_stainless.jpg",
+      "gt_total": 6,
+      "pred_total": 5,
+      "abs_count_error": 1,
+      "exact_match": false,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 3,
+        "1": 2,
+        "2": 1
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 2,
+        "2": 1
+      },
+      "num_detections": 5
+    },
+    {
+      "image": "synth_val_0013_wood_board.jpg",
+      "gt_total": 7,
+      "pred_total": 3,
+      "abs_count_error": 4,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 3,
+        "1": 2,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 2,
+        "2": 0
+      },
+      "num_detections": 3
+    },
+    {
+      "image": "synth_val_0014_blue_crate.jpg",
+      "gt_total": 5,
+      "pred_total": 5,
+      "abs_count_error": 0,
+      "exact_match": true,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 2,
+        "1": 1,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 0,
+        "2": 3
+      },
+      "num_detections": 5
+    },
+    {
+      "image": "synth_val_0015_stainless.jpg",
+      "gt_total": 9,
+      "pred_total": 2,
+      "abs_count_error": 7,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 5,
+        "1": 2,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 1,
+        "2": 0
+      },
+      "num_detections": 2
+    },
+    {
+      "image": "synth_val_0016_stainless.jpg",
+      "gt_total": 8,
+      "pred_total": 6,
+      "abs_count_error": 2,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 4,
+        "1": 2,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "num_detections": 6
+    },
+    {
+      "image": "synth_val_0017_ice.jpg",
+      "gt_total": 6,
+      "pred_total": 7,
+      "abs_count_error": 1,
+      "exact_match": false,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 0,
+        "1": 4,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 3,
+        "2": 3
+      },
+      "num_detections": 7
+    },
+    {
+      "image": "synth_val_0018_ice.jpg",
+      "gt_total": 9,
+      "pred_total": 6,
+      "abs_count_error": 3,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 3,
+        "1": 2,
+        "2": 4
+      },
+      "pred_by_class": {
+        "0": 1,
+        "1": 3,
+        "2": 2
+      },
+      "num_detections": 6
+    },
+    {
+      "image": "synth_val_0019_wood_board.jpg",
+      "gt_total": 5,
+      "pred_total": 6,
+      "abs_count_error": 1,
+      "exact_match": false,
+      "within_plus_minus_1": true,
+      "gt_by_class": {
+        "0": 2,
+        "1": 0,
+        "2": 3
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "num_detections": 6
+    },
+    {
+      "image": "synth_val_0020_blue_crate.jpg",
+      "gt_total": 4,
+      "pred_total": 2,
+      "abs_count_error": 2,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 0,
+        "1": 1,
+        "2": 3
+      },
+      "pred_by_class": {
+        "0": 0,
+        "1": 1,
+        "2": 1
+      },
+      "num_detections": 2
+    },
+    {
+      "image": "synth_val_0021_ice.jpg",
+      "gt_total": 9,
+      "pred_total": 6,
+      "abs_count_error": 3,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 1,
+        "1": 6,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "num_detections": 6
+    },
+    {
+      "image": "synth_val_0022_ice.jpg",
+      "gt_total": 9,
+      "pred_total": 4,
+      "abs_count_error": 5,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 4,
+        "1": 3,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 2,
+        "2": 0
+      },
+      "num_detections": 4
+    },
+    {
+      "image": "synth_val_0023_wood_board.jpg",
+      "gt_total": 6,
+      "pred_total": 3,
+      "abs_count_error": 3,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 2,
+        "1": 1,
+        "2": 3
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 1,
+        "2": 0
+      },
+      "num_detections": 3
+    },
+    {
+      "image": "synth_val_0024_stainless.jpg",
+      "gt_total": 8,
+      "pred_total": 4,
+      "abs_count_error": 4,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 4,
+        "1": 3,
+        "2": 1
+      },
+      "pred_by_class": {
+        "0": 3,
+        "1": 1,
+        "2": 0
+      },
+      "num_detections": 4
+    },
+    {
+      "image": "synth_val_0025_ice.jpg",
+      "gt_total": 9,
+      "pred_total": 6,
+      "abs_count_error": 3,
+      "exact_match": false,
+      "within_plus_minus_1": false,
+      "gt_by_class": {
+        "0": 2,
+        "1": 5,
+        "2": 2
+      },
+      "pred_by_class": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "num_detections": 6
+    }
+  ]
+}

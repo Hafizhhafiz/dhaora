@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+venv_annotation/
+
+# Environment Variables & Secrets
+.env
+*.env
+!.env.example
+
+# Large Dataset Files (Raw, Annotated, Processed)
+dataset/raw/
+dataset/curated/
+dataset/rejected/
+dataset/annotated/
+dataset/processed/
+data/
+
+# Model Weights & Checkpoints
+models/weights/*.pt
+models/weights/*.onnx
+models/weights/*.engine
+models/checkpoints/*.pt
+!models/weights/active_model.json
+
+# Smoke & Temporary Test Results
+results/_smoke/
+results/phase5_annotation/qc_vis/
+*.log
+oom_log.json
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

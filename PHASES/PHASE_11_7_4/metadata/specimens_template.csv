@@ -1,0 +1,4 @@
+specimen_id,class_id,scientific_name,local_name,source_location,sampling_date,sampling_time,verifier_name,verification_method,status,notes
+SPEC_C0_001,0,Rastrelliger brachysoma,Kembung Perempuan,PPN Karangantu (TPI),2026-11-20,08:30:00,Dr. Ichthyologist UPI,Gill rakers 58; TL/BD 2.8,VERIFIED,Contoh template
+SPEC_C1_001,1,Selaroides leptolepis,Selar Kuning,PPN Karangantu (TPI),2026-11-20,08:45:00,Dr. Ichthyologist UPI,Golden stripe; 26 scutes,VERIFIED,Contoh template
+SPEC_C2_001,2,Upeneus sulphureus,Kuniran,PPN Karangantu (TPI),2026-11-20,09:00:00,Dr. Ichthyologist UPI,White barbels; plain caudal fin,VERIFIED,Contoh template

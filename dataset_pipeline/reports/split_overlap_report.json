@@ -1,0 +1,12 @@
+{
+  "total_raw_images": 0,
+  "valid_specimens": 0,
+  "needs_metadata_count": 0,
+  "split_summary": {
+    "train": 0,
+    "val": 0,
+    "test": 0
+  },
+  "data_leakage_overlap_count": 0,
+  "status": "NO_RAW_DATA"
+}
