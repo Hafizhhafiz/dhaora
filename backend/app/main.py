@@ -19,7 +19,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
 
 from .config import STATIC_DIR, ALLOWED_ORIGINS, UPLOAD_DIR, RESULT_DIR, CUSTOM_WEIGHTS_PATH, PRETRAINED_FALLBACK
-from .routers import detection, measurement, history, bycatch, gis
+from .routers import detection, measurement, history, bycatch, gis, auth
 from .services.storage_service import init_db
 from .services.yolo_service import yolo_service_instance
 
@@ -63,6 +63,7 @@ app.include_router(detection.router)    # FishGuard Detection (/api/detect)
 app.include_router(measurement.router)  # FishGuard Length Estimation (/api/measure)
 app.include_router(history.router)      # Unified History & Stats (/api/history/...)
 app.include_router(bycatch.router)      # ByCatch AI Module (/api/bycatch/...)
+app.include_router(auth.router)         # Authentication & Access (/api/auth/...)
 
 # ==============================================================================
 # FISHGUARD ROUTER ALIASES (/api/fishguard/...) FOR CROSS-CLIENT COMPATIBILITY

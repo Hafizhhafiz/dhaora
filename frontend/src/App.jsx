@@ -4,6 +4,10 @@ import Navbar from './components/Navbar';
 import WebGisDrawer from './components/WebGisDrawer';
 import ErrorBoundary from './components/ErrorBoundary';
 
+// Public Landing & Authentication Pages
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+
 // Platform Core Pages
 import PlatformHome from './pages/PlatformHome';
 import AboutPage from './pages/AboutPage';
@@ -27,15 +31,43 @@ import ByCatchRoleTesterPage from './pages/bycatch/ByCatchRoleTesterPage';
 import ByCatchConservationPage from './pages/bycatch/ByCatchConservationPage';
 import ByCatchTripPage from './pages/bycatch/ByCatchTripPage';
 
-import { checkHealth, checkByCatchHealth } from './api/client';
+import { checkHealth, checkByCatchHealth, getStoredUser, logoutUser } from './api/client';
 
 export default function App() {
+  const [currentUser, setCurrentUser] = useState(() => getStoredUser());
+  const [viewMode, setViewMode] = useState(() => (getStoredUser() ? 'app' : 'landing'));
   const [activeModule, setActiveModule] = useState('home');
   const [activeTab, setActiveTab] = useState('home');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [healthInfo, setHealthInfo] = useState(null);
   const [bycatchHealth, setBycatchHealth] = useState(null);
   const [selectedAnalysis, setSelectedAnalysis] = useState(null);
+
+  const handleLoginSuccess = (user) => {
+    setCurrentUser(user);
+    setViewMode('app');
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+    setCurrentUser(null);
+    setViewMode('landing');
+  };
+
+  const handleExploreGuest = () => {
+    setCurrentUser({
+      username: 'tamu',
+      full_name: 'Pengunjung Tamu',
+      role: 'Tamu Publik',
+      role_badge: 'bg-slate-800 text-slate-300 border-slate-700',
+      avatar: 'TM'
+    });
+    setViewMode('app');
+  };
+
+  const handleNavigateLanding = () => {
+    setViewMode('landing');
+  };
 
   useEffect(() => {
     async function initHealth() {
@@ -59,6 +91,28 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // 1. PUBLIC LANDING VIEW
+  if (viewMode === 'landing') {
+    return (
+      <LandingPage 
+        onLoginClick={() => setViewMode('login')} 
+        onExploreGuest={handleExploreGuest} 
+      />
+    );
+  }
+
+  // 2. AUTHENTICATION / LOGIN VIEW
+  if (viewMode === 'login') {
+    return (
+      <LoginPage 
+        onLoginSuccess={handleLoginSuccess}
+        onBackToLanding={handleNavigateLanding}
+        onGuestAccess={handleExploreGuest}
+      />
+    );
+  }
+
+  // 3. MAIN DASHBOARD PLATFORM VIEW
   return (
     <div className="flex h-screen bg-[#060b17] text-slate-100 font-sans overflow-hidden">
       {/* Sidebar Navigation */}
@@ -70,6 +124,9 @@ export default function App() {
         healthInfo={healthInfo} 
         bycatchHealth={bycatchHealth}
         onOpenDrawer={() => setIsDrawerOpen(true)}
+        onNavigateLanding={handleNavigateLanding}
+        currentUser={currentUser}
+        onLogout={handleLogout}
       />
 
       {/* Main Content Area */}
@@ -80,6 +137,9 @@ export default function App() {
           healthInfo={healthInfo} 
           bycatchHealth={bycatchHealth}
           onOpenDrawer={() => setIsDrawerOpen(true)}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+          onNavigateLanding={handleNavigateLanding}
         />
 
         <main className={`flex-1 overflow-y-auto relative ${activeModule === 'catchforecast' ? 'p-0' : 'p-6'}`}>

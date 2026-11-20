@@ -1,12 +1,15 @@
 import React from 'react';
-import { Anchor, ShieldAlert, Cpu, Sparkles, Fish, ShieldCheck, Waves, Map, BarChart3, Clock, Info } from 'lucide-react';
+import { Anchor, ShieldAlert, Cpu, Sparkles, Fish, ShieldCheck, Waves, Map, BarChart3, Clock, Info, LogOut, User, Globe } from 'lucide-react';
 
 export default function Navbar({ 
   activeModule, 
   activeTab, 
   healthInfo, 
   bycatchHealth,
-  onOpenDrawer 
+  onOpenDrawer,
+  currentUser,
+  onLogout,
+  onNavigateLanding
 }) {
   const getTabTitle = () => {
     if (activeModule === 'home') return 'DHAORA — Unified Fisheries & Marine Platform';
@@ -88,6 +91,17 @@ export default function Navbar({
       </div>
 
       <div className="flex items-center gap-3 text-xs shrink-0">
+        {onNavigateLanding && (
+          <button
+            onClick={onNavigateLanding}
+            title="Kembali ke Landing Page Publik"
+            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white border border-slate-700 font-medium transition-all cursor-pointer"
+          >
+            <Globe className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Beranda Publik</span>
+          </button>
+        )}
+
         {onOpenDrawer && (
           <button
             onClick={onOpenDrawer}
@@ -98,13 +112,52 @@ export default function Navbar({
           </button>
         )}
 
-        <div className="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">
+        <div className="hidden lg:flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">
           <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-          <span className="text-slate-300 font-medium hidden md:inline">Engine:</span>
+          <span className="text-slate-300 font-medium">Engine:</span>
           <span className="text-cyan-400 font-semibold font-mono text-[11px]">
             {getEngineInfo()}
           </span>
         </div>
+
+        {/* User Session Profile Pill */}
+        {currentUser ? (
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <div className="flex items-center gap-2 bg-slate-800/90 py-1 px-2.5 rounded-lg border border-slate-700">
+              <div className="w-6 h-6 rounded-md bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-[10px] font-black text-white">
+                {currentUser.avatar || 'US'}
+              </div>
+              <div className="text-left hidden md:block">
+                <div className="text-[11px] font-bold text-slate-200 leading-tight truncate max-w-[120px]">
+                  {currentUser.full_name || currentUser.username}
+                </div>
+                <div className="text-[9px] text-cyan-400 font-medium leading-tight">
+                  {currentUser.role || 'Pengguna'}
+                </div>
+              </div>
+            </div>
+
+            {onLogout && (
+              <button
+                onClick={onLogout}
+                title="Keluar / Logout"
+                className="p-1.5 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 hover:text-red-200 border border-red-800/50 transition-all cursor-pointer"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <button
+              onClick={onNavigateLanding}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 font-medium transition-all cursor-pointer"
+            >
+              <User className="w-3.5 h-3.5" />
+              <span>Masuk</span>
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

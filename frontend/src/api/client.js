@@ -271,3 +271,39 @@ export async function getUnifiedStats() {
   if (!res.ok) throw new Error("Gagal memuat statistik riwayat terpadu");
   return await res.json();
 }
+
+// ==========================================
+// AUTHENTICATION & ACCESS MANAGEMENT
+// ==========================================
+
+export async function loginUser(username, password) {
+  const res = await fetchWithFallback("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || "Autentikasi gagal. Periksa username dan password Anda.");
+  }
+  const data = await res.json();
+  if (data.token && data.user) {
+    localStorage.setItem("dhaora_auth_user", JSON.stringify(data.user));
+    localStorage.setItem("dhaora_auth_token", data.token);
+  }
+  return data;
+}
+
+export function getStoredUser() {
+  try {
+    const raw = localStorage.getItem("dhaora_auth_user");
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+export function logoutUser() {
+  localStorage.removeItem("dhaora_auth_user");
+  localStorage.removeItem("dhaora_auth_token");
+}

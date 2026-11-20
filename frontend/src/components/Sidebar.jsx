@@ -19,7 +19,9 @@ import {
   Map,
   BarChart3,
   Layers,
-  Sparkles
+  Sparkles,
+  Globe,
+  LogOut
 } from 'lucide-react';
 
 export default function Sidebar({ 
@@ -29,7 +31,10 @@ export default function Sidebar({
   setActiveTab, 
   healthInfo, 
   bycatchHealth,
-  onOpenDrawer
+  onOpenDrawer,
+  onNavigateLanding,
+  currentUser,
+  onLogout
 }) {
   const isFgHealthy = healthInfo?.status === 'healthy';
   const isBcHealthy = bycatchHealth?.status === 'healthy';
@@ -76,6 +81,17 @@ export default function Sidebar({
       {/* Main Navigation Scroll Area */}
       <div className="flex-1 overflow-y-auto px-3 py-3 space-y-4">
         
+        {/* Navigation to Public Landing */}
+        {onNavigateLanding && (
+          <button
+            onClick={onNavigateLanding}
+            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-cyan-300 hover:bg-slate-800/60 transition-all cursor-pointer border border-slate-800/80 hover:border-slate-700"
+          >
+            <Globe className="w-4 h-4 text-cyan-400" />
+            <span>Beranda Publik</span>
+          </button>
+        )}
+
         {/* Level 1: Platform Hub */}
         <button
           onClick={() => {
@@ -272,6 +288,34 @@ export default function Sidebar({
         </div>
 
       </div>
+
+      {/* User Session Quick Profile */}
+      {currentUser && (
+        <div className="px-3 py-2.5 border-t border-slate-800 bg-slate-900/50 flex items-center justify-between">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-[10px] font-black text-white shrink-0">
+              {currentUser.avatar || 'US'}
+            </div>
+            <div className="min-w-0 truncate">
+              <div className="text-xs font-bold text-slate-200 truncate">
+                {currentUser.full_name || currentUser.username}
+              </div>
+              <div className="text-[10px] text-cyan-400 truncate">
+                {currentUser.role || 'Pengguna'}
+              </div>
+            </div>
+          </div>
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              title="Keluar / Logout"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-950/40 transition-colors cursor-pointer shrink-0"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Triple Engine Status Footer */}
       <div className="p-3.5 border-t border-slate-800 bg-slate-950/70 text-[10px] space-y-1.5">
