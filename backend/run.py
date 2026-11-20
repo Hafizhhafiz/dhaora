@@ -6,5 +6,7 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 if __name__ == "__main__":
-    print("Starting FishGuard AI Backend on http://127.0.0.1:8000 ...")
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 8000))
+    host = os.environ.get("HOST", "0.0.0.0")
+    print(f"Starting ASIK VOL VI Backend on http://{host}:{port} ...")
+    uvicorn.run("app.main:app", host=host, port=port, reload=False)

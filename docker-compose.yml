@@ -1,0 +1,10 @@
+services:
+  dhaora-app:
+    build: .
+    container_name: dhaora_marine_platform
+    ports:
+      - "5173:5173"
+    environment:
+      - PORT=5173
+      - HOST=0.0.0.0
+    restart: unless-stopped
