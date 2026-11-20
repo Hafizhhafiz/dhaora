@@ -1,0 +1,89 @@
+{
+  "rastrelliger": {
+    "key": "rastrelliger",
+    "champion": "Random_Forest",
+    "spatial_metrics": {
+      "r2_score": 0.9995,
+      "mae_kg": 0.278,
+      "rmse_kg": 0.555,
+      "relative_mae_percent": 0.51,
+      "fit_time_seconds": 0.674
+    },
+    "temporal_metrics": {
+      "r2_score": -1.3774,
+      "mae_kg": 23.739,
+      "rmse_kg": 28.415,
+      "relative_mae_percent": 44.88,
+      "fit_time_seconds": 0.377
+    },
+    "feature_importances": {
+      "sst_celsius": 0.222,
+      "thermal_front_c_per_km": 0.0356,
+      "chlorophyll_a_mg_m3": 0.0517,
+      "bathymetry_depth_m": 0.0227,
+      "bathymetry_slope_deg": 0.0112,
+      "dist_to_shore_km": 0.0002,
+      "dist_to_port_km": 0.0002,
+      "month_sin": 0.3163,
+      "month_cos": 0.3401
+    }
+  },
+  "selaroides": {
+    "key": "selaroides",
+    "champion": "Random_Forest",
+    "spatial_metrics": {
+      "r2_score": 0.9995,
+      "mae_kg": 0.021,
+      "rmse_kg": 0.042,
+      "relative_mae_percent": 0.51,
+      "fit_time_seconds": 0.454
+    },
+    "temporal_metrics": {
+      "r2_score": -0.9227,
+      "mae_kg": 1.614,
+      "rmse_kg": 1.954,
+      "relative_mae_percent": 39.91,
+      "fit_time_seconds": 0.399
+    },
+    "feature_importances": {
+      "sst_celsius": 0.2222,
+      "thermal_front_c_per_km": 0.0355,
+      "chlorophyll_a_mg_m3": 0.0517,
+      "bathymetry_depth_m": 0.0204,
+      "bathymetry_slope_deg": 0.0135,
+      "dist_to_shore_km": 0.0003,
+      "dist_to_port_km": 0.0002,
+      "month_sin": 0.3134,
+      "month_cos": 0.3427
+    }
+  },
+  "upeneus": {
+    "key": "upeneus",
+    "champion": "Random_Forest",
+    "spatial_metrics": {
+      "r2_score": 0.9997,
+      "mae_kg": 0.123,
+      "rmse_kg": 0.249,
+      "relative_mae_percent": 0.62,
+      "fit_time_seconds": 0.478
+    },
+    "temporal_metrics": {
+      "r2_score": 0.0811,
+      "mae_kg": 9.64,
+      "rmse_kg": 13.372,
+      "relative_mae_percent": 47.52,
+      "fit_time_seconds": 0.343
+    },
+    "feature_importances": {
+      "sst_celsius": 0.1823,
+      "thermal_front_c_per_km": 0.0001,
+      "chlorophyll_a_mg_m3": 0.0089,
+      "bathymetry_depth_m": 0.3262,
+      "bathymetry_slope_deg": 0.309,
+      "dist_to_shore_km": 0.0003,
+      "dist_to_port_km": 0.0,
+      "month_sin": 0.1197,
+      "month_cos": 0.0535
+    }
+  }
+}

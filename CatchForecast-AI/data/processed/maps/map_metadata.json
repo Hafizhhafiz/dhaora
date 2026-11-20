@@ -1,0 +1,39 @@
+{
+  "rastrelliger": {
+    "scientific_name": "Rastrelliger brachysoma",
+    "local_name": "Kembung perempuan",
+    "category": "Pelagic",
+    "observation_period": "November 2026",
+    "cells_count": 798,
+    "predicted_total_catch_kg": 26009.73,
+    "predicted_mean_cell_catch_kg": 32.59,
+    "predicted_max_cell_catch_kg": 39.47,
+    "geojson_path": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\processed\\maps\\rastrelliger_prediction_map.geojson",
+    "thematic_png_path": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\reports\\phase_10\\maps\\rastrelliger_prediction_map.png"
+  },
+  "selaroides": {
+    "scientific_name": "Selaroides leptolepis",
+    "local_name": "Selar kuning",
+    "category": "Pelagic",
+    "observation_period": "November 2026",
+    "cells_count": 798,
+    "predicted_total_catch_kg": 1988.5,
+    "predicted_mean_cell_catch_kg": 2.49,
+    "predicted_max_cell_catch_kg": 3.01,
+    "geojson_path": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\processed\\maps\\selaroides_prediction_map.geojson",
+    "thematic_png_path": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\reports\\phase_10\\maps\\selaroides_prediction_map.png"
+  },
+  "upeneus": {
+    "scientific_name": "Upeneus sulphureus",
+    "local_name": "Kuniran",
+    "category": "Demersal",
+    "observation_period": "November 2026",
+    "cells_count": 798,
+    "predicted_total_catch_kg": 9967.2,
+    "predicted_mean_cell_catch_kg": 12.49,
+    "predicted_max_cell_catch_kg": 21.48,
+    "geojson_path": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\processed\\maps\\upeneus_prediction_map.geojson",
+    "thematic_png_path": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\reports\\phase_10\\maps\\upeneus_prediction_map.png"
+  },
+  "comparative_map_png": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\reports\\phase_10\\maps\\04_comparative_prediction_map.png"
+}

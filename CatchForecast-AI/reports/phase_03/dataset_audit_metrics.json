@@ -1,0 +1,881 @@
+{
+  "audit_timestamp": "2026-11-18T15:05:52.651269",
+  "python_version": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "pandas_version": "3.0.6",
+  "data_root": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data",
+  "datasets": {
+    "ppn_karangantu_operasional_kapal.csv": {
+      "filename": "ppn_karangantu_operasional_kapal.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_operasional_kapal.csv",
+      "size_bytes": 1118,
+      "size_kb": 1.09,
+      "sha256": "49885a03384d9f3b2721fc3d0761d88f17c3af33c0ecb4a98b4976dc7af5e35a",
+      "rows": 17,
+      "cols": 4,
+      "duplicates": 0,
+      "columns": [
+        "nama_alat_tangkap",
+        "jumlah_alat_tangkap_by_kapal_masuk",
+        "pelabuhan",
+        "ingest_date"
+      ],
+      "column_profiles": {
+        "nama_alat_tangkap": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 17,
+          "top_categories": {
+            "Bagan Apung": 1,
+            "Bagan Berperahu Teri": 1,
+            "Bagan perahu": 1
+          }
+        },
+        "jumlah_alat_tangkap_by_kapal_masuk": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 15,
+          "min": 1.0,
+          "max": 7088.0,
+          "mean": 1505.06,
+          "median": 404.0,
+          "std": 2263.61,
+          "outliers_iqr_count": 3
+        },
+        "pelabuhan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "PPN Karangantu": 17
+          }
+        },
+        "ingest_date": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "2026-11-18T14:32:47.892316": 17
+          }
+        }
+      }
+    },
+    "ppn_karangantu_pemasaran_keluar.csv": {
+      "filename": "ppn_karangantu_pemasaran_keluar.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_pemasaran_keluar.csv",
+      "size_bytes": 406,
+      "size_kb": 0.4,
+      "sha256": "a80725978bb9f8f5652992e6e2df9b011fde2b518a956402dbd5ecffce44e4f3",
+      "rows": 8,
+      "cols": 4,
+      "duplicates": 0,
+      "columns": [
+        "nama_jenis_ikan",
+        "nama_latin",
+        "kondisi_ikan",
+        "jumlah_ikan"
+      ],
+      "column_profiles": {
+        "nama_jenis_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 8,
+          "top_categories": {
+            "Bawal hitam ": 1,
+            "Bawal putih ": 1,
+            "Kembung lelaki ": 1
+          }
+        },
+        "nama_latin": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 8,
+          "top_categories": {
+            "Parastromateus niger": 1,
+            "Pampus argenteus": 1,
+            "Rastrelliger kanagurta": 1
+          }
+        },
+        "kondisi_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "Segar": 8
+          }
+        },
+        "jumlah_ikan": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 8,
+          "min": 1.0,
+          "max": 685.0,
+          "mean": 170.25,
+          "median": 40.5,
+          "std": 263.76,
+          "outliers_iqr_count": 2
+        }
+      }
+    },
+    "ppn_karangantu_pemasaran_masuk.csv": {
+      "filename": "ppn_karangantu_pemasaran_masuk.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_pemasaran_masuk.csv",
+      "size_bytes": 789,
+      "size_kb": 0.77,
+      "sha256": "c303e9b4efc90450a5e6a7a57244aec51df94bddc774c25a0511aa1543931bec",
+      "rows": 18,
+      "cols": 4,
+      "duplicates": 0,
+      "columns": [
+        "nama_jenis_ikan",
+        "nama_latin",
+        "kondisi_ikan",
+        "jumlah_ikan"
+      ],
+      "column_profiles": {
+        "nama_jenis_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 17,
+          "top_categories": {
+            "Rajungan ": 2,
+            "Peperek lainnya ": 1,
+            "Baronang ": 1
+          }
+        },
+        "nama_latin": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 17,
+          "top_categories": {
+            "Portunus pelagicus": 2,
+            "Leiognathus spp": 1,
+            "Siganus javus": 1
+          }
+        },
+        "kondisi_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 4,
+          "top_categories": {
+            "Beku": 15,
+            "Asin": 1,
+            "Olahan": 1
+          }
+        },
+        "jumlah_ikan": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 15,
+          "min": 10.0,
+          "max": 2350.0,
+          "mean": 407.44,
+          "median": 76.5,
+          "std": 716.41,
+          "outliers_iqr_count": 2
+        }
+      }
+    },
+    "ppn_karangantu_pendaratan_bulanan.csv": {
+      "filename": "ppn_karangantu_pendaratan_bulanan.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_pendaratan_bulanan.csv",
+      "size_bytes": 5447,
+      "size_kb": 5.32,
+      "sha256": "249dd8456b31e878f15dfaa3124acdb38fbb0340acdc66b4cdf22b076e9eb54e",
+      "rows": 67,
+      "cols": 7,
+      "duplicates": 0,
+      "columns": [
+        "id_jenis_ikan",
+        "nama_jenis_ikan",
+        "nama_latin",
+        "volume",
+        "harga_rata_rata",
+        "frequency",
+        "ingest_date"
+      ],
+      "column_profiles": {
+        "id_jenis_ikan": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 67,
+          "min": 9.0,
+          "max": 10491.0,
+          "mean": 987.46,
+          "median": 194.0,
+          "std": 2699.9,
+          "outliers_iqr_count": 5
+        },
+        "nama_jenis_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 55,
+          "top_categories": {
+            "Gulamah ": 3,
+            "Rajungan ": 3,
+            "Tongkol banyar ": 2
+          }
+        },
+        "nama_latin": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 65,
+          "top_categories": {
+            "Anodontostoma chacunda": 2,
+            "Leiognathus spp": 2,
+            "Euthynnus lineatus": 1
+          }
+        },
+        "volume": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 61,
+          "min": 6.0,
+          "max": 34251.0,
+          "mean": 3568.94,
+          "median": 433.0,
+          "std": 7507.56,
+          "outliers_iqr_count": 10
+        },
+        "harga_rata_rata": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 35,
+          "min": 2000.0,
+          "max": 100000.0,
+          "mean": 24434.13,
+          "median": 15000.0,
+          "std": 24379.27,
+          "outliers_iqr_count": 3
+        },
+        "frequency": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "Bulanan": 67
+          }
+        },
+        "ingest_date": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "2026-11-18T14:32:47.892316": 67
+          }
+        }
+      }
+    },
+    "ppn_karangantu_pendaratan_harian.csv": {
+      "filename": "ppn_karangantu_pendaratan_harian.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_pendaratan_harian.csv",
+      "size_bytes": 2447,
+      "size_kb": 2.39,
+      "sha256": "7a2ef240729e4fd48eea9104e9a8598478bab972f4bbeed9bc6991daa1cd9ddd",
+      "rows": 30,
+      "cols": 7,
+      "duplicates": 0,
+      "columns": [
+        "id_jenis_ikan",
+        "nama_jenis_ikan",
+        "nama_latin",
+        "volume",
+        "harga_rata_rata",
+        "frequency",
+        "ingest_date"
+      ],
+      "column_profiles": {
+        "id_jenis_ikan": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 30,
+          "min": 10.0,
+          "max": 10379.0,
+          "mean": 576.1,
+          "median": 160.5,
+          "std": 1858.85,
+          "outliers_iqr_count": 1
+        },
+        "nama_jenis_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 27,
+          "top_categories": {
+            "Gulamah ": 2,
+            "Teri ": 2,
+            "Kurisi ": 2
+          }
+        },
+        "nama_latin": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 30,
+          "top_categories": {
+            "Euthynnus affinis": 1,
+            "Scomberomorus lineolatus": 1,
+            "Dasyatis kuhlii": 1
+          }
+        },
+        "volume": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 30,
+          "min": 3.0,
+          "max": 1653.0,
+          "mean": 408.0,
+          "median": 150.5,
+          "std": 570.24,
+          "outliers_iqr_count": 7
+        },
+        "harga_rata_rata": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 21,
+          "min": 2000.0,
+          "max": 100000.0,
+          "mean": 18083.13,
+          "median": 9600.0,
+          "std": 22357.57,
+          "outliers_iqr_count": 2
+        },
+        "frequency": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "Harian": 30
+          }
+        },
+        "ingest_date": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "2026-11-18T14:32:47.892316": 30
+          }
+        }
+      }
+    },
+    "ppn_karangantu_pendaratan_mingguan.csv": {
+      "filename": "ppn_karangantu_pendaratan_mingguan.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_pendaratan_mingguan.csv",
+      "size_bytes": 3085,
+      "size_kb": 3.01,
+      "sha256": "199c0194a78e679fac1a4a98a9518364b47b1d34b0bb0d49d30199d1fad53fa5",
+      "rows": 37,
+      "cols": 7,
+      "duplicates": 0,
+      "columns": [
+        "id_jenis_ikan",
+        "nama_jenis_ikan",
+        "nama_latin",
+        "volume",
+        "harga_rata_rata",
+        "frequency",
+        "ingest_date"
+      ],
+      "column_profiles": {
+        "id_jenis_ikan": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 37,
+          "min": 10.0,
+          "max": 10491.0,
+          "mean": 777.81,
+          "median": 159.0,
+          "std": 2345.79,
+          "outliers_iqr_count": 2
+        },
+        "nama_jenis_ikan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 31,
+          "top_categories": {
+            "Gulamah ": 2,
+            "Teri ": 2,
+            "Tembang ": 2
+          }
+        },
+        "nama_latin": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 37,
+          "top_categories": {
+            "Euthynnus affinis": 1,
+            "Scomberomorus lineolatus": 1,
+            "Thunnus tonggol": 1
+          }
+        },
+        "volume": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 36,
+          "min": 9.0,
+          "max": 10599.0,
+          "mean": 1640.89,
+          "median": 353.0,
+          "std": 2614.76,
+          "outliers_iqr_count": 6
+        },
+        "harga_rata_rata": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 23,
+          "min": 2000.0,
+          "max": 100000.0,
+          "mean": 20062.32,
+          "median": 10000.0,
+          "std": 24873.06,
+          "outliers_iqr_count": 3
+        },
+        "frequency": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "Mingguan": 37
+          }
+        },
+        "ingest_date": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "2026-11-18T14:32:47.892316": 37
+          }
+        }
+      }
+    },
+    "ppn_karangantu_produksi_bulanan_2026.csv": {
+      "filename": "ppn_karangantu_produksi_bulanan_2026.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\ppn_karangantu_produksi_bulanan_2026.csv",
+      "size_bytes": 488,
+      "size_kb": 0.48,
+      "sha256": "c05bf22bf5be5c534a04066cdfc2da65b35b6eba44ed7dc8cc3742013be59fd1",
+      "rows": 12,
+      "cols": 5,
+      "duplicates": 0,
+      "columns": [
+        "bulan",
+        "volume_kg",
+        "tahun",
+        "pelabuhan",
+        "wpp"
+      ],
+      "column_profiles": {
+        "bulan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 12,
+          "top_categories": {
+            "Jan": 1,
+            "Feb": 1,
+            "Mar": 1
+          }
+        },
+        "volume_kg": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 12,
+          "min": 0.0,
+          "max": 420859.0,
+          "mean": 231486.75,
+          "median": 236546.0,
+          "std": 120113.59,
+          "outliers_iqr_count": 0
+        },
+        "tahun": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "min": 2026.0,
+          "max": 2026.0,
+          "mean": 2026.0,
+          "median": 2026.0,
+          "std": 0.0,
+          "outliers_iqr_count": 0
+        },
+        "pelabuhan": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "PPN Karangantu": 12
+          }
+        },
+        "wpp": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "min": 712.0,
+          "max": 712.0,
+          "mean": 712.0,
+          "median": 712.0,
+          "std": 0.0,
+          "outliers_iqr_count": 0
+        }
+      }
+    },
+    "target_species_cpue_msy_summary.csv": {
+      "filename": "target_species_cpue_msy_summary.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\target_species_cpue_msy_summary.csv",
+      "size_bytes": 676,
+      "size_kb": 0.66,
+      "sha256": "10125c58d46e5551d10ecb075f6cc3c82f190164f63d8b68586e132a6e3be41e",
+      "rows": 3,
+      "cols": 13,
+      "duplicates": 0,
+      "columns": [
+        "species_id",
+        "scientific_name",
+        "local_name",
+        "category",
+        "sample_monthly_catch_kg",
+        "assigned_gear_effort_annual",
+        "monthly_cpue_kg_per_trip",
+        "schaefer_e_opt_trips",
+        "schaefer_msy_kg_year",
+        "fox_e_opt_trips",
+        "fox_msy_kg_year",
+        "estimated_utilization_pct",
+        "exploitation_status"
+      ],
+      "column_profiles": {
+        "species_id": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "rastrelliger_brachysoma": 1,
+            "selaroides_leptolepis": 1,
+            "upeneus_sulphureus": 1
+          }
+        },
+        "scientific_name": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Rastrelliger brachysoma": 1,
+            "Selaroides leptolepis": 1,
+            "Upeneus sulphureus": 1
+          }
+        },
+        "local_name": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Kembung perempuan": 1,
+            "Selar kuning": 1,
+            "Kuniran": 1
+          }
+        },
+        "category": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 2,
+          "top_categories": {
+            "Small Pelagic": 2,
+            "Demersal": 1
+          }
+        },
+        "sample_monthly_catch_kg": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "min": 21839.0,
+          "max": 34251.0,
+          "mean": 27099.67,
+          "median": 25209.0,
+          "std": 6418.36,
+          "outliers_iqr_count": 0
+        },
+        "assigned_gear_effort_annual": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 2,
+          "min": 5618.0,
+          "max": 19819.0,
+          "mean": 15085.33,
+          "median": 19819.0,
+          "std": 8198.95,
+          "outliers_iqr_count": 0
+        },
+        "monthly_cpue_kg_per_trip": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "min": 13.22,
+          "max": 53.85,
+          "mean": 29.27,
+          "median": 20.74,
+          "std": 21.62,
+          "outliers_iqr_count": 0
+        },
+        "schaefer_e_opt_trips": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 2,
+          "min": 5618.0,
+          "max": 19819.0,
+          "mean": 15085.33,
+          "median": 19819.0,
+          "std": 8198.95,
+          "outliers_iqr_count": 0
+        },
+        "schaefer_msy_kg_year": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "min": 288275.0,
+          "max": 452113.0,
+          "mean": 357715.67,
+          "median": 332759.0,
+          "std": 84722.19,
+          "outliers_iqr_count": 0
+        },
+        "fox_e_opt_trips": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 2,
+          "min": 5618.0,
+          "max": 19819.0,
+          "mean": 15085.33,
+          "median": 19819.0,
+          "std": 8198.95,
+          "outliers_iqr_count": 0
+        },
+        "fox_msy_kg_year": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "min": 104788.0,
+          "max": 164343.0,
+          "mean": 130029.67,
+          "median": 120958.0,
+          "std": 30796.44,
+          "outliers_iqr_count": 0
+        },
+        "estimated_utilization_pct": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "min": 90.9,
+          "max": 90.9,
+          "mean": 90.9,
+          "median": 90.9,
+          "std": 0.0,
+          "outliers_iqr_count": 0
+        },
+        "exploitation_status": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 1,
+          "top_categories": {
+            "Fully-exploited": 3
+          }
+        }
+      }
+    },
+    "target_species_landings.csv": {
+      "filename": "target_species_landings.csv",
+      "filepath": "C:\\TUGAS-TUGAS KULIAH\\SEMESTER 5\\ASIK VOL VI\\CatchForecast-AI\\data\\raw\\fisheries\\target_species_landings.csv",
+      "size_bytes": 1315,
+      "size_kb": 1.28,
+      "sha256": "60cd00834fa42504d8b3a34352fac48f00c8ab6693caac673dfe7c7d3dd52b96",
+      "rows": 9,
+      "cols": 11,
+      "duplicates": 0,
+      "columns": [
+        "species_id",
+        "scientific_name",
+        "local_name",
+        "family",
+        "category",
+        "frequency",
+        "id_jenis_ikan",
+        "nama_sistem",
+        "volume_kg",
+        "harga_rata_rata_idr",
+        "nilai_total_est_idr"
+      ],
+      "column_profiles": {
+        "species_id": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "rastrelliger_brachysoma": 3,
+            "selaroides_leptolepis": 3,
+            "upeneus_sulphureus": 3
+          }
+        },
+        "scientific_name": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Rastrelliger brachysoma": 3,
+            "Selaroides leptolepis": 3,
+            "Upeneus sulphureus": 3
+          }
+        },
+        "local_name": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Kembung perempuan": 3,
+            "Selar kuning": 3,
+            "Kuniran": 3
+          }
+        },
+        "family": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Scombridae": 3,
+            "Carangidae": 3,
+            "Mullidae": 3
+          }
+        },
+        "category": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 2,
+          "top_categories": {
+            "Small Pelagic": 6,
+            "Demersal": 3
+          }
+        },
+        "frequency": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Bulanan": 3,
+            "Mingguan": 3,
+            "Harian": 3
+          }
+        },
+        "id_jenis_ikan": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "min": 93.0,
+          "max": 163.0,
+          "mean": 124.0,
+          "median": 116.0,
+          "std": 30.9,
+          "outliers_iqr_count": 0
+        },
+        "nama_sistem": {
+          "dtype": "str",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 3,
+          "top_categories": {
+            "Kembung perempuan": 3,
+            "Selar kuning": 3,
+            "Kuniran": 3
+          }
+        },
+        "volume_kg": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 9,
+          "min": 1283.0,
+          "max": 34251.0,
+          "mean": 11639.56,
+          "median": 6831.0,
+          "std": 12246.3,
+          "outliers_iqr_count": 0
+        },
+        "harga_rata_rata_idr": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 7,
+          "min": 2722.0,
+          "max": 24000.0,
+          "mean": 10478.78,
+          "median": 4682.0,
+          "std": 10175.18,
+          "outliers_iqr_count": 0
+        },
+        "nilai_total_est_idr": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "unique_count": 9,
+          "min": 3703920.0,
+          "max": 822024000.0,
+          "mean": 140384649.11,
+          "median": 31982742.0,
+          "std": 261923518.25,
+          "outliers_iqr_count": 1
+        }
+      }
+    }
+  }
+}

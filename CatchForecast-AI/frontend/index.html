@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatchForecast AI — Web GIS Prediksi Tangkapan Ikan Teluk Banten</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            width: 420px;
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-box {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .brand-badge {
+            display: inline-block;
+            background-color: rgba(2, 132, 199, 0.2);
+            color: #38bdf8;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .app-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .app-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: #34d399;
+            background-color: rgba(16, 185, 129, 0.15);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        /* Section Container */
+        .section-box {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        /* Species Selector */
+        .species-button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .species-btn {
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .species-btn:hover {
+            border-color: var(--primary);
+            background-color: #1e293b;
+        }
+
+        .species-btn.active {
+            border-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.25) 0%, rgba(15, 23, 42, 0.8) 100%);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+        }
+
+        .sp-name-bold {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #f1f5f9;
+        }
+
+        .sp-scientific {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .sp-tag {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #334155;
+            color: #cbd5e1;
+        }
+
+        /* KPI Cards Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .kpi-card {
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .kpi-val {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-top: 2px;
+        }
+
+        .kpi-desc {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* Telemetry Items */
+        .telemetry-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.8rem;
+            border-bottom: 1px dashed rgba(51, 65, 85, 0.6);
+        }
+
+        .telemetry-row:last-child {
+            border-bottom: none;
+        }
+
+        .telemetry-label {
+            color: var(--text-muted);
+        }
+
+        .telemetry-val {
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        /* Legend */
+        .legend-bar {
+            height: 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+        }
+
+        .legend-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Disclaimer Box */
+        .disclaimer-box {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid var(--accent-yellow);
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            color: #fbbf24;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        /* Map Container */
+        #map-container {
+            flex: 1;
+            position: relative;
+            height: 100vh;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            background-color: #0c1222;
+        }
+
+        /* Floating Info Box on Map */
+        .map-floating-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px 18px;
+            z-index: 999;
+            width: 280px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+        }
+
+        .mf-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .mf-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 4px;
+            color: #fff;
+        }
+
+        .mf-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Custom Leaflet Tooltip */
+        .leaflet-tooltip-custom {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border: 1px solid #38bdf8 !important;
+            color: #f8fafc !important;
+            border-radius: 6px !important;
+            padding: 8px 12px !important;
+            font-size: 0.78rem !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .leaflet-tooltip-custom:before {
+            border-top-color: #38bdf8 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Control Panel -->
+    <div id="sidebar">
+        <!-- Header -->
+        <div class="header-box">
+            <span class="brand-badge">CatchForecast AI v1.0</span>
+            <h1 class="app-title">Teluk Banten Web GIS</h1>
+            <p class="app-subtitle">Sistem Prediksi Hasil Tangkapan Ikan Berbasis AI & Oseanografi Satelit</p>
+            <div class="status-pill">
+                <div class="status-dot"></div>
+                <span>Model Active (Spatial R² &gt; 0.999)</span>
+            </div>
+        </div>
+
+        <!-- Species Selection -->
+        <div class="section-box">
+            <div class="section-label">Pilih Spesies Target</div>
+            <div class="species-button-group">
+                <button class="species-btn active" onclick="switchSpecies('rastrelliger')">
+                    <div>
+                        <div class="sp-name-bold">Kembung Perempuan</div>
+                        <div class="sp-scientific">Rastrelliger brachysoma</div>
+                    </div>
+                    <span class="sp-tag">Pelagis Kecil</span>
+                </button>
+                <button class="species-btn" onclick="switchSpecies('selaroides')">
+                    <div>
+                        <div class="sp-name-bold">Selar Kuning</div>
+                        <div class="sp-scientific">Selaroides leptolepis</div>
+                    </div>
+                    <span class="sp-tag">Pelagis Kecil</span>
+                </button>
+                <button class="species-btn" onclick="switchSpecies('upeneus')">
+                    <div>
+                        <div class="sp-name-bold">Kuniran</div>
+                        <div class="sp-scientific">Upeneus sulphureus</div>
+                    </div>
+                    <span class="sp-tag">Demersal</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- KPI Metrics -->
+        <div class="section-box">
+            <div class="section-label">Estimasi Pendaratan (November 2026)</div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-desc">Total Tangkapan Teluk</div>
+                    <div class="kpi-val" id="kpi-total">26.010 kg</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-desc">Rerata per 1 km²</div>
+                    <div class="kpi-val" id="kpi-mean">32.6 kg</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-desc">Hotspot Tertinggi</div>
+                    <div class="kpi-val" id="kpi-max">39.5 kg</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-desc">Alat Tangkap Acuan</div>
+                    <div class="kpi-val" style="font-size: 0.95rem; color: #a5f3fc;" id="kpi-gear">Gillnet / Payang</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Environmental Telemetry -->
+        <div class="section-box">
+            <div class="section-label">Kondisi Lingkungan Oseanografi</div>
+            <div class="telemetry-row">
+                <span class="telemetry-label">Suhu Permukaan Laut (SST)</span>
+                <span class="telemetry-val">29.1°C – 29.5°C</span>
+            </div>
+            <div class="telemetry-row">
+                <span class="telemetry-label">Gradien Front Termal</span>
+                <span class="telemetry-val">0.052 °C/km (Aktif)</span>
+            </div>
+            <div class="telemetry-row">
+                <span class="telemetry-label">Klorofil-a Rata-rata</span>
+                <span class="telemetry-val">3.41 mg/m³</span>
+            </div>
+            <div class="telemetry-row">
+                <span class="telemetry-label">Kedalaman Dasar Laut</span>
+                <span class="telemetry-val">5.0 m – 35.0 m</span>
+            </div>
+            <div class="telemetry-row">
+                <span class="telemetry-label">Pusat Pendaratan Utama</span>
+                <span class="telemetry-val">PPN Karangantu (6.03° LS, 106.15° BT)</span>
+            </div>
+        </div>
+
+        <!-- Dynamic Legend -->
+        <div class="section-box">
+            <div class="section-label">Legenda Kepadatan Potensi Tangkapan</div>
+            <div id="legend-gradient" class="legend-bar" style="background: linear-gradient(to right, #ffffb2, #fecc5c, #fd8d3c, #f03b20, #bd0026);"></div>
+            <div class="legend-labels">
+                <span id="legend-min">Rendah: 20 kg/km²</span>
+                <span id="legend-mid">Sedang</span>
+                <span id="legend-max">Tinggi: 40 kg/km²</span>
+            </div>
+        </div>
+
+        <!-- Research Integrity & Disclaimer -->
+        <div class="section-box">
+            <div class="section-label">Batas Interpretasi Ilmiah</div>
+            <div class="disclaimer-box">
+                <strong>Catatan Etika Riset:</strong> Prediksi spasial ini merupakan estimasi matematis berbasis kondisi oseanografi satelit terkini, bukan jaminan mutlak kepastian lokasi atau perjumpaan kapal nelayan dengan ikan.
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Area -->
+    <div id="map-container">
+        <!-- Floating Live Inspector -->
+        <div class="map-floating-panel" id="floating-inspector">
+            <div class="mf-title">Hover Sel Grid</div>
+            <div class="mf-value" id="mf-catch">- kg</div>
+            <div class="mf-sub" id="mf-coords">Arahkan kursor ke sel laut Teluk Banten</div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        // App State
+        let currentSpecies = 'rastrelliger';
+        let map;
+        let geojsonLayer;
+        let karangantuMarker;
+
+        const speciesMetadata = {
+            'rastrelliger': {
+                name: 'Kembung Perempuan',
+                scientific: 'Rastrelliger brachysoma',
+                category: 'Pelagis Kecil',
+                gear: 'Gillnet / Payang',
+                total: '26.010 kg',
+                mean: '32.6 kg/km²',
+                max: '39.5 kg/km²',
+                min_legend: '20 kg/km²',
+                max_legend: '40 kg/km²',
+                gradient: 'linear-gradient(to right, #ffffb2, #fecc5c, #fd8d3c, #f03b20, #bd0026)',
+                getColor: function(d) {
+                    return d > 36 ? '#bd0026' :
+                           d > 33 ? '#f03b20' :
+                           d > 30 ? '#fd8d3c' :
+                           d > 25 ? '#fecc5c' :
+                                    '#ffffb2';
+                }
+            },
+            'selaroides': {
+                name: 'Selar Kuning',
+                scientific: 'Selaroides leptolepis',
+                category: 'Pelagis Kecil',
+                gear: 'Gillnet / Payang',
+                total: '1.989 kg',
+                mean: '2.5 kg/km²',
+                max: '3.0 kg/km²',
+                min_legend: '1.6 kg/km²',
+                max_legend: '3.0 kg/km²',
+                gradient: 'linear-gradient(to right, #ffffcc, #a1dab4, #41b6c4, #2c7fb8, #253494)',
+                getColor: function(d) {
+                    return d > 2.8 ? '#253494' :
+                           d > 2.5 ? '#2c7fb8' :
+                           d > 2.2 ? '#41b6c4' :
+                           d > 1.9 ? '#a1dab4' :
+                                     '#ffffcc';
+                }
+            },
+            'upeneus': {
+                name: 'Kuniran',
+                scientific: 'Upeneus sulphureus',
+                category: 'Demersal',
+                gear: 'Cantrang / Arad',
+                total: '9.967 kg',
+                mean: '12.5 kg/km²',
+                max: '21.5 kg/km²',
+                min_legend: '0.3 kg/km²',
+                max_legend: '21.5 kg/km²',
+                gradient: 'linear-gradient(to right, #440154, #3b528b, #21918c, #5ec962, #fde725)',
+                getColor: function(d) {
+                    return d > 18 ? '#fde725' :
+                           d > 14 ? '#5ec962' :
+                           d > 10 ? '#21918c' :
+                           d > 5  ? '#3b528b' :
+                                    '#440154';
+                }
+            }
+        };
+
+        // Initialize Map
+        function initMap() {
+            map = L.map('map', {
+                center: [-6.01, 106.14],
+                zoom: 11,
+                minZoom: 10,
+                maxZoom: 15
+            });
+
+            // Base Layers
+            const cartoDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; CartoDB &copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            });
+
+            const esriOcean = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri'
+            });
+
+            L.control.layers({
+                "Dark Canvas (Rekomendasi)": cartoDark,
+                "OpenStreetMap": osm,
+                "Esri Ocean": esriOcean
+            }, null, { position: 'topright' }).addTo(map);
+
+            // Add PPN Karangantu Port Hub Marker
+            const portIcon = L.divIcon({
+                className: 'custom-port-icon',
+                html: '<div style="background-color: #ef4444; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 10px #ef4444;"></div>',
+                iconSize: [14, 14],
+                iconAnchor: [7, 7]
+            });
+
+            karangantuMarker = L.marker([-6.033, 106.15], { icon: portIcon }).addTo(map);
+            karangantuMarker.bindPopup(`
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                    <strong style="color: #0284c7; font-size: 0.95rem;">PPN Karangantu</strong><br>
+                    <strong>Lokasi:</strong> 6.033° LS, 106.150° BT<br>
+                    <strong>WPPNRI:</strong> 712 (Laut Jawa & Teluk Banten)<br>
+                    <strong>Fungsi:</strong> Pangkalan Pendaratan Ikan Utama<br>
+                    <strong>Total Produksi 2026:</strong> 700.000+ kg
+                </div>
+            `);
+
+            // Load initial species
+            loadGeoJsonLayer(currentSpecies);
+        }
+
+        // Load and Render GeoJSON Layer
+        function loadGeoJsonLayer(spKey) {
+            if (geojsonLayer) {
+                map.removeLayer(geojsonLayer);
+            }
+
+            const apiBase = (window.location.protocol === 'file:' || window.location.origin === 'null') 
+                ? 'http://127.0.0.1:8000' 
+                : '';
+            const url = `${apiBase}/api/predictions/${spKey}`;
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${spKey} GeoJSON: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const spMeta = speciesMetadata[spKey];
+
+                    geojsonLayer = L.geoJSON(data, {
+                        style: function(feature) {
+                            const val = feature.properties.predicted_catch_kg;
+                            return {
+                                fillColor: spMeta.getColor(val),
+                                weight: 0.6,
+                                opacity: 0.8,
+                                color: '#1e293b',
+                                fillOpacity: 0.78
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const p = feature.properties;
+
+                            layer.on({
+                                mouseover: function(e) {
+                                    const l = e.target;
+                                    l.setStyle({
+                                        weight: 2,
+                                        color: '#38bdf8',
+                                        fillOpacity: 0.95
+                                    });
+                                    l.bringToFront();
+
+                                    // Update floating inspector
+                                    document.getElementById('mf-catch').innerText = `${p.predicted_catch_kg} kg / km²`;
+                                    document.getElementById('mf-coords').innerText = `Sel ${p.cell_id} | Kedalaman: ${p.bathymetry_depth_m}m | SST: ${p.sst_celsius}°C`;
+                                },
+                                mouseout: function(e) {
+                                    geojsonLayer.resetStyle(e.target);
+                                    document.getElementById('mf-catch').innerText = `- kg`;
+                                    document.getElementById('mf-coords').innerText = `Arahkan kursor ke sel laut Teluk Banten`;
+                                },
+                                click: function(e) {
+                                    const popupContent = `
+                                        <div style="font-size: 0.82rem; line-height: 1.5; color: #0f172a;">
+                                            <div style="font-weight: 700; color: #0369a1; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; margin-bottom: 6px;">
+                                                Informasi Sel: ${p.cell_id}
+                                            </div>
+                                            <strong>Spesies:</strong> ${p.local_name} (<em>${p.scientific_name}</em>)<br>
+                                            <strong>Estimasi Tangkapan:</strong> <span style="font-weight: 700; color: #0284c7;">${p.predicted_catch_kg} kg/km²</span><br>
+                                            <strong>Estimasi CPUE:</strong> ${p.predicted_cpue_kg_per_trip} kg/trip<br>
+                                            <strong>Suhu Permukaan (SST):</strong> ${p.sst_celsius} °C<br>
+                                            <strong>Gradien Front:</strong> ${p.thermal_front_c_per_km} °C/km<br>
+                                            <strong>Kedalaman Dasar Laut:</strong> ${p.bathymetry_depth_m} m<br>
+                                            <strong>Jarak ke Pantai:</strong> ${p.dist_to_shore_km} km<br>
+                                            <div style="margin-top: 6px; font-size: 0.7rem; color: #64748b; font-style: italic;">
+                                                Model: Random Forest | Waktu: Nov 2026
+                                            </div>
+                                        </div>
+                                    `;
+                                    layer.bindPopup(popupContent).openPopup();
+                                }
+                            });
+                        }
+                    }).addTo(map);
+                })
+                .catch(err => {
+                    console.error("Error loading layer:", err);
+                    alert("Gagal memuat layer prediksi!\n\nPastikan server backend sedang berjalan dengan mengakses melalui browser di:\nhttp://127.0.0.1:8000/\natau jalankan file 'run_app.bat'");
+                });
+        }
+
+        // Switch Species Control
+        function switchSpecies(spKey) {
+            currentSpecies = spKey;
+            const meta = speciesMetadata[spKey];
+
+            // Update UI buttons
+            const buttons = document.querySelectorAll('.species-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Update KPI cards
+            document.getElementById('kpi-total').innerText = meta.total;
+            document.getElementById('kpi-mean').innerText = meta.mean;
+            document.getElementById('kpi-max').innerText = meta.max;
+            document.getElementById('kpi-gear').innerText = meta.gear;
+
+            // Update Legend
+            document.getElementById('legend-gradient').style.background = meta.gradient;
+            document.getElementById('legend-min').innerText = `Rendah: ${meta.min_legend}`;
+            document.getElementById('legend-max').innerText = `Tinggi: ${meta.max_legend}`;
+
+            // Reload Layer
+            loadGeoJsonLayer(spKey);
+        }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>

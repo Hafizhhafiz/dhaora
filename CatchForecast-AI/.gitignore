@@ -1,0 +1,48 @@
+# Environments & Secrets
+.env
+*.env
+*.env.local
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints/
+.pytest_cache/
+
+# Large Datasets and Raw Dumps (Do not commit raw satellite or proprietary catches)
+data/raw/oceanographic/*
+!data/raw/oceanographic/.gitkeep
+data/raw/fisheries/*
+!data/raw/fisheries/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/environmental/*
+!data/processed/environmental/.gitkeep
+data/processed/species/rastrelliger/*
+!data/processed/species/rastrelliger/.gitkeep
+data/processed/species/selaroides/*
+!data/processed/species/selaroides/.gitkeep
+data/processed/species/upeneus/*
+!data/processed/species/upeneus/.gitkeep
+data/external/*
+!data/external/.gitkeep
+gee/exports/*
+!gee/exports/.gitkeep
+
+# Model Artifacts (Trained weights / joblib)
+models/rastrelliger/*.joblib
+models/rastrelliger/*.json
+models/selaroides/*.joblib
+models/selaroides/*.json
+models/upeneus/*.joblib
+models/upeneus/*.json
+
+# Logs & OS artifacts
+*.log
+.DS_Store
+Thumbs.db

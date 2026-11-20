@@ -1,0 +1,67 @@
+{
+  "project": "CatchForecast AI (ASIK Vol. VI)",
+  "phase": "05 - Environmental Data Engineering",
+  "aoi": {
+    "name": "Teluk Banten (Banten Bay)",
+    "wpp": "712",
+    "bbox": [105.90, -6.15, 106.35, -5.85],
+    "resolution_deg": 0.01,
+    "resolution_m": 1000,
+    "crs": "EPSG:4326",
+    "projected_crs": "EPSG:32748",
+    "center": {
+      "lon": 106.12,
+      "lat": -6.00
+    },
+    "ppn_karangantu": {
+      "name": "PPN Karangantu",
+      "lon": 106.15,
+      "lat": -6.0333
+    }
+  },
+  "grid_dimensions": {
+    "n_lon_cells": 46,
+    "n_lat_cells": 31,
+    "total_cells": 1426
+  },
+  "features": {
+    "sst": {
+      "name": "Sea Surface Temperature",
+      "unit": "Celsius",
+      "valid_min": 25.0,
+      "valid_max": 34.0,
+      "typical_range": [28.0, 31.5]
+    },
+    "thermal_front": {
+      "name": "SST Spatial Gradient",
+      "unit": "deg_C_per_km",
+      "method": "sobel_3x3_kernel",
+      "valid_min": 0.0,
+      "valid_max": 2.0
+    },
+    "bathymetry": {
+      "name": "Seafloor Depth",
+      "unit": "meters",
+      "valid_min": 0.0,
+      "valid_max": 45.0,
+      "source_dataset": "ETOPO1/BATNAS"
+    },
+    "seafloor_slope": {
+      "name": "Bathymetric Slope",
+      "unit": "degrees",
+      "valid_min": 0.0,
+      "valid_max": 25.0
+    },
+    "distance_to_shore": {
+      "name": "Euclidean Distance to Coastline",
+      "unit": "kilometers",
+      "valid_min": 0.0,
+      "valid_max": 35.0
+    }
+  },
+  "temporal": {
+    "default_year": 2026,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    "peak_month": 8
+  }
+}

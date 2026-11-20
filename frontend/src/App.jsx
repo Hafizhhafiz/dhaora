@@ -1,29 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import WebGisDrawer from './components/WebGisDrawer';
+import ErrorBoundary from './components/ErrorBoundary';
+
+// Platform Core Pages
 import PlatformHome from './pages/PlatformHome';
+import AboutPage from './pages/AboutPage';
+import ExecutiveDashboard from './pages/ExecutiveDashboard';
+import UnifiedHistory from './pages/UnifiedHistory';
+
+// Module 1: CatchForecast AI (WebGIS)
+import WebGisPage from './pages/WebGisPage';
+
+// Module 2: FishGuard AI (Computer Vision Suite)
 import Dashboard from './pages/Dashboard';
 import DetectionPage from './pages/DetectionPage';
 import CountingPage from './pages/CountingPage';
 import MeasurementPage from './pages/MeasurementPage';
 import HistoryPage from './pages/HistoryPage';
 import DatasetPage from './pages/DatasetPage';
-import AboutPage from './pages/AboutPage';
 
-// ByCatch AI Module Pages
+// Module 3: ByCatch AI (Conservation & ETP Protection)
 import ByCatchDetectPage from './pages/bycatch/ByCatchDetectPage';
 import ByCatchRoleTesterPage from './pages/bycatch/ByCatchRoleTesterPage';
 import ByCatchConservationPage from './pages/bycatch/ByCatchConservationPage';
 import ByCatchTripPage from './pages/bycatch/ByCatchTripPage';
-
-// OceanSense AI Module Page (Planned)
-import OceanSensePage from './pages/OceanSensePage';
 
 import { checkHealth, checkByCatchHealth } from './api/client';
 
 export default function App() {
   const [activeModule, setActiveModule] = useState('home');
   const [activeTab, setActiveTab] = useState('home');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [healthInfo, setHealthInfo] = useState(null);
   const [bycatchHealth, setBycatchHealth] = useState(null);
   const [selectedAnalysis, setSelectedAnalysis] = useState(null);
@@ -51,7 +60,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-[#070d1e] text-slate-100 font-sans">
+    <div className="flex h-screen bg-[#060b17] text-slate-100 font-sans overflow-hidden">
       {/* Sidebar Navigation */}
       <Sidebar 
         activeModule={activeModule}
@@ -60,103 +69,125 @@ export default function App() {
         setActiveTab={setActiveTab} 
         healthInfo={healthInfo} 
         bycatchHealth={bycatchHealth}
+        onOpenDrawer={() => setIsDrawerOpen(true)}
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden relative">
         <Navbar 
           activeModule={activeModule}
           activeTab={activeTab} 
           healthInfo={healthInfo} 
           bycatchHealth={bycatchHealth}
+          onOpenDrawer={() => setIsDrawerOpen(true)}
         />
 
-        <main className="flex-1 p-6 overflow-y-auto">
-          <div className="max-w-7xl mx-auto">
-            {/* PLATFORM HOME */}
-            {activeModule === 'home' && (
-              <PlatformHome 
-                setActiveModule={setActiveModule}
-                setActiveTab={setActiveTab}
-                healthInfo={healthInfo}
-                bycatchHealth={bycatchHealth}
-              />
-            )}
+        <main className={`flex-1 overflow-y-auto relative ${activeModule === 'catchforecast' ? 'p-0' : 'p-6'}`}>
+          <div className={activeModule === 'catchforecast' ? 'h-full w-full' : 'max-w-7xl mx-auto'}>
+            <ErrorBoundary>
+              {/* PLATFORM HOME */}
+              {activeModule === 'home' && (
+                <PlatformHome 
+                  setActiveModule={setActiveModule}
+                  setActiveTab={setActiveTab}
+                  healthInfo={healthInfo}
+                  bycatchHealth={bycatchHealth}
+                />
+              )}
 
-            {/* MODULE 1: FISHGUARD AI */}
-            {activeModule === 'fishguard' && (
-              <>
-                {activeTab === 'dashboard' && (
-                  <Dashboard 
-                    setActiveTab={setActiveTab} 
-                    setSelectedAnalysis={setSelectedAnalysis} 
-                  />
-                )}
-                {activeTab === 'detection' && (
-                  <DetectionPage 
-                    setActiveTab={setActiveTab} 
-                    setSelectedAnalysis={setSelectedAnalysis} 
-                    healthInfo={healthInfo}
-                  />
-                )}
-                {activeTab === 'counting' && (
-                  <CountingPage 
-                    setActiveTab={setActiveTab} 
-                    setSelectedAnalysis={setSelectedAnalysis} 
-                  />
-                )}
-                {activeTab === 'measurement' && (
-                  <MeasurementPage 
-                    selectedAnalysis={selectedAnalysis} 
-                    setSelectedAnalysis={setSelectedAnalysis} 
-                  />
-                )}
-                {activeTab === 'history' && (
-                  <HistoryPage 
-                    setActiveTab={setActiveTab} 
-                    setSelectedAnalysis={setSelectedAnalysis} 
-                  />
-                )}
-                {activeTab === 'dataset' && (
-                  <DatasetPage />
-                )}
-              </>
-            )}
+              {/* MODULE 1: CATCHFORECAST AI (WEBGIS) */}
+              {activeModule === 'catchforecast' && (
+                <WebGisPage onOpenDrawer={() => setIsDrawerOpen(true)} />
+              )}
 
-            {/* MODULE 2: BYCATCH AI */}
-            {activeModule === 'bycatch' && (
-              <>
-                {activeTab === 'bycatch-detect' && (
-                  <ByCatchDetectPage bycatchHealth={bycatchHealth} />
-                )}
-                {activeTab === 'bycatch-roles' && (
-                  <ByCatchRoleTesterPage />
-                )}
-                {activeTab === 'bycatch-conservation' && (
-                  <ByCatchConservationPage />
-                )}
-                {activeTab === 'bycatch-trips' && (
-                  <ByCatchTripPage />
-                )}
-              </>
-            )}
+              {/* MODULE 2: FISHGUARD AI */}
+              {activeModule === 'fishguard' && (
+                <>
+                  {activeTab === 'dashboard' && (
+                    <Dashboard 
+                      setActiveTab={setActiveTab} 
+                      setSelectedAnalysis={setSelectedAnalysis} 
+                    />
+                  )}
+                  {activeTab === 'detection' && (
+                    <DetectionPage 
+                      setActiveTab={setActiveTab} 
+                      setSelectedAnalysis={setSelectedAnalysis} 
+                      healthInfo={healthInfo}
+                    />
+                  )}
+                  {activeTab === 'counting' && (
+                    <CountingPage 
+                      setActiveTab={setActiveTab} 
+                      setSelectedAnalysis={setSelectedAnalysis} 
+                    />
+                  )}
+                  {activeTab === 'measurement' && (
+                    <MeasurementPage 
+                      selectedAnalysis={selectedAnalysis} 
+                      setSelectedAnalysis={setSelectedAnalysis} 
+                    />
+                  )}
+                  {activeTab === 'history' && (
+                    <HistoryPage 
+                      setActiveTab={setActiveTab} 
+                      setSelectedAnalysis={setSelectedAnalysis} 
+                    />
+                  )}
+                  {activeTab === 'dataset' && (
+                    <DatasetPage />
+                  )}
+                </>
+              )}
 
-            {/* MODULE 3: OCEANSENSE AI (PLANNED) */}
-            {activeModule === 'oceansense' && (
-              <OceanSensePage 
-                setActiveModule={setActiveModule}
-                setActiveTab={setActiveTab}
-              />
-            )}
+              {/* MODULE 3: BYCATCH AI */}
+              {activeModule === 'bycatch' && (
+                <>
+                  {activeTab === 'bycatch-detect' && (
+                    <ByCatchDetectPage bycatchHealth={bycatchHealth} />
+                  )}
+                  {activeTab === 'bycatch-roles' && (
+                    <ByCatchRoleTesterPage />
+                  )}
+                  {activeTab === 'bycatch-conservation' && (
+                    <ByCatchConservationPage />
+                  )}
+                  {activeTab === 'bycatch-trips' && (
+                    <ByCatchTripPage />
+                  )}
+                </>
+              )}
 
-            {/* SYSTEM ABOUT & ARCHITECTURE */}
-            {activeModule === 'about' && (
-              <AboutPage 
-                healthInfo={healthInfo} 
-              />
-            )}
+              {/* GLOBAL EXECUTIVE DASHBOARD */}
+              {activeModule === 'executive' && (
+                <ExecutiveDashboard />
+              )}
+
+              {/* UNIFIED SESSION AUDIT & HISTORY */}
+              {activeModule === 'unified-history' && (
+                <UnifiedHistory />
+              )}
+
+              {/* SYSTEM ABOUT & ARCHITECTURE */}
+              {activeModule === 'about' && (
+                <AboutPage 
+                  healthInfo={healthInfo} 
+                />
+              )}
+            </ErrorBoundary>
           </div>
         </main>
+
+        {/* Slide-over Quick Analysis Dock */}
+        <WebGisDrawer 
+          isOpen={isDrawerOpen} 
+          onClose={() => setIsDrawerOpen(false)} 
+          onNavigateTab={(module, tab) => {
+            if (module) setActiveModule(module);
+            if (tab) setActiveTab(tab);
+            setIsDrawerOpen(false);
+          }}
+        />
       </div>
     </div>
   );

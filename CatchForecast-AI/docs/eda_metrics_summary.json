@@ -1,0 +1,128 @@
+{
+  "rastrelliger": {
+    "name": "Rastrelliger brachysoma",
+    "type": "Pelagic",
+    "records": 8778,
+    "catch_mean": 54.10370813397129,
+    "catch_std": 23.801938135746738,
+    "catch_median": 51.25,
+    "catch_iqr": 35.62,
+    "catch_min": 13.82,
+    "catch_max": 173.06,
+    "cpue_mean": 26.141434381408065,
+    "cpue_std": 11.500439252707144,
+    "cpue_max": 83.618,
+    "morans_i_august": 0.7545629237276416,
+    "vif": {
+      "sst_celsius": 11.755986137850924,
+      "thermal_front_c_per_km": 2.4973824723154223,
+      "chlorophyll_a_mg_m3": 14.046936640967807,
+      "bathymetry_depth_m": 30589.174661615885,
+      "bathymetry_slope_deg": 30681.19272960082,
+      "dist_to_shore_km": 15.240129725498422,
+      "dist_to_port_km": 2.099717584219442
+    },
+    "pearson_corr": {
+      "sst_celsius": -0.38237189928647264,
+      "thermal_front_c_per_km": 0.10730993387176181,
+      "chlorophyll_a_mg_m3": 0.40471445243234366,
+      "bathymetry_depth_m": 0.026065316142529642,
+      "bathymetry_slope_deg": 0.02611869889737629,
+      "dist_to_shore_km": 0.02173497627117416,
+      "dist_to_port_km": 0.03386425454751327
+    },
+    "spearman_corr": {
+      "sst_celsius": -0.37115358424116407,
+      "thermal_front_c_per_km": 0.022907200703408785,
+      "chlorophyll_a_mg_m3": 0.2578207934803419,
+      "bathymetry_depth_m": 0.10932122012951243,
+      "bathymetry_slope_deg": 0.10936491183205882,
+      "dist_to_shore_km": 0.09829076451710601,
+      "dist_to_port_km": 0.09796645773680855
+    }
+  },
+  "selaroides": {
+    "name": "Selaroides leptolepis",
+    "type": "Pelagic",
+    "records": 8778,
+    "catch_mean": 4.136248575985419,
+    "catch_std": 1.819665414947127,
+    "catch_median": 3.92,
+    "catch_iqr": 2.7199999999999998,
+    "catch_min": 1.06,
+    "catch_max": 13.23,
+    "cpue_mean": 1.9985293916609705,
+    "cpue_std": 0.8792047882558593,
+    "cpue_max": 6.392,
+    "morans_i_august": 0.7546029733219075,
+    "vif": {
+      "sst_celsius": 11.755986137850924,
+      "thermal_front_c_per_km": 2.4973824723154223,
+      "chlorophyll_a_mg_m3": 14.046936640967807,
+      "bathymetry_depth_m": 30589.174661615885,
+      "bathymetry_slope_deg": 30681.19272960082,
+      "dist_to_shore_km": 15.240129725498422,
+      "dist_to_port_km": 2.099717584219442
+    },
+    "pearson_corr": {
+      "sst_celsius": -0.3823460426653984,
+      "thermal_front_c_per_km": 0.10730365507458918,
+      "chlorophyll_a_mg_m3": 0.4046786298950231,
+      "bathymetry_depth_m": 0.026087690138541692,
+      "bathymetry_slope_deg": 0.026140968015149937,
+      "dist_to_shore_km": 0.02175536812297745,
+      "dist_to_port_km": 0.03388054127977251
+    },
+    "spearman_corr": {
+      "sst_celsius": -0.3711292779971091,
+      "thermal_front_c_per_km": 0.022796591621421933,
+      "chlorophyll_a_mg_m3": 0.2577910643770583,
+      "bathymetry_depth_m": 0.10936059580575974,
+      "bathymetry_slope_deg": 0.10940420113302714,
+      "dist_to_shore_km": 0.09832819473578264,
+      "dist_to_port_km": 0.09800340492842313
+    }
+  },
+  "upeneus": {
+    "name": "Upeneus sulphureus",
+    "type": "Demersal",
+    "records": 8778,
+    "catch_mean": 20.753602187286397,
+    "catch_std": 15.13272651396562,
+    "catch_median": 17.88,
+    "catch_iqr": 23.409999999999997,
+    "catch_min": 0.26,
+    "catch_max": 61.15,
+    "cpue_mean": 35.37495283663705,
+    "cpue_std": 25.794055306714146,
+    "cpue_max": 104.231,
+    "morans_i_august": 0.9497143908654357,
+    "vif": {
+      "sst_celsius": 11.755986137850924,
+      "thermal_front_c_per_km": 2.4973824723154223,
+      "chlorophyll_a_mg_m3": 14.046936640967807,
+      "bathymetry_depth_m": 30589.174661615885,
+      "bathymetry_slope_deg": 30681.19272960082,
+      "dist_to_shore_km": 15.240129725498422,
+      "dist_to_port_km": 2.099717584219442
+    },
+    "pearson_corr": {
+      "sst_celsius": -0.058283440615811026,
+      "thermal_front_c_per_km": -0.012927885101934013,
+      "chlorophyll_a_mg_m3": 0.3242652179671663,
+      "bathymetry_depth_m": -0.5918293799957314,
+      "bathymetry_slope_deg": -0.5918837463989576,
+      "dist_to_shore_km": -0.5891147817038345,
+      "dist_to_port_km": -0.4060724800881306
+    },
+    "spearman_corr": {
+      "sst_celsius": 0.0330513189028203,
+      "thermal_front_c_per_km": 0.18221255900848296,
+      "chlorophyll_a_mg_m3": 0.3699713563795385,
+      "bathymetry_depth_m": -0.7040607031607852,
+      "bathymetry_slope_deg": -0.7040558928294162,
+      "dist_to_shore_km": -0.6795465069785811,
+      "dist_to_port_km": -0.4733079929473105
+    }
+  }
+}

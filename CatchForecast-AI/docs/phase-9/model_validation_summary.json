@@ -1,0 +1,152 @@
+{
+  "rastrelliger": {
+    "key": "rastrelliger",
+    "name": "Rastrelliger brachysoma",
+    "local": "Kembung perempuan",
+    "category": "Pelagic",
+    "overall_status": "PASS",
+    "spatial_validation": {
+      "r2_score": 0.9995,
+      "mae_kg": 0.278,
+      "rmse_kg": 0.555,
+      "median_ae_kg": 0.152,
+      "mean_bias_error_kg": -0.0006,
+      "max_error_kg": 7.172,
+      "relative_mae_percent": 0.51,
+      "samples_count": 1760,
+      "status": "PASS"
+    },
+    "temporal_validation": {
+      "r2_score": 0.9998,
+      "mae_kg": 0.124,
+      "relative_mae_percent": 0.23,
+      "samples_count": 2394
+    },
+    "quantile_bias": {
+      "low_catch": {
+        "range": "<= 35.58 kg",
+        "samples": 440,
+        "true_mean": 27.748840909090905,
+        "pred_mean": 27.765016809902598,
+        "bias_kg": 0.016175900811691957,
+        "mae_kg": 0.16092911295177456
+      },
+      "mid_catch": {
+        "range": "35.58 - 71.25 kg",
+        "samples": 880,
+        "true_mean": 51.3921590909091,
+        "pred_mean": 51.42360375353601,
+        "bias_kg": 0.03144466262690775,
+        "mae_kg": 0.2643560847323609
+      },
+      "high_catch": {
+        "range": "> 71.25 kg",
+        "samples": 440,
+        "true_mean": 86.61172727272728,
+        "pred_mean": 86.53509130673514,
+        "bias_kg": -0.0766359659921343,
+        "mae_kg": 0.4228261389335656
+      }
+    }
+  },
+  "selaroides": {
+    "key": "selaroides",
+    "name": "Selaroides leptolepis",
+    "local": "Selar kuning",
+    "category": "Pelagic",
+    "overall_status": "PASS",
+    "spatial_validation": {
+      "r2_score": 0.9995,
+      "mae_kg": 0.021,
+      "rmse_kg": 0.042,
+      "median_ae_kg": 0.012,
+      "mean_bias_error_kg": 0.0,
+      "max_error_kg": 0.548,
+      "relative_mae_percent": 0.51,
+      "samples_count": 1760,
+      "status": "PASS"
+    },
+    "temporal_validation": {
+      "r2_score": 0.9998,
+      "mae_kg": 0.01,
+      "relative_mae_percent": 0.24,
+      "samples_count": 2394
+    },
+    "quantile_bias": {
+      "low_catch": {
+        "range": "<= 2.72 kg",
+        "samples": 443,
+        "true_mean": 2.125507900677201,
+        "pred_mean": 2.1265532627830965,
+        "bias_kg": 0.0010453621058957158,
+        "mae_kg": 0.012782829307025992
+      },
+      "mid_catch": {
+        "range": "2.72 - 5.45 kg",
+        "samples": 880,
+        "true_mean": 3.938238636363637,
+        "pred_mean": 3.9407362639500874,
+        "bias_kg": 0.0024976275864511256,
+        "mae_kg": 0.02020275991451623
+      },
+      "high_catch": {
+        "range": "> 5.45 kg",
+        "samples": 437,
+        "true_mean": 6.629519450800916,
+        "pred_mean": 6.62334294149273,
+        "bias_kg": -0.006176509308185327,
+        "mae_kg": 0.03218758768396678
+      }
+    }
+  },
+  "upeneus": {
+    "key": "upeneus",
+    "name": "Upeneus sulphureus",
+    "local": "Kuniran",
+    "category": "Demersal",
+    "overall_status": "PASS",
+    "spatial_validation": {
+      "r2_score": 0.9997,
+      "mae_kg": 0.123,
+      "rmse_kg": 0.249,
+      "median_ae_kg": 0.049,
+      "mean_bias_error_kg": -0.0085,
+      "max_error_kg": 3.008,
+      "relative_mae_percent": 0.62,
+      "samples_count": 1760,
+      "status": "PASS"
+    },
+    "temporal_validation": {
+      "r2_score": 0.9999,
+      "mae_kg": 0.089,
+      "relative_mae_percent": 0.44,
+      "samples_count": 2394
+    },
+    "quantile_bias": {
+      "low_catch": {
+        "range": "<= 7.76 kg",
+        "samples": 440,
+        "true_mean": 3.7947272727272727,
+        "pred_mean": 3.807180245569961,
+        "bias_kg": 0.012452972842688183,
+        "mae_kg": 0.03296283688677308
+      },
+      "mid_catch": {
+        "range": "7.76 - 29.82 kg",
+        "samples": 880,
+        "true_mean": 17.378295454545455,
+        "pred_mean": 17.395163833336806,
+        "bias_kg": 0.016868378791349895,
+        "mae_kg": 0.13994795999983828
+      },
+      "high_catch": {
+        "range": "> 29.82 kg",
+        "samples": 440,
+        "true_mean": 41.41345454545454,
+        "pred_mean": 41.401288935172644,
+        "bias_kg": -0.012165610281904113,
+        "mae_kg": 0.18039596423150894
+      }
+    }
+  }
+}
