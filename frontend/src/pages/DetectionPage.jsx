@@ -115,12 +115,7 @@ export default function DetectionPage({ setActiveTab, setSelectedAnalysis, healt
       setError(null);
       const res = await fetch(`/static/samples/${filename}`);
       if (!res.ok) {
-        const directRes = await fetch(`http://127.0.0.1:8000/static/samples/${filename}`);
-        if (!directRes.ok) throw new Error("Gagal mengambil citra sampel dari server");
-        const blob = await directRes.blob();
-        const file = new File([blob], filename, { type: "image/jpeg" });
-        handleFileChange(file);
-        return;
+        throw new Error("Gagal mengambil citra sampel dari server");
       }
       const blob = await res.blob();
       const file = new File([blob], filename, { type: "image/jpeg" });
