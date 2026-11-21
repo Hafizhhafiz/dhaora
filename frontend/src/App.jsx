@@ -34,10 +34,43 @@ import ByCatchTripPage from './pages/bycatch/ByCatchTripPage';
 import { checkHealth, checkByCatchHealth, getStoredUser, logoutUser } from './api/client';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState(() => getStoredUser());
-  const [viewMode, setViewMode] = useState(() => (getStoredUser() ? 'app' : 'landing'));
-  const [activeModule, setActiveModule] = useState('home');
-  const [activeTab, setActiveTab] = useState('home');
+  const getInitialState = () => {
+    if (typeof window === 'undefined') {
+      return { user: null, view: 'landing', module: 'home', tab: 'home' };
+    }
+    const params = new URLSearchParams(window.location.search);
+    const storedUser = getStoredUser();
+    const guestParam = params.get('guest') === 'true';
+    const user = storedUser || (guestParam ? {
+      username: 'tamu',
+      full_name: 'Pengunjung Tamu',
+      role: 'Tamu Publik',
+      role_badge: 'bg-slate-100 text-slate-700 border-slate-300',
+      avatar: 'TM'
+    } : null);
+
+    const viewParam = params.get('view');
+    const tabParam = params.get('tab') || 'home';
+    let view = 'landing';
+    if (viewParam === 'login') view = 'login';
+    else if (viewParam === 'landing') view = 'landing';
+    else if (viewParam === 'app' || user || tabParam !== 'home') view = 'app';
+
+    let mod = params.get('module') || 'home';
+    if (['webgis', 'catchforecast'].includes(tabParam)) mod = 'catchforecast';
+    else if (['dashboard', 'detection', 'counting', 'measurement', 'history', 'dataset'].includes(tabParam)) mod = 'fishguard';
+    else if (['bycatch-detect', 'bycatch-roles', 'bycatch-conservation', 'bycatch-trips'].includes(tabParam)) mod = 'bycatch';
+    else if (tabParam === 'executive') mod = 'executive';
+    else if (tabParam === 'about') mod = 'about';
+
+    return { user, view, module: mod, tab: tabParam };
+  };
+
+  const initial = getInitialState();
+  const [currentUser, setCurrentUser] = useState(initial.user);
+  const [viewMode, setViewMode] = useState(initial.view);
+  const [activeModule, setActiveModule] = useState(initial.module);
+  const [activeTab, setActiveTab] = useState(initial.tab);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [healthInfo, setHealthInfo] = useState(null);
@@ -60,7 +93,7 @@ export default function App() {
       username: 'tamu',
       full_name: 'Pengunjung Tamu',
       role: 'Tamu Publik',
-      role_badge: 'bg-slate-800 text-slate-300 border-slate-700',
+      role_badge: 'bg-slate-100 text-slate-700 border-slate-300',
       avatar: 'TM'
     });
     setViewMode('app');
@@ -115,7 +148,7 @@ export default function App() {
 
   // 3. MAIN DASHBOARD PLATFORM VIEW
   return (
-    <div className="flex h-screen bg-[#060b17] text-slate-100 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#F6F6F3] text-[#0B1220] font-sans overflow-hidden">
       {/* Sidebar Navigation (with Mobile Drawer Support) */}
       <Sidebar 
         activeModule={activeModule}

@@ -52,40 +52,46 @@ export default function ByCatchConservationPage() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
-      <div className="pb-4 border-b border-slate-800">
-        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          <ShieldAlert className="w-6 h-6 text-cyan-400" />
-          <span>Status Konservasi & Regulasi Perlindungan (IUCN / CITES / KKP)</span>
+      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="inline-flex items-center gap-2 mb-2">
+          <span className="px-3 py-1 rounded-full text-xs font-medium bg-teal-50 text-[#0E6E7E] border border-teal-200 font-mono">
+            Status Konservasi & Regulasi ETP
+          </span>
+          <span className="text-xs text-slate-500">Kepatuhan IUCN, CITES & KKP RI</span>
+        </div>
+        <h1 className="text-xl sm:text-2xl font-bold text-[#0B1220] tracking-tight flex items-center gap-2">
+          <ShieldAlert className="w-6 h-6 text-[#0E6E7E]" />
+          <span>Status Konservasi & <span className="font-serif-italic font-normal">Regulasi Perlindungan.</span></span>
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-slate-500 mt-1 max-w-2xl">
           Penyaringan status konservasi berbasis basis data resmi otoritatif untuk mendukung kepatuhan regulasi perikanan berkelanjutan.
         </p>
       </div>
 
       {/* Search & Presets Bar */}
-      <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-5 space-y-3">
+      <div className="rounded-2xl bg-white border border-slate-200 p-6 space-y-3 shadow-sm">
         <form onSubmit={handleSearch} className="flex gap-2">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
             <input
               type="text"
               value={scientificName}
               onChange={(e) => setScientificName(e.target.value)}
               placeholder="Masukkan nama ilmiah (misal: Selaroides leptolepis)..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
+              className="w-full bg-slate-50 border border-slate-200 rounded-full pl-10 pr-4 py-2.5 text-xs text-[#0B1220] focus:outline-none focus:border-[#0E6E7E] font-mono"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-semibold transition-colors cursor-pointer shrink-0"
+            className="px-6 py-2.5 bg-[#0E6E7E] hover:bg-[#0b5865] text-white rounded-full text-xs font-medium transition-colors cursor-pointer shrink-0 shadow-sm"
           >
             {loading ? "Memeriksa..." : "Periksa Status"}
           </button>
         </form>
 
-        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400 pt-1">
-          <span className="text-slate-500 text-[11px]">Spesies Target MVP:</span>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600 pt-1">
+          <span className="text-slate-500 text-[11px] font-medium">Spesies Target MVP:</span>
           {presetSpecies.map((s, idx) => (
             <button
               key={idx}
@@ -94,7 +100,7 @@ export default function ByCatchConservationPage() {
                 setScientificName(s.scientific);
                 fetchProfile(s.scientific);
               }}
-              className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] cursor-pointer"
+              className="px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] cursor-pointer transition-colors"
             >
               {s.label} ({s.scientific})
             </button>
@@ -103,8 +109,8 @@ export default function ByCatchConservationPage() {
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-red-950/60 border border-red-800 text-red-200 text-xs flex items-center gap-3">
-          <AlertTriangle className="w-5 h-5 text-red-400 shrink-0" />
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-3">
+          <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0" />
           <span>{error}</span>
         </div>
       )}
@@ -114,26 +120,26 @@ export default function ByCatchConservationPage() {
         <div className="space-y-6 animate-fadeIn">
           
           {/* Taxonomy Header Card */}
-          <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+          <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400">Taksonomi Tervalidasi</span>
-                <h2 className="text-xl font-bold text-white italic mt-0.5">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#0E6E7E] font-semibold">Taksonomi Tervalidasi</span>
+                <h2 className="text-xl font-bold text-[#0B1220] italic mt-0.5">
                   {profile.scientific_name}
                 </h2>
-                <div className="text-xs text-slate-400 mt-1">
-                  Famili: <strong className="text-slate-200">{profile.family}</strong> | Ordo: <strong className="text-slate-200">{profile.order}</strong>
+                <div className="text-xs text-slate-500 mt-1">
+                  Famili: <strong className="text-slate-800">{profile.family}</strong> | Ordo: <strong className="text-slate-800">{profile.order}</strong>
                 </div>
               </div>
 
               <div className="flex gap-2 text-xs font-mono">
                 {profile.worms_aphia_id && (
-                  <span className="bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-slate-300">
+                  <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-200 text-slate-700">
                     WoRMS ID: {profile.worms_aphia_id}
                   </span>
                 )}
                 {profile.fishbase_speccode && (
-                  <span className="bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-slate-300">
+                  <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-200 text-slate-700">
                     FishBase: #{profile.fishbase_speccode}
                   </span>
                 )}
@@ -144,60 +150,60 @@ export default function ByCatchConservationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
               
               {/* 1. IUCN Red List */}
-              <div className="rounded-xl bg-slate-950 p-4 border border-slate-800 space-y-2">
+              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-300">1. IUCN Red List</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono">v4</span>
+                  <span className="text-xs font-semibold text-slate-700">1. IUCN Red List</span>
+                  <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white text-[#0E6E7E] font-mono border border-slate-200">v4</span>
                 </div>
-                <div className="text-lg font-bold text-emerald-400">
+                <div className="text-lg font-bold text-emerald-700">
                   {profile.iucn?.iucn_status || "Not Evaluated"}
                 </div>
-                <div className="text-[11px] text-slate-400 space-y-0.5 pt-1 border-t border-slate-800/80">
-                  <div>Tahun Asesmen: <span className="text-slate-200">{profile.iucn?.assessment_year || "-"}</span></div>
-                  <div>Tren Populasi: <span className="text-slate-200">{profile.iucn?.population_trend || "-"}</span></div>
-                  <div>Sumber: <span className="text-slate-200">{profile.iucn?.source || "IUCN Red List Snapshot"}</span></div>
+                <div className="text-[11px] text-slate-500 space-y-0.5 pt-2 border-t border-slate-200">
+                  <div>Tahun Asesmen: <span className="text-slate-700">{profile.iucn?.assessment_year || "-"}</span></div>
+                  <div>Tren Populasi: <span className="text-slate-700">{profile.iucn?.population_trend || "-"}</span></div>
+                  <div>Sumber: <span className="text-slate-700">{profile.iucn?.source || "IUCN Red List Snapshot"}</span></div>
                 </div>
               </div>
 
               {/* 2. CITES Species+ */}
-              <div className="rounded-xl bg-slate-950 p-4 border border-slate-800 space-y-2">
+              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-300">2. Appendiks CITES</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono">Species+</span>
+                  <span className="text-xs font-semibold text-slate-700">2. Appendiks CITES</span>
+                  <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white text-[#0E6E7E] font-mono border border-slate-200">Species+</span>
                 </div>
-                <div className="text-lg font-bold text-slate-200 uppercase">
+                <div className="text-lg font-bold text-slate-800 uppercase">
                   {profile.cites?.cites_appendix || "Not Listed"}
                 </div>
-                <div className="text-[11px] text-slate-400 space-y-0.5 pt-1 border-t border-slate-800/80">
-                  <div>Verifikasi: <span className="text-emerald-400">Snapshot Resmi Terverifikasi</span></div>
-                  <div>Status Perdagangan: <span className="text-slate-200">{profile.cites?.cites_appendix === 'not_listed' ? 'Tidak Dibatasi Appendiks' : 'Dibatasi CITES'}</span></div>
-                  <div>Basis Data: <span className="text-slate-200">{profile.cites?.source || "CITES Snapshot"}</span></div>
+                <div className="text-[11px] text-slate-500 space-y-0.5 pt-2 border-t border-slate-200">
+                  <div>Verifikasi: <span className="text-emerald-700 font-medium">Snapshot Resmi Terverifikasi</span></div>
+                  <div>Status Perdagangan: <span className="text-slate-700">{profile.cites?.cites_appendix === 'not_listed' ? 'Tidak Dibatasi Appendiks' : 'Dibatasi CITES'}</span></div>
+                  <div>Basis Data: <span className="text-slate-700">{profile.cites?.source || "CITES Snapshot"}</span></div>
                 </div>
               </div>
 
               {/* 3. Regulasi Nasional KKP */}
-              <div className="rounded-xl bg-slate-950 p-4 border border-slate-800 space-y-2">
+              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-300">3. Regulasi KKP RI</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono">JDIH</span>
+                  <span className="text-xs font-semibold text-slate-700">3. Regulasi KKP RI</span>
+                  <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white text-[#0E6E7E] font-mono border border-slate-200">JDIH</span>
                 </div>
-                <div className="text-lg font-bold text-slate-200">
+                <div className="text-lg font-bold text-slate-800">
                   {profile.national_protection?.national_protection_status === 'not_listed_in_checked_regulations' 
                     ? "Tidak Dilindungi" 
                     : "Dilindungi Nasional"}
                 </div>
-                <div className="text-[11px] text-slate-400 space-y-0.5 pt-1 border-t border-slate-800/80">
-                  <div>Status Hukum: <span className="text-slate-200">{profile.national_protection?.national_protection_status || "Non-Protected"}</span></div>
-                  <div>Regulasi Diperiksa: <span className="text-slate-200">Kepmen KP No. 1/2021 & Permen KP 36/2023</span></div>
-                  <div>Otoritas: <span className="text-slate-200">Kementerian Kelautan & Perikanan RI</span></div>
+                <div className="text-[11px] text-slate-500 space-y-0.5 pt-2 border-t border-slate-200">
+                  <div>Status Hukum: <span className="text-slate-700">{profile.national_protection?.national_protection_status || "Non-Protected"}</span></div>
+                  <div>Regulasi Diperiksa: <span className="text-slate-700">Kepmen KP No. 1/2021 & Permen KP 36/2023</span></div>
+                  <div>Otoritas: <span className="text-slate-700">Kementerian Kelautan & Perikanan RI</span></div>
                 </div>
               </div>
 
             </div>
 
             {/* Legal Disclaimer */}
-            <div className="mt-5 p-3.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-400 flex items-start gap-2.5 leading-relaxed">
-              <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+            <div className="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-500 flex items-start gap-2.5 leading-relaxed">
+              <Info className="w-4 h-4 text-[#0E6E7E] shrink-0 mt-0.5" />
               <span>{profile.legal_disclaimer}</span>
             </div>
           </div>

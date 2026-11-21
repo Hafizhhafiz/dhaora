@@ -24,14 +24,23 @@ import { getSpeciesCatalog, getPredictionGeoJSON, getLandingSites, getTelemetry 
 import { formatNumber, formatWeight, formatDensity, formatPrecision } from '../utils/formatters';
 
 const BASEMAP_OPTIONS = {
+  positron: {
+    id: 'positron',
+    name: 'Positron Terang',
+    desc: 'CartoDB Light Minimalis',
+    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    options: { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; CARTO' },
+    icon: Palette,
+    accent: 'border-[#0E6E7E] text-[#0E6E7E]'
+  },
   canvas: {
     id: 'canvas',
-    name: 'Canvas Maps',
+    name: 'Canvas Gelap',
     desc: 'CartoDB Dark Minimalis',
     url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
     options: { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; CARTO' },
     icon: Palette,
-    accent: 'border-purple-500 text-purple-300'
+    accent: 'border-purple-600 text-purple-700'
   },
   street: {
     id: 'street',
@@ -40,7 +49,7 @@ const BASEMAP_OPTIONS = {
     url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     options: { maxZoom: 19, attribution: '&copy; OpenStreetMap' },
     icon: MapIcon,
-    accent: 'border-emerald-500 text-emerald-300'
+    accent: 'border-emerald-600 text-emerald-700'
   },
   imagery: {
     id: 'imagery',
@@ -49,16 +58,7 @@ const BASEMAP_OPTIONS = {
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     options: { maxZoom: 19, attribution: 'Tiles &copy; Esri' },
     icon: Satellite,
-    accent: 'border-amber-500 text-amber-300'
-  },
-  topographic: {
-    id: 'topographic',
-    name: 'Topografi',
-    desc: 'Kontur Batimetri Darat',
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-    options: { maxZoom: 19, attribution: 'Tiles &copy; Esri' },
-    icon: Mountain,
-    accent: 'border-cyan-400 text-cyan-200'
+    accent: 'border-amber-600 text-amber-700'
   }
 };
 
@@ -70,7 +70,7 @@ export default function WebGisPage({ onOpenDrawer }) {
   const markersLayerRef = useRef(null);
 
   // States
-  const [selectedBasemap, setSelectedBasemap] = useState('canvas');
+  const [selectedBasemap, setSelectedBasemap] = useState('positron');
   const [showGrid, setShowGrid] = useState(true);
   const [speciesList, setSpeciesList] = useState([]);
   const [selectedSpecies, setSelectedSpecies] = useState('rastrelliger');
@@ -129,7 +129,7 @@ export default function WebGisPage({ onOpenDrawer }) {
     L.control.scale({ imperial: false, metric: true, position: 'bottomleft' }).addTo(map);
 
     // Base Tile Layer
-    const baseConfig = BASEMAP_OPTIONS.canvas;
+    const baseConfig = BASEMAP_OPTIONS.positron;
     const tile = L.tileLayer(baseConfig.url, baseConfig.options).addTo(map);
     tileLayerRef.current = tile;
 
@@ -345,9 +345,9 @@ export default function WebGisPage({ onOpenDrawer }) {
       {!isControlOpen && (
         <button
           onClick={() => setIsControlOpen(true)}
-          className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/95 border border-slate-700 text-slate-200 text-xs font-bold shadow-2xl backdrop-blur-md hover:bg-slate-800 transition-all cursor-pointer"
+          className="absolute top-4 left-4 z-10 flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-slate-200 text-[#0B1220] text-xs font-semibold shadow-md backdrop-blur-md hover:bg-slate-50 transition-all cursor-pointer"
         >
-          <Layers className="w-4 h-4 text-cyan-400" />
+          <Layers className="w-4 h-4 text-[#0E6E7E]" />
           <span>Buka Kontrol Peta</span>
           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
         </button>
@@ -355,24 +355,25 @@ export default function WebGisPage({ onOpenDrawer }) {
 
       {/* Floating Control Panel (Top-Left) */}
       {isControlOpen && (
-        <div className="absolute top-4 left-4 z-10 w-80 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] overflow-y-auto bg-slate-900/95 border border-slate-800 rounded-2xl p-4 shadow-2xl backdrop-blur-md space-y-3.5 animate-fadeIn">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+        <div className="absolute top-4 left-4 z-10 w-80 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] overflow-y-auto bg-white/95 border border-slate-200 rounded-3xl p-5 shadow-xl backdrop-blur-md space-y-4 animate-fadeIn text-[#0B1220]">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <div className="flex items-center gap-2">
-              <Layers className="w-4 h-4 text-cyan-400" />
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+              <Layers className="w-4 h-4 text-[#0E6E7E]" />
+              <h3 className="text-xs font-bold text-[#0B1220] uppercase tracking-wider">
                 Kontrol WebGIS Teluk Banten
               </h3>
             </div>
             <div className="flex items-center gap-1.5">
               {loadingMap && showGrid && (
-                <span className="text-[10px] text-cyan-400 font-mono animate-pulse">
+                <span className="text-[10px] text-[#0E6E7E] font-mono animate-pulse">
                   Memuat...
                 </span>
               )}
               <button
                 onClick={() => setIsControlOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
                 title="Sembunyikan Panel Kontrol"
+                aria-label="Sembunyikan Panel Kontrol"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -381,9 +382,9 @@ export default function WebGisPage({ onOpenDrawer }) {
 
           {/* 1. Basemap Selector */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-200 flex items-center justify-between">
+            <label className="text-[11px] font-bold text-slate-700 flex items-center justify-between">
               <span>Pilihan Basemap:</span>
-              <span className="text-[10px] text-cyan-300 font-mono capitalize">
+              <span className="text-[10px] text-[#0E6E7E] font-mono capitalize">
                 {BASEMAP_OPTIONS[selectedBasemap]?.name}
               </span>
             </label>
@@ -397,16 +398,16 @@ export default function WebGisPage({ onOpenDrawer }) {
                     onClick={() => setSelectedBasemap(bm.id)}
                     className={`p-2 rounded-xl border text-left text-xs transition-all flex items-center gap-2 cursor-pointer ${
                       isActive
-                        ? 'bg-cyan-950/80 border-cyan-400 text-cyan-200 shadow-md font-bold'
-                        : 'bg-slate-950/80 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                        ? 'bg-[#EBF4F6] border-[#0E6E7E] text-[#0E6E7E] shadow-xs font-bold'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    <div className={`p-1.5 rounded-lg shrink-0 ${isActive ? 'bg-cyan-500 text-slate-950' : 'bg-slate-800 text-slate-400'}`}>
+                    <div className={`p-1.5 rounded-lg shrink-0 ${isActive ? 'bg-[#0E6E7E] text-white' : 'bg-slate-200 text-slate-600'}`}>
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                     <div className="truncate">
                       <div className="text-[11px] font-semibold truncate leading-tight">{bm.name}</div>
-                      <div className="text-[9px] text-slate-400 truncate mt-0.5">{bm.desc}</div>
+                      <div className="text-[9px] text-slate-500 truncate mt-0.5">{bm.desc}</div>
                     </div>
                   </button>
                 );
@@ -415,18 +416,18 @@ export default function WebGisPage({ onOpenDrawer }) {
           </div>
 
           {/* 2. ON/OFF Grid Visibility Toggle Switch */}
-          <div className="pt-2 border-t border-slate-800">
-            <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
+          <div className="pt-2 border-t border-slate-100">
+            <div className="flex items-center justify-between p-2.5 rounded-2xl bg-slate-50 border border-slate-200">
               <div className="flex items-center gap-2">
                 {showGrid ? (
-                  <Eye className="w-4 h-4 text-cyan-400" />
+                  <Eye className="w-4 h-4 text-[#0E6E7E]" />
                 ) : (
-                  <EyeOff className="w-4 h-4 text-slate-500" />
+                  <EyeOff className="w-4 h-4 text-slate-400" />
                 )}
                 <div>
-                  <div className="text-xs font-bold text-slate-200">Grid Prediksi (1 km²)</div>
-                  <div className="text-[10px] text-slate-400">
-                    {showGrid ? '798 Sel Poligon Aktif' : 'Grid Dinonaktifkan (Peta Polos)'}
+                  <div className="text-xs font-bold text-[#0B1220]">Grid Prediksi (1 km²)</div>
+                  <div className="text-[10px] text-slate-500">
+                    {showGrid ? '798 Sel Poligon Aktif' : 'Peta Polos (Grid Nonaktif)'}
                   </div>
                 </div>
               </div>
@@ -435,30 +436,30 @@ export default function WebGisPage({ onOpenDrawer }) {
                 type="button"
                 onClick={() => setShowGrid(!showGrid)}
                 className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors cursor-pointer ${
-                  showGrid ? 'bg-cyan-500 justify-end' : 'bg-slate-700 justify-start'
+                  showGrid ? 'bg-[#0E6E7E] justify-end' : 'bg-slate-300 justify-start'
                 }`}
                 title={showGrid ? 'Sembunyikan Grid Prediksi' : 'Tampilkan Grid Prediksi'}
               >
-                <div className="w-4 h-4 rounded-full bg-white shadow-md transform transition-transform" />
+                <div className="w-4 h-4 rounded-full bg-white shadow-sm transform transition-transform" />
               </button>
             </div>
           </div>
 
           {/* 3. Target Species Selector */}
-          <div className={`space-y-1.5 pt-2 border-t border-slate-800 transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
+          <div className={`space-y-1.5 pt-2 border-t border-slate-100 transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
             <div className="flex items-center justify-between">
-              <label className="text-[11px] font-bold text-slate-200 block">
+              <label className="text-[11px] font-bold text-slate-700 block">
                 Target Spesies Prediksi:
               </label>
               {!showGrid && (
-                <span className="text-[9px] text-amber-400 font-semibold">(Nyalakan Grid)</span>
+                <span className="text-[9px] text-amber-600 font-semibold">(Nyalakan Grid)</span>
               )}
             </div>
             <div className="grid grid-cols-3 gap-1.5">
               {[
-                { id: 'rastrelliger', label: 'Kembung', color: 'border-emerald-500 text-emerald-300' },
-                { id: 'selaroides', label: 'Selar', color: 'border-amber-500 text-amber-300' },
-                { id: 'upeneus', label: 'Kuniran', color: 'border-orange-500 text-orange-300' },
+                { id: 'rastrelliger', label: 'Kembung', color: 'border-emerald-600 text-emerald-800' },
+                { id: 'selaroides', label: 'Selar', color: 'border-amber-600 text-amber-800' },
+                { id: 'upeneus', label: 'Kuniran', color: 'border-orange-600 text-orange-800' },
               ].map((sp) => (
                 <button
                   key={sp.id}
@@ -466,10 +467,10 @@ export default function WebGisPage({ onOpenDrawer }) {
                     setSelectedSpecies(sp.id);
                     if (!showGrid) setShowGrid(true);
                   }}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer ${
+                  className={`py-1.5 px-2 rounded-xl text-xs font-medium border text-center transition-all cursor-pointer ${
                     selectedSpecies === sp.id && showGrid
-                      ? `bg-slate-800 ${sp.color} shadow-sm font-bold`
-                      : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
+                      ? `bg-slate-100 ${sp.color} shadow-xs font-bold`
+                      : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {sp.label}
@@ -479,8 +480,8 @@ export default function WebGisPage({ onOpenDrawer }) {
           </div>
 
           {/* 4. Metric Switcher */}
-          <div className={`space-y-1.5 pt-2 border-t border-slate-800 transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
-            <label className="text-[11px] font-bold text-slate-200 block">
+          <div className={`space-y-1.5 pt-2 border-t border-slate-100 transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
+            <label className="text-[11px] font-bold text-slate-700 block">
               Parameter Tampilan Spasial:
             </label>
             <div className="grid grid-cols-3 gap-1.5 text-[11px]">
@@ -489,10 +490,10 @@ export default function WebGisPage({ onOpenDrawer }) {
                   setActiveMetric('catch');
                   if (!showGrid) setShowGrid(true);
                 }}
-                className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
+                className={`py-1.5 px-2 rounded-xl border text-center transition-all cursor-pointer ${
                   activeMetric === 'catch' && showGrid
-                    ? 'bg-cyan-950/80 border-cyan-500 text-cyan-300 font-bold'
-                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                    ? 'bg-[#0E6E7E] border-[#0E6E7E] text-white font-bold'
+                    : 'bg-slate-50 border-slate-200 text-slate-600'
                 }`}
               >
                 Densitas
@@ -502,10 +503,10 @@ export default function WebGisPage({ onOpenDrawer }) {
                   setActiveMetric('sst');
                   if (!showGrid) setShowGrid(true);
                 }}
-                className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
+                className={`py-1.5 px-2 rounded-xl border text-center transition-all cursor-pointer ${
                   activeMetric === 'sst' && showGrid
-                    ? 'bg-amber-950/80 border-amber-500 text-amber-300 font-bold'
-                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                    ? 'bg-[#0E6E7E] border-[#0E6E7E] text-white font-bold'
+                    : 'bg-slate-50 border-slate-200 text-slate-600'
                 }`}
               >
                 Suhu SST
@@ -515,10 +516,10 @@ export default function WebGisPage({ onOpenDrawer }) {
                   setActiveMetric('depth');
                   if (!showGrid) setShowGrid(true);
                 }}
-                className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
+                className={`py-1.5 px-2 rounded-xl border text-center transition-all cursor-pointer ${
                   activeMetric === 'depth' && showGrid
-                    ? 'bg-blue-950/80 border-blue-500 text-blue-300 font-bold'
-                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                    ? 'bg-[#0E6E7E] border-[#0E6E7E] text-white font-bold'
+                    : 'bg-slate-50 border-slate-200 text-slate-600'
                 }`}
               >
                 Batimetri
@@ -528,23 +529,23 @@ export default function WebGisPage({ onOpenDrawer }) {
 
           {/* 5. Species Summary Card */}
           {activeSpeciesObj && (
-            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-xs space-y-1">
-              <div className="font-bold text-white italic truncate">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+              <div className="font-bold text-[#0B1220] italic truncate">
                 {activeSpeciesObj.scientific_name}
               </div>
-              <div className="text-[11px] text-slate-400 flex justify-between">
+              <div className="text-[11px] text-slate-600 flex justify-between">
                 <span>Model Champion:</span>
-                <span className="text-slate-200">{activeSpeciesObj.champion_model}</span>
+                <span className="text-slate-900 font-medium">{activeSpeciesObj.champion_model}</span>
               </div>
-              <div className="text-[11px] text-slate-400 flex justify-between">
+              <div className="text-[11px] text-slate-600 flex justify-between">
                 <span>Akurasi Spatial R²:</span>
-                <span className="text-emerald-400 font-mono font-bold">
+                <span className="text-emerald-700 font-mono font-bold">
                   {formatPrecision(activeSpeciesObj.spatial_r2_score, 4)}
                 </span>
               </div>
-              <div className="text-[11px] text-slate-400 flex justify-between">
+              <div className="text-[11px] text-slate-600 flex justify-between">
                 <span>Rerata Tangkapan:</span>
-                <span className="text-cyan-300 font-mono font-bold">
+                <span className="text-[#0E6E7E] font-mono font-bold">
                   {formatDensity(activeSpeciesObj.mean_catch_kg_per_sqkm, 2)}
                 </span>
               </div>
@@ -555,17 +556,17 @@ export default function WebGisPage({ onOpenDrawer }) {
 
       {/* Dynamic Color Scale Legend & Marker Legend (Bottom-Center / Left) */}
       {showGrid && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 bg-slate-900/95 border border-slate-800 rounded-xl px-4 py-2 shadow-2xl backdrop-blur-md flex flex-wrap items-center gap-4 text-xs">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 bg-white/95 border border-slate-200 rounded-full px-5 py-2 shadow-md backdrop-blur-md flex flex-wrap items-center gap-4 text-xs text-[#0B1220]">
           {/* Gradient Ramp */}
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-slate-400 font-medium">
+            <span className="text-[10px] text-slate-500 font-medium">
               {activeMetric === 'catch' ? 'Densitas:' : activeMetric === 'sst' ? 'Suhu:' : 'Kedalaman:'}
             </span>
-            <span className="font-mono text-[10px] text-slate-300">
+            <span className="font-mono text-[10px] text-slate-700 tabular-nums">
               {activeMetric === 'catch' ? `${formatNumber(metricRange.min)} kg` : activeMetric === 'sst' ? `${formatNumber(metricRange.min, 1)}°C` : `${formatNumber(metricRange.min, 1)}m`}
             </span>
             <div 
-              className="w-24 h-2.5 rounded-full border border-slate-700" 
+              className="w-24 h-2 rounded-full border border-slate-300" 
               style={{
                 background: activeMetric === 'sst'
                   ? 'linear-gradient(to right, #0284c7, #38bdf8, #f59e0b, #ef4444)'
@@ -578,19 +579,19 @@ export default function WebGisPage({ onOpenDrawer }) {
                   : 'linear-gradient(to right, #38bdf8, #06b6d4, #10b981, #059669)'
               }}
             />
-            <span className="font-mono text-[10px] text-slate-300">
+            <span className="font-mono text-[10px] text-slate-700 tabular-nums">
               {activeMetric === 'catch' ? `${formatNumber(metricRange.max)} kg` : activeMetric === 'sst' ? `${formatNumber(metricRange.max, 1)}°C` : `${formatNumber(metricRange.max, 1)}m`}
             </span>
           </div>
 
           {/* Marker Symbols */}
-          <div className="hidden md:flex items-center gap-3 border-l border-slate-700 pl-3 text-[11px] text-slate-300">
+          <div className="hidden md:flex items-center gap-3 border-l border-slate-200 pl-3 text-[11px] text-slate-600">
             <span className="flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 border border-white" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0E6E7E] border border-white" />
               <span>Stasiun Sampling</span>
             </span>
             <span className="flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500 border border-white" />
+              <span className="w-2.5 h-2.5 rounded-full bg-red-600 border border-white" />
               <span>PPN Karangantu</span>
             </span>
           </div>
@@ -599,48 +600,49 @@ export default function WebGisPage({ onOpenDrawer }) {
 
       {/* Real-time Cursor Coordinates Readout (Bottom-Left) */}
       {cursorCoords && (
-        <div className="absolute bottom-1.5 left-20 z-10 hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 border border-slate-800 text-[10px] font-mono text-slate-400 backdrop-blur-sm">
-          <Crosshair className="w-3 h-3 text-cyan-400" />
+        <div className="absolute bottom-1.5 left-20 z-10 hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 border border-slate-200 text-[10px] font-mono text-slate-600 shadow-xs backdrop-blur-sm">
+          <Crosshair className="w-3 h-3 text-[#0E6E7E]" />
           <span>{cursorCoords.lat}° LS, {cursorCoords.lng}° BT</span>
         </div>
       )}
 
       {/* Floating Selected Cell Inspector (Bottom-Left above scale) */}
       {showGrid && selectedCell && (
-        <div className="absolute bottom-14 left-4 z-10 w-80 max-w-[calc(100vw-2rem)] bg-slate-900/95 border border-slate-800 rounded-2xl p-4 shadow-2xl backdrop-blur-md animate-fadeIn">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
-            <div className="text-xs font-bold text-cyan-300 font-mono">
+        <div className="absolute bottom-14 left-4 z-10 w-80 max-w-[calc(100vw-2rem)] bg-white/95 border border-slate-200 rounded-3xl p-5 shadow-xl backdrop-blur-md animate-fadeIn text-[#0B1220]">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3">
+            <div className="text-xs font-bold text-[#0E6E7E] font-mono">
               Sel Grid: {selectedCell.cell_id}
             </div>
             <button 
               onClick={() => setSelectedCell(null)}
-              className="text-slate-400 hover:text-white p-0.5"
+              className="text-slate-400 hover:text-slate-700 p-0.5 rounded-full"
+              aria-label="Tutup detail sel"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
-              <div className="text-[10px] text-slate-400">Prediksi Tangkapan:</div>
-              <div className="text-sm font-bold text-white font-mono">
+            <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div className="text-[10px] text-slate-500">Prediksi Tangkapan:</div>
+              <div className="text-sm font-bold text-[#0B1220] font-mono">
                 {formatWeight(selectedCell.predicted_catch_kg, 1)}
               </div>
             </div>
-            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
-              <div className="text-[10px] text-slate-400">CPUE per Trip:</div>
-              <div className="text-sm font-bold text-emerald-400 font-mono">
+            <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div className="text-[10px] text-slate-500">CPUE per Trip:</div>
+              <div className="text-sm font-bold text-emerald-700 font-mono">
                 {formatWeight(selectedCell.predicted_cpue_kg_per_trip, 1)}
               </div>
             </div>
-            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
-              <div className="text-[10px] text-slate-400">Suhu Muka Laut:</div>
-              <div className="text-xs font-bold text-amber-300 font-mono">
+            <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div className="text-[10px] text-slate-500">Suhu Muka Laut:</div>
+              <div className="text-xs font-bold text-amber-700 font-mono">
                 {formatNumber(selectedCell.sst_celsius, 2)} °C
               </div>
             </div>
-            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
-              <div className="text-[10px] text-slate-400">Kedalaman Dasar:</div>
-              <div className="text-xs font-bold text-cyan-300 font-mono">
+            <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div className="text-[10px] text-slate-500">Kedalaman Dasar:</div>
+              <div className="text-xs font-bold text-[#0E6E7E] font-mono">
                 {formatNumber(selectedCell.bathymetry_depth_m, 1)} m
               </div>
             </div>
@@ -648,14 +650,14 @@ export default function WebGisPage({ onOpenDrawer }) {
         </div>
       )}
 
-      {/* Floating Action Button for Quick Analysis (Top-Right under Zoom controls, avoiding Leaflet attribution) */}
-      <div className="absolute top-14 right-4 z-10">
+      {/* Floating Action Button for Quick Analysis */}
+      <div className="absolute top-4 right-14 z-10">
         <button
           onClick={onOpenDrawer}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-xl border border-cyan-400/40 transition-all cursor-pointer"
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0E6E7E] hover:bg-[#085461] text-white font-medium text-xs shadow-md transition-all cursor-pointer"
         >
-          <Sparkles className="w-3.5 h-3.5 text-cyan-200" />
-          <span className="hidden sm:inline">Quick Analysis Dock</span>
+          <Sparkles className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Quick Analysis</span>
           <span className="sm:hidden">Analysis</span>
         </button>
       </div>

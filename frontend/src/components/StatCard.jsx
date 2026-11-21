@@ -1,53 +1,56 @@
 import React from 'react';
 
-export default function StatCard({ title, value, subtitle, icon: Icon, color = 'cyan', trend }) {
+export default function StatCard({ title, value, subtitle, icon: Icon, color = 'teal', trend }) {
   const colorMap = {
+    teal: {
+      bg: 'bg-teal-50',
+      text: 'text-[#0E6E7E]',
+      badge: 'bg-teal-50 text-teal-800 border-teal-200'
+    },
     cyan: {
-      border: 'border-cyan-500/20 hover:border-cyan-500/40',
-      bg: 'bg-cyan-500/10',
-      text: 'text-cyan-400',
-      badge: 'bg-cyan-950/60 text-cyan-300 border-cyan-800/40'
+      bg: 'bg-teal-50',
+      text: 'text-[#0E6E7E]',
+      badge: 'bg-teal-50 text-teal-800 border-teal-200'
     },
     emerald: {
-      border: 'border-emerald-500/20 hover:border-emerald-500/40',
-      bg: 'bg-emerald-500/10',
-      text: 'text-emerald-400',
-      badge: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/40'
+      bg: 'bg-emerald-50',
+      text: 'text-emerald-700',
+      badge: 'bg-emerald-50 text-emerald-800 border-emerald-200'
     },
     blue: {
-      border: 'border-blue-500/20 hover:border-blue-500/40',
-      bg: 'bg-blue-500/10',
-      text: 'text-blue-400',
-      badge: 'bg-blue-950/60 text-blue-300 border-blue-800/40'
+      bg: 'bg-blue-50',
+      text: 'text-blue-700',
+      badge: 'bg-blue-50 text-blue-800 border-blue-200'
     },
     amber: {
-      border: 'border-amber-500/20 hover:border-amber-500/40',
-      bg: 'bg-amber-500/10',
-      text: 'text-amber-400',
-      badge: 'bg-amber-950/60 text-amber-300 border-amber-800/40'
+      bg: 'bg-amber-50',
+      text: 'text-amber-700',
+      badge: 'bg-amber-50 text-amber-800 border-amber-200'
     }
   };
 
-  const scheme = colorMap[color] || colorMap.cyan;
+  const scheme = colorMap[color] || colorMap.teal;
 
   return (
-    <div className={`p-5 rounded-xl bg-slate-900/80 border ${scheme.border} transition-all duration-200 shadow-sm relative overflow-hidden group`}>
+    <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group transition-all duration-200 hover:border-slate-300">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xs font-medium text-slate-400">{title}</p>
-          <h3 className="text-2xl font-bold text-white mt-1 tracking-tight">{value}</h3>
+          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{title}</p>
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B1220] mt-1.5 tracking-tight tabular-nums">{value}</h3>
           {subtitle && (
-            <p className="text-xs text-slate-500 mt-1 italic">{subtitle}</p>
+            <p className="text-xs text-slate-500 mt-1">{subtitle}</p>
           )}
         </div>
-        <div className={`p-3 rounded-xl ${scheme.bg} ${scheme.text} group-hover:scale-110 transition-transform`}>
-          <Icon className="w-5 h-5" />
-        </div>
+        {Icon && (
+          <div className={`p-3 rounded-xl ${scheme.bg} ${scheme.text} group-hover:scale-105 transition-transform`}>
+            <Icon className="w-5 h-5" />
+          </div>
+        )}
       </div>
       {trend && (
-        <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
-          <span className="text-slate-400">Status Komposisi</span>
-          <span className={`px-2 py-0.5 rounded border ${scheme.badge} font-semibold font-mono`}>
+        <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span className="text-slate-500">Status Komposisi</span>
+          <span className={`px-2 py-0.5 rounded-full border ${scheme.badge} font-medium tabular-nums`}>
             {trend}
           </span>
         </div>

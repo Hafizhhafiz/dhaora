@@ -44,10 +44,10 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
   const otherCount = stats?.total_other || 0;
 
   const chartData = [
-    { name: 'Kembung Perempuan', value: brachysomaCount, color: '#0ea5e9' },
-    { name: 'Selar Kuning', value: leptolepisCount, color: '#eab308' },
-    { name: 'Kuniran (Pepetek)', value: sulphureusCount, color: '#f97316' },
-    { name: 'Lainnya / Baseline', value: otherCount, color: '#94a3b8' },
+    { name: 'Kembung Perempuan', value: brachysomaCount, color: '#0E6E7E' },
+    { name: 'Selar Kuning', value: leptolepisCount, color: '#D97706' },
+    { name: 'Kuniran (Pepetek)', value: sulphureusCount, color: '#EA580C' },
+    { name: 'Lainnya / Baseline', value: otherCount, color: '#94A3B8' },
   ].filter(item => item.value > 0);
 
   const speciesBarData = [
@@ -58,35 +58,34 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
   ];
 
   return (
-    <div className="space-y-6">
-      {/* Banner / Hero */}
-      <div className="relative rounded-2xl p-6 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-slate-800 shadow-xl overflow-hidden">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-cyan-500/10 to-transparent pointer-events-none" />
-        <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 text-xs font-semibold mb-3">
+    <div className="space-y-6 animate-fadeIn">
+      {/* Banner / Contrast Dark Block (#0A1A2F) */}
+      <div className="relative rounded-3xl p-6 sm:p-8 bg-[#0A1A2F] text-white border border-slate-800 shadow-sm overflow-hidden">
+        <div className="relative z-10 max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-teal-300 text-xs font-medium mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Inovasi Pemantauan Perikanan Skala Kecil Teluk Banten — ASIK VI</span>
+            <span>FishGuard AI — Computer Vision Suite</span>
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-tight">
-            FishGuard AI Dashboard
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            Identifikasi Spesies & <span className="font-serif-italic font-normal">Pencacahan Biometrik.</span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            Sistem terintegrasi Computer Vision & Artificial Intelligence untuk identifikasi 3 target spesies MVP 
+          <p className="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed">
+            Sistem inferensi Computer Vision untuk identifikasi 3 target spesies MVP 
             (<em>Rastrelliger brachysoma</em>, <em>Selaroides leptolepis</em>, <em>Upeneus sulphureus</em>), 
-            penghitungan otomatis hasil tangkapan, dan analisis komposisi spesies pendaratan di PPN Karangantu.
+            penghitungan kuantitatif individu, dan analisis komposisi pendaratan di PPN Karangantu (WPPNRI 712).
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setActiveTab('detection')}
-              className="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-cyan-500/20 flex items-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-2.5 rounded-full bg-[#0E6E7E] hover:bg-[#0b5865] text-white font-medium text-xs tracking-wide shadow-sm flex items-center gap-2 transition-all cursor-pointer"
             >
               <Scan className="w-4 h-4" /> Mulai Deteksi Ikan
             </button>
             <button
               onClick={() => setActiveTab('counting')}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs tracking-wide flex items-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 font-medium text-xs tracking-wide flex items-center gap-2 transition-all cursor-pointer"
             >
-              <Calculator className="w-4 h-4 text-cyan-400" /> Penghitungan & Komposisi
+              <Calculator className="w-4 h-4 text-teal-300" /> Penghitungan & Komposisi
             </button>
           </div>
         </div>
@@ -99,21 +98,21 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
           value={loading ? '...' : formatNumber(stats?.total_analyses || 0)}
           subtitle="Sesi foto tersimpan di SQLite"
           icon={Layers}
-          color="blue"
+          color="teal"
         />
         <StatCard
           title="Total Ikan Terdeteksi"
           value={loading ? '...' : formatNumber(totalFish)}
           subtitle="Akumulasi individu"
           icon={Fish}
-          color="cyan"
+          color="teal"
         />
         <StatCard
           title="Kembung Perempuan"
           value={loading ? '...' : formatNumber(brachysomaCount)}
           subtitle="Rastrelliger brachysoma"
           icon={Fish}
-          color="cyan"
+          color="teal"
           trend={totalFish > 0 ? formatPercent(brachysomaCount / totalFish, 1, true) : '0%'}
         />
         <StatCard
@@ -121,7 +120,7 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
           value={loading ? '...' : formatNumber(leptolepisCount + sulphureusCount)}
           subtitle="S. leptolepis + U. sulphureus"
           icon={Fish}
-          color="emerald"
+          color="amber"
           trend={totalFish > 0 ? formatPercent((leptolepisCount + sulphureusCount) / totalFish, 1, true) : '0%'}
         />
       </div>
@@ -129,19 +128,19 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
       {/* Analytics Charts & Graphs */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Composition Chart with Centered Total */}
-        <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-sm flex flex-col">
-          <div className="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col">
+          <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
             <div>
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                <PieIcon className="w-4 h-4 text-cyan-400" /> Komposisi Spesies Tangkapan
+              <h3 className="text-sm font-bold text-[#0B1220] flex items-center gap-2">
+                <PieIcon className="w-4 h-4 text-[#0E6E7E]" /> Komposisi Spesies Tangkapan
               </h3>
-              <p className="text-xs text-slate-300">Rasio kelimpahan perikanan MVP</p>
+              <p className="text-xs text-slate-500">Rasio kelimpahan perikanan MVP</p>
             </div>
           </div>
           <div className="flex-1 min-h-[240px] flex items-center justify-center relative">
             {chartData.length === 0 ? (
-              <div className="text-center text-slate-500 text-xs py-10">
-                <AlertCircle className="w-8 h-8 mx-auto mb-2 opacity-50" />
+              <div className="text-center text-slate-400 text-xs py-10">
+                <AlertCircle className="w-8 h-8 mx-auto mb-2 opacity-40 text-slate-400" />
                 Belum ada data tangkapan.<br />Silakan jalankan deteksi pertama.
               </div>
             ) : (
@@ -163,19 +162,18 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
                     </Pie>
                     <Tooltip 
                       formatter={(val) => [formatNumber(val) + ' ekor', 'Jumlah']}
-                      contentStyle={{ backgroundColor: '#060b17', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }}
-                      itemStyle={{ color: '#e2e8f0' }}
+                      contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '12px', fontSize: '12px', color: '#0B1220' }}
                     />
                     <Legend 
                       verticalAlign="bottom"
-                      formatter={(value) => <span className="text-xs text-slate-300">{value}</span>}
+                      formatter={(value) => <span className="text-xs text-slate-600">{value}</span>}
                     />
                   </PieChart>
                 </ResponsiveContainer>
                 {/* Center Label for Donut */}
                 <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
                   <div className="text-xs text-slate-400 font-medium">Total</div>
-                  <div className="text-base font-extrabold text-white font-mono">{formatNumber(totalFish)}</div>
+                  <div className="text-base font-extrabold text-[#0B1220] tabular-nums">{formatNumber(totalFish)}</div>
                 </div>
               </div>
             )}
@@ -183,56 +181,56 @@ export default function Dashboard({ setActiveTab, setSelectedAnalysis }) {
         </div>
 
         {/* Species Comparison Bar */}
-        <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-sm flex flex-col">
-          <div className="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col">
+          <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
             <div>
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-emerald-400" /> Distribusi Spesies MVP
+              <h3 className="text-sm font-bold text-[#0B1220] flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-[#0E6E7E]" /> Distribusi Spesies MVP
               </h3>
-              <p className="text-xs text-slate-300">Jumlah individu menurut taksonomi terkunci</p>
+              <p className="text-xs text-slate-500">Jumlah individu menurut taksonomi terkunci</p>
             </div>
           </div>
           <div className="flex-1 min-h-[240px]">
             <ResponsiveContainer width="100%" height={240}>
               <BarChart data={speciesBarData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="species" stroke="#64748b" fontSize={11} />
-                <YAxis stroke="#64748b" fontSize={11} allowDecimals={false} tickFormatter={(val) => formatNumber(val)} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+                <XAxis dataKey="species" stroke="#94a3b8" fontSize={11} />
+                <YAxis stroke="#94a3b8" fontSize={11} allowDecimals={false} tickFormatter={(val) => formatNumber(val)} />
                 <Tooltip 
                   formatter={(val) => [formatNumber(val) + ' ekor', 'Individu']}
-                  contentStyle={{ backgroundColor: '#060b17', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '12px', fontSize: '12px', color: '#0B1220' }}
                 />
-                <Bar dataKey="count" fill="#0ea5e9" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="#0E6E7E" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Scientific Context & Field Notes */}
-        <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-sm flex flex-col justify-between">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-3">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                <Clock className="w-4 h-4 text-cyan-400" /> Spesies Target MVP (Terkunci)
+            <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
+              <h3 className="text-sm font-bold text-[#0B1220] flex items-center gap-2">
+                <Clock className="w-4 h-4 text-[#0E6E7E]" /> Spesies Target MVP (Terkunci)
               </h3>
             </div>
-            <div className="space-y-2.5 text-xs text-slate-300">
-              <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                <span className="font-semibold text-cyan-400 block">Class 0: Kembung Perempuan</span>
-                <em>Rastrelliger brachysoma</em> (Scombridae). Ciri: badan lebih tebal/dalam, moncong pendek bulat.
+            <div className="space-y-2.5 text-xs text-slate-600">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="font-bold text-[#0B1220] block mb-0.5">Class 0: Kembung Perempuan</span>
+                <em>Rastrelliger brachysoma</em> (Scombridae). Ciri: badan tebal/dalam, moncong tumpul bulat.
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                <span className="font-semibold text-yellow-400 block">Class 1: Selar Kuning</span>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="font-bold text-[#0B1220] block mb-0.5">Class 1: Selar Kuning</span>
                 <em>Selaroides leptolepis</em> (Carangidae). Ciri: garis pita kuning emas khas sepanjang sisi tubuh.
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                <span className="font-semibold text-orange-400 block">Class 2: Kuniran / Pepetek</span>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="font-bold text-[#0B1220] block mb-0.5">Class 2: Kuniran / Pepetek</span>
                 <em>Upeneus sulphureus</em> (Mullidae). Ciri: sepasang sungut dagu, sirip punggung dengan corak kuning-jingga.
               </div>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400">
+          <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
             *Taksonomi terkunci untuk verifikasi AI model pada baseline evaluasi PPN Karangantu.
           </div>
         </div>

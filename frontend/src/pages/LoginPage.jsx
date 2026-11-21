@@ -9,7 +9,6 @@ import {
   CheckCircle2, 
   AlertCircle, 
   ShieldCheck, 
-  Sparkles,
   Info
 } from 'lucide-react';
 import { loginUser } from '../api/client';
@@ -20,39 +19,36 @@ export default function LoginPage({ onLoginSuccess, onBackToLanding, onGuestAcce
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedDemoRole, setSelectedDemoRole] = useState('admin');
+  const [selectedRole, setSelectedRole] = useState('admin');
 
-  const demoAccounts = [
+  const demoRoles = [
     {
       id: 'admin',
       role: 'Administrator',
       username: 'admin',
       password: 'admin123',
-      desc: 'Akses penuh konfigurasi sistem, telemetri, dan audit terpadu.',
-      badgeColor: 'border-purple-600 bg-purple-950/70 text-purple-300'
+      desc: 'Konfigurasi sistem, audit terpadu, dan manajemen modul.'
     },
     {
       id: 'peneliti',
       role: 'Peneliti (UPI)',
       username: 'peneliti',
       password: 'dhaora2026',
-      desc: 'Akses pemodelan WebGIS, dataset riset, dan analisis komputer visi.',
-      badgeColor: 'border-cyan-600 bg-cyan-950/70 text-cyan-300'
+      desc: 'WebGIS oseanografi, dataset taksonomi, dan analisis AI.'
     },
     {
       id: 'nelayan',
       role: 'Enumerator / Nelayan',
       username: 'nelayan',
       password: 'nelayan123',
-      desc: 'Pencatatan trip pendaratan Karangantu dan skrining cepat ByCatch.',
-      badgeColor: 'border-emerald-600 bg-emerald-950/70 text-emerald-300'
+      desc: 'Pencatatan trip pendaratan Karangantu dan skrining ByCatch.'
     }
   ];
 
-  const handleSelectDemo = (acc) => {
-    setSelectedDemoRole(acc.id);
-    setUsername(acc.username);
-    setPassword(acc.password);
+  const handleSelectDemoRole = (roleItem) => {
+    setSelectedRole(roleItem.id);
+    setUsername(roleItem.username);
+    setPassword(roleItem.password);
     setError(null);
   };
 
@@ -81,190 +77,208 @@ export default function LoginPage({ onLoginSuccess, onBackToLanding, onGuestAcce
   };
 
   return (
-    <div className="min-h-screen bg-[#060b17] flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden font-sans">
-      {/* Background ambient glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-cyan-600/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
-
-      {/* Back button */}
-      <div className="w-full max-w-md mb-4">
-        <button
-          onClick={onBackToLanding}
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Kembali ke Beranda Publik</span>
-        </button>
-      </div>
-
-      {/* Login Card */}
-      <div className="w-full max-w-md bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-8 backdrop-blur-xl relative z-10">
+    <div className="min-h-screen bg-[#F6F6F3] text-[#0B1220] flex items-center justify-center p-4 sm:p-6 lg:p-8 selection:bg-[#0E6E7E]/15 selection:text-[#0E6E7E]">
+      
+      {/* Main Container Card (Two Columns Split) */}
+      <div className="max-w-5xl w-full bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
         
-        {/* Brand Header */}
-        <div className="flex flex-col items-center text-center mb-6">
-          <div className="p-2 rounded-2xl bg-white/5 border border-white/10 shadow-md mb-3">
+        {/* Left Column: Editorial Photo & Quote (5 cols on lg) */}
+        <div className="lg:col-span-5 relative bg-[#0A1A2F] text-white p-8 sm:p-10 flex flex-col justify-between overflow-hidden">
+          {/* Background Photo */}
+          <div className="absolute inset-0 z-0">
             <img 
-              src="/logotulisan.webp" 
-              alt="DHAORA Logo" 
-              className="h-12 w-auto object-contain cursor-pointer"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/logo-dhaora.webp';
-              }}
+              src="/images/pendaratan-karangantu.webp" 
+              alt="Pendaratan Ikan Karangantu" 
+              className="w-full h-full object-cover"
+              loading="eager"
             />
-          </div>
-          <h2 className="text-xl font-black text-white tracking-wide">
-            Masuk ke DHAORA Platform
-          </h2>
-          <p className="text-xs text-slate-300 mt-1">
-            Integrated Marine AI & WebGIS Platform • ASIK VOL VI
-          </p>
-        </div>
-
-        {/* Demo Account Quick-Fill Cards (Full Labels, Not Truncated) */}
-        <div className="mb-5 space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider">
-              Pilih Akun Demo (1-Klik):
-            </label>
-            <span className="text-[10px] text-cyan-400 font-mono font-medium">Data Teruji</span>
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A2F]/95 via-[#0A1A2F]/80 to-[#0A1A2F]/55" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            {demoAccounts.map((acc) => (
-              <button
-                key={acc.id}
-                type="button"
-                onClick={() => handleSelectDemo(acc)}
-                className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
-                  selectedDemoRole === acc.id
-                    ? `${acc.badgeColor} ring-1 ring-cyan-400 shadow-md`
-                    : 'border-slate-800 bg-slate-950/80 text-slate-300 hover:border-slate-700 hover:bg-slate-900'
-                }`}
-              >
-                <div className="text-xs font-bold leading-tight">{acc.role}</div>
-                <div className="text-[10px] text-slate-400 font-mono mt-1">{acc.username}</div>
-              </button>
-            ))}
-          </div>
+          {/* Top Brand Logo */}
+          <div className="relative z-10">
+            <button
+              onClick={onBackToLanding}
+              className="inline-flex items-center gap-2 text-xs font-medium text-slate-300 hover:text-white transition-colors cursor-pointer group mb-6"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              <span>Kembali ke Beranda</span>
+            </button>
 
-          {selectedDemoRole && (
-            <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/80 text-xs text-slate-300 flex items-start gap-2">
-              <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
-              <span>{demoAccounts.find(a => a.id === selectedDemoRole)?.desc}</span>
+            <div className="flex items-center gap-2.5">
+              <img src="/logo-dhaora.webp" alt="DHAORA" className="h-7 w-auto" />
+              <span className="font-bold tracking-tight text-white text-base">DHAORA</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-slate-300">
+                ASIK VOL VI
+              </span>
             </div>
-          )}
+          </div>
 
-          <div className="p-2.5 rounded-xl bg-blue-950/30 border border-blue-800/40 text-[11px] text-blue-300 flex items-center gap-2">
-            <Info className="w-3.5 h-3.5 shrink-0 text-blue-400" />
-            <span>Akun demo disediakan untuk evaluasi & pengujian sistem. Data bersifat contoh dan aman.</span>
+          {/* Center Quote in Editorial Serif Italic */}
+          <div className="relative z-10 my-8">
+            <p className="font-serif-italic text-2xl sm:text-3xl text-slate-100 leading-snug font-normal">
+              “Observasi presisi untuk keberlanjutan perikanan Teluk Banten.”
+            </p>
+            <p className="mt-3 text-xs text-slate-300/80 leading-relaxed">
+              Pelabuhan Perikanan Nusantara Karangantu & Universitas Pendidikan Indonesia
+            </p>
+          </div>
+
+          {/* Bottom Metrology Pill */}
+          <div className="relative z-10 text-[11px] text-slate-400 font-mono">
+            WPPNRI 712 • PPN KARANGANTU SERANG
           </div>
         </div>
 
-        {/* Error Notification */}
-        {error && (
-          <div className="mb-4 p-3 rounded-xl bg-red-950/60 border border-red-800/80 text-red-300 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
-            <span>{error}</span>
-          </div>
-        )}
-
-        {/* Login Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Right Column: Clean White Form & Demo Role Selector (7 cols on lg) */}
+        <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
+          
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              Nama Pengguna (Username)
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <User className="w-4 h-4" />
-              </div>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                  setSelectedDemoRole(null);
-                }}
-                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
-                placeholder="Contoh: admin"
-                required
-              />
-            </div>
-          </div>
+            <h2 className="text-2xl font-bold tracking-tight text-[#0B1220]">
+              Masuk ke Platform
+            </h2>
+            <p className="mt-1.5 text-xs sm:text-sm text-slate-600">
+              Pilih peran akun demo di bawah atau masukkan kredensial terdaftar Anda.
+            </p>
 
-          <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              Kata Sandi (Password)
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <Lock className="w-4 h-4" />
+            {/* Error Message */}
+            {error && (
+              <div className="mt-4 p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5">
+                <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+                <span>{error}</span>
               </div>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setSelectedDemoRole(null);
-                }}
-                className="w-full pl-10 pr-10 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
-                placeholder="••••••••"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-200 cursor-pointer"
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed mt-2"
-          >
-            {loading ? (
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            ) : (
-              <>
-                <LogIn className="w-4 h-4" />
-                <span>Masuk Sekarang</span>
-              </>
             )}
-          </button>
-        </form>
 
-        {/* Divider */}
-        <div className="relative my-5">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-800" />
+            {/* Demo Roles Selector (No passwords shown) */}
+            <div className="mt-5 space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-semibold text-slate-700">
+                  Pilih Akun Demo (Simulasi)
+                </label>
+                <span className="text-[11px] text-slate-500 italic">
+                  Akun demo, data bersifat contoh
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                {demoRoles.map((roleItem) => {
+                  const isSelected = selectedRole === roleItem.id;
+                  return (
+                    <button
+                      key={roleItem.id}
+                      type="button"
+                      onClick={() => handleSelectDemoRole(roleItem)}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        isSelected 
+                          ? 'border-[#0E6E7E] bg-[#EBF4F6] text-[#0B1220] shadow-xs' 
+                          : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-bold whitespace-normal">
+                          {roleItem.role}
+                        </span>
+                        {isSelected && (
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0E6E7E] shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-[11px] text-slate-500 leading-snug line-clamp-2">
+                        {roleItem.desc}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Login Form */}
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <div>
+                <label htmlFor="username" className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  Nama Pengguna (Username)
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-[#0B1220] focus:outline-none focus:ring-2 focus:ring-[#0E6E7E] focus:border-[#0E6E7E] transition-all"
+                    placeholder="Masukkan nama pengguna"
+                    autoComplete="username"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  Kata Sandi
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <Lock className="w-4 h-4" />
+                  </div>
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-[#0B1220] focus:outline-none focus:ring-2 focus:ring-[#0E6E7E] focus:border-[#0E6E7E] transition-all"
+                    placeholder="Masukkan kata sandi"
+                    autoComplete="current-password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
+                    aria-label={showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'}
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Submit Button (Pill shape) */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-3 px-6 rounded-full text-xs sm:text-sm font-semibold text-white bg-[#0E6E7E] hover:bg-[#085461] transition-all shadow-sm cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
+              >
+                {loading ? (
+                  <span>Memverifikasi akun...</span>
+                ) : (
+                  <>
+                    <LogIn className="w-4 h-4" />
+                    <span>Masuk ke Dashboard</span>
+                  </>
+                )}
+              </button>
+            </form>
           </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-slate-900 px-3 text-slate-400 font-medium">atau</span>
+
+          {/* Bottom Guest Option & Disclaimer */}
+          <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+            <span>Tidak memiliki akun terdaftar?</span>
+            <button
+              onClick={onGuestAccess}
+              className="text-[#0E6E7E] hover:text-[#085461] font-semibold hover:underline underline-offset-4 cursor-pointer"
+            >
+              Lanjut sebagai Tamu (Mode Eksplorasi) →
+            </button>
           </div>
+
         </div>
 
-        {/* Guest Access Button */}
-        <button
-          type="button"
-          onClick={onGuestAccess}
-          className="w-full py-2.5 rounded-xl text-xs font-semibold bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-slate-600 transition-colors flex items-center justify-center gap-2 cursor-pointer"
-        >
-          <Sparkles className="w-4 h-4 text-cyan-400" />
-          <span>Eksplorasi Tanpa Akun (Mode Tamu)</span>
-        </button>
-
-        {/* Affiliation footer */}
-        <div className="mt-6 pt-4 border-t border-slate-800/80 text-center">
-          <p className="text-xs text-slate-400">
-            Sistem Terpadu ASIK VOL VI • Universitas Pendidikan Indonesia
-          </p>
-        </div>
       </div>
+
     </div>
   );
 }

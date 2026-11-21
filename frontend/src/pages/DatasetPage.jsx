@@ -56,28 +56,32 @@ export default function DatasetPage() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
-      <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2.5">
-            <Database className="w-5 h-5 text-cyan-400" /> Dataset Pipeline & Taxonomic Benchmark
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-[#0E6E7E] text-xs font-medium mb-2">
+            <Database className="w-3.5 h-3.5" />
+            <span>Dataset & Benchmark Taksonomi</span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#0B1220] tracking-tight">
+            Standar Kurasi & <span className="font-serif-italic font-normal">Taksonomi Terkunci.</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1 max-w-2xl">
             Standar kurasi data, validasi taksonomi 3 spesies target MVP, dan protokol pencegahan data leakage untuk model FishGuard AI.
           </p>
         </div>
-        <div className="text-xs px-3 py-1.5 rounded-lg bg-cyan-950/80 border border-cyan-800 text-cyan-300 font-mono">
-          YOLO Format: <code className="text-white">&lt;class_id&gt; &lt;x_c&gt; &lt;y_c&gt; &lt;w&gt; &lt;h&gt;</code>
+        <div className="text-xs px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-700 font-mono">
+          YOLO Format: <code className="text-[#0B1220] font-bold">&lt;class_id&gt; &lt;x_c&gt; &lt;y_c&gt; &lt;w&gt; &lt;h&gt;</code>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-slate-800 gap-2">
+      <div className="flex border-b border-slate-200 gap-2">
         <button
           onClick={() => setActiveTab('species')}
-          className={`pb-3 px-4 text-xs font-semibold flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
+          className={`pb-3 px-4 text-xs font-medium flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
             activeTab === 'species'
-              ? 'border-cyan-400 text-cyan-300'
-              : 'border-transparent text-slate-400 hover:text-slate-200'
+              ? 'border-[#0E6E7E] text-[#0E6E7E]'
+              : 'border-transparent text-slate-500 hover:text-[#0B1220]'
           }`}
         >
           <Layers className="w-4 h-4" />
@@ -86,10 +90,10 @@ export default function DatasetPage() {
 
         <button
           onClick={() => setActiveTab('audit')}
-          className={`pb-3 px-4 text-xs font-semibold flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
+          className={`pb-3 px-4 text-xs font-medium flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
             activeTab === 'audit'
-              ? 'border-cyan-400 text-cyan-300'
-              : 'border-transparent text-slate-400 hover:text-slate-200'
+              ? 'border-[#0E6E7E] text-[#0E6E7E]'
+              : 'border-transparent text-slate-500 hover:text-[#0B1220]'
           }`}
         >
           <BookOpen className="w-4 h-4" />
@@ -98,10 +102,10 @@ export default function DatasetPage() {
 
         <button
           onClick={() => setActiveTab('protocol')}
-          className={`pb-3 px-4 text-xs font-semibold flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
+          className={`pb-3 px-4 text-xs font-medium flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
             activeTab === 'protocol'
-              ? 'border-cyan-400 text-cyan-300'
-              : 'border-transparent text-slate-400 hover:text-slate-200'
+              ? 'border-[#0E6E7E] text-[#0E6E7E]'
+              : 'border-transparent text-slate-500 hover:text-[#0B1220]'
           }`}
         >
           <ShieldCheck className="w-4 h-4" />
@@ -113,19 +117,19 @@ export default function DatasetPage() {
       {activeTab === 'species' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 animate-fadeIn">
           {/* Class 0 */}
-          <div className="p-6 rounded-2xl bg-slate-900/80 border border-cyan-800/40 shadow-sm space-y-3">
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#0E6E7E] uppercase tracking-wider">
                 Target Spesies 01
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-50 border border-teal-200 text-[#0E6E7E] font-semibold">
                 Class ID: 0
               </span>
             </div>
-            <h3 className="text-base font-bold text-white">
-              Kembung Perempuan (<em className="text-cyan-300">Rastrelliger brachysoma</em>)
+            <h3 className="text-base font-bold text-[#0B1220]">
+              Kembung Perempuan (<em>Rastrelliger brachysoma</em>)
             </h3>
-            <ul className="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <ul className="text-xs text-slate-600 space-y-2 list-disc list-inside">
               <li><strong>Famili:</strong> Scombridae</li>
               <li><strong>Ciri Diagnostik:</strong> Tubuh lebih tebal & membulat (deep-bodied) dibanding <em>R. kanagurta</em>, moncong tumpul membulat.</li>
               <li><strong>Habitat Teluk Banten:</strong> Pelagis neritik pantai, komoditas utama pendaratan PPN Karangantu.</li>
@@ -134,19 +138,19 @@ export default function DatasetPage() {
           </div>
 
           {/* Class 1 */}
-          <div className="p-6 rounded-2xl bg-slate-900/80 border border-amber-800/40 shadow-sm space-y-3">
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">
                 Target Spesies 02
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 border border-amber-800 text-amber-300 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 font-semibold">
                 Class ID: 1
               </span>
             </div>
-            <h3 className="text-base font-bold text-white">
-              Ikan Selar Kuning (<em className="text-amber-300">Selaroides leptolepis</em>)
+            <h3 className="text-base font-bold text-[#0B1220]">
+              Ikan Selar Kuning (<em>Selaroides leptolepis</em>)
             </h3>
-            <ul className="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <ul className="text-xs text-slate-600 space-y-2 list-disc list-inside">
               <li><strong>Famili:</strong> Carangidae</li>
               <li><strong>Ciri Diagnostik:</strong> Pita emas lebar membujur dari tepi atas mata ke pangkal ekor, bintik hitam operkulum jelas.</li>
               <li><strong>Habitat Teluk Banten:</strong> Demersal / pelagis perairan pantai berlumpur, target jaring insang & pukat kantong.</li>
@@ -155,19 +159,19 @@ export default function DatasetPage() {
           </div>
 
           {/* Class 2 */}
-          <div className="p-6 rounded-2xl bg-slate-900/80 border border-orange-800/40 shadow-sm space-y-3">
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-orange-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
                 Target Spesies 03
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-950 border border-orange-800 text-orange-300 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-orange-50 border border-orange-200 text-orange-800 font-semibold">
                 Class ID: 2
               </span>
             </div>
-            <h3 className="text-base font-bold text-white">
-              Ikan Kuniran (<em className="text-orange-300">Upeneus sulphureus</em>)
+            <h3 className="text-base font-bold text-[#0B1220]">
+              Ikan Kuniran (<em>Upeneus sulphureus</em>)
             </h3>
-            <ul className="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <ul className="text-xs text-slate-600 space-y-2 list-disc list-inside">
               <li><strong>Famili:</strong> Mullidae</li>
               <li><strong>Ciri Diagnostik:</strong> Sepasang sungut dagu putih, sirip ekor polos tanpa garis melintang gelap, 2 garis kuning longitudinal (Uiblein et al., 2025).</li>
               <li><strong>Habitat Teluk Banten:</strong> Demersal dasar lunak/berpasir, sering tertangkap jaring arad / cantrang Karangantu.</li>
@@ -179,46 +183,46 @@ export default function DatasetPage() {
 
       {/* Tab 2: Public Dataset Audit Table */}
       {activeTab === 'audit' && (
-        <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm space-y-4 animate-fadeIn">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4 animate-fadeIn">
           <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-cyan-400" /> Hasil Audit Repositori Citra Publik
+            <h3 className="text-base font-bold text-[#0B1220] flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-[#0E6E7E]" /> Hasil Audit Repositori Citra Publik
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Evaluasi kesesuaian domain tangkapan perikanan, lisensi akademik, dan integritas taksonomi sebelum digunakan dalam pipeline sintesis.
             </p>
           </div>
 
-          <div className="overflow-x-auto border border-slate-800 rounded-xl">
+          <div className="overflow-x-auto border border-slate-200 rounded-2xl">
             <table className="w-full text-left text-xs min-w-[700px]">
-              <thead className="border-b border-slate-800 text-slate-300 font-semibold bg-slate-950">
+              <thead className="border-b border-slate-200 text-[#0B1220] font-semibold bg-slate-50">
                 <tr>
-                  <th className="py-3 px-4">Dataset</th>
-                  <th className="py-3 px-4">Ketersediaan Spesies</th>
-                  <th className="py-3 px-4">Format Anotasi</th>
-                  <th className="py-3 px-4">Lisensi</th>
-                  <th className="py-3 px-4">Kesesuaian Domain</th>
-                  <th className="py-3 px-4 text-right">Tautan</th>
+                  <th className="py-3.5 px-4">Dataset</th>
+                  <th className="py-3.5 px-4">Ketersediaan Spesies</th>
+                  <th className="py-3.5 px-4">Format Anotasi</th>
+                  <th className="py-3.5 px-4">Lisensi</th>
+                  <th className="py-3.5 px-4">Kesesuaian Domain</th>
+                  <th className="py-3.5 px-4 text-right">Tautan</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-slate-100">
                 {publicDatasets.map((ds, idx) => (
-                  <tr key={idx} className="hover:bg-slate-800/30">
-                    <td className="py-3 px-4 font-bold text-white whitespace-nowrap">{ds.name}</td>
-                    <td className="py-3 px-4 text-slate-200">{ds.speciesAvailability}</td>
+                  <tr key={idx} className="hover:bg-slate-50/50">
+                    <td className="py-3 px-4 font-bold text-[#0B1220] whitespace-nowrap">{ds.name}</td>
+                    <td className="py-3 px-4 text-slate-600">{ds.speciesAvailability}</td>
                     <td className="py-3 px-4">
-                      <span className="font-mono text-[11px] text-cyan-300 bg-slate-950 px-2 py-1 rounded border border-slate-700/80 block">
+                      <span className="font-mono text-[11px] text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 block">
                         {ds.annotation}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-slate-300 whitespace-nowrap">{ds.license}</td>
-                    <td className="py-3 px-4 text-slate-300">{ds.suitability}</td>
+                    <td className="py-3 px-4 text-slate-600 whitespace-nowrap">{ds.license}</td>
+                    <td className="py-3 px-4 text-slate-600">{ds.suitability}</td>
                     <td className="py-3 px-4 text-right whitespace-nowrap">
                       <a 
                         href={ds.url} 
                         target="_blank" 
                         rel="noreferrer" 
-                        className="text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 font-semibold"
+                        className="text-[#0E6E7E] hover:underline inline-flex items-center gap-1 font-medium"
                       >
                         Buka <ExternalLink className="w-3.5 h-3.5" />
                       </a>
@@ -233,32 +237,32 @@ export default function DatasetPage() {
 
       {/* Tab 3: Best Practices to Prevent Data Leakage */}
       {activeTab === 'protocol' && (
-        <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm space-y-4 animate-fadeIn">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4 animate-fadeIn">
           <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" /> Protokol Pemisahan Data & Pencegahan Data Leakage
+            <h3 className="text-base font-bold text-[#0B1220] flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-700" /> Protokol Pemisahan Data & Pencegahan Data Leakage
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Aturan ketat integritas sains untuk mencegah overfitting dan evaluasi yang tidak realistis pada data uji.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-300">
-            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-              <span className="font-bold text-cyan-400 block text-sm">1. Group-Split by Specimen ID</span>
-              <p className="text-slate-300 leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-600">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <span className="font-bold text-[#0B1220] block text-sm">1. Group-Split by Specimen ID</span>
+              <p className="leading-relaxed">
                 Foto dari satu individu spesimen yang sama dari berbagai sudut atau klaster koleksi dikunci dalam split yang sama (Train ATAU Val, bukan keduanya) untuk mencegah kebocoran informasi.
               </p>
             </div>
-            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-              <span className="font-bold text-emerald-400 block text-sm">2. Background Substrate Independence</span>
-              <p className="text-slate-300 leading-relaxed">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <span className="font-bold text-[#0B1220] block text-sm">2. Background Substrate Independence</span>
+              <p className="leading-relaxed">
                 Pemisahan tekstur latar belakang (meja stainless, talenan kayu, keranjang biru, es batu) memastikan model mempelajari ciri morfologis ikan, bukan menghafal tekstur alas.
               </p>
             </div>
-            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-              <span className="font-bold text-amber-400 block text-sm">3. Standar Anotasi & Evaluasi Terbuka</span>
-              <p className="text-slate-300 leading-relaxed">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <span className="font-bold text-[#0B1220] block text-sm">3. Standar Anotasi & Evaluasi Terbuka</span>
+              <p className="leading-relaxed">
                 Label koordinat dinormalisasi 0.0 - 1.0. Metrik performa mengacu pada standar resmi YOLO (mAP@50, mAP@50-95, dan Mean Absolute Error cacah individu).
               </p>
             </div>
