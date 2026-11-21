@@ -358,7 +358,7 @@ export default function LandingPage({ onLoginClick, onExploreGuest }) {
               <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/80 shadow-sm flex items-center justify-between">
                 <div>
                   <div className="text-xs font-bold text-[#0B1220]">Peta Prediksi Tangkapan</div>
-                  <div className="text-[11px] text-slate-500">CartoDB Positron • Resolusi 1 km²</div>
+                  <div className="text-[11px] text-slate-500">Esri Oseanografi & Batimetri • Resolusi 1 km²</div>
                 </div>
                 <Compass className="w-4 h-4 text-[#0E6E7E]" />
               </div>

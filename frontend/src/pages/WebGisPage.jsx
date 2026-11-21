@@ -18,45 +18,46 @@ import {
   ChevronRight,
   X,
   Crosshair,
-  Calendar
+  Calendar,
+  Waves
 } from 'lucide-react';
 import { getSpeciesCatalog, getPredictionGeoJSON, getLandingSites, getTelemetry } from '../api/client';
 import { formatNumber, formatWeight, formatDensity, formatPrecision } from '../utils/formatters';
 
 const BASEMAP_OPTIONS = {
+  ocean: {
+    id: 'ocean',
+    name: 'Oseanografi',
+    desc: 'Batimetri & Laut Esri',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',
+    options: { maxZoom: 18, attribution: 'Tiles &copy; Esri &mdash; GEBCO, NOAA' },
+    icon: Waves,
+    accent: 'border-[#0E6E7E] text-[#0E6E7E]'
+  },
   positron: {
     id: 'positron',
-    name: 'Positron Terang',
-    desc: 'CartoDB Light Minimalis',
-    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    options: { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; CARTO' },
+    name: 'Terang Minimalis',
+    desc: 'Esri Light Gray Canvas',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    options: { maxZoom: 18, attribution: 'Tiles &copy; Esri &mdash; DeLorme, NAVTEQ' },
     icon: Palette,
-    accent: 'border-[#0E6E7E] text-[#0E6E7E]'
+    accent: 'border-sky-600 text-sky-700'
   },
   canvas: {
     id: 'canvas',
     name: 'Canvas Gelap',
-    desc: 'CartoDB Dark Minimalis',
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    options: { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; CARTO' },
+    desc: 'Esri Dark Gray Minimalis',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    options: { maxZoom: 18, attribution: 'Tiles &copy; Esri &mdash; DeLorme, NAVTEQ' },
     icon: Palette,
     accent: 'border-purple-600 text-purple-700'
-  },
-  street: {
-    id: 'street',
-    name: 'Street Maps',
-    desc: 'OpenStreetMap Pesisir',
-    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    options: { maxZoom: 19, attribution: '&copy; OpenStreetMap' },
-    icon: MapIcon,
-    accent: 'border-emerald-600 text-emerald-700'
   },
   imagery: {
     id: 'imagery',
     name: 'Satelit Esri',
     desc: 'World Imagery Satelit',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    options: { maxZoom: 19, attribution: 'Tiles &copy; Esri' },
+    options: { maxZoom: 18, attribution: 'Tiles &copy; Esri &mdash; Earthstar Geographics' },
     icon: Satellite,
     accent: 'border-amber-600 text-amber-700'
   }
@@ -70,7 +71,7 @@ export default function WebGisPage({ onOpenDrawer }) {
   const markersLayerRef = useRef(null);
 
   // States
-  const [selectedBasemap, setSelectedBasemap] = useState('positron');
+  const [selectedBasemap, setSelectedBasemap] = useState('ocean');
   const [showGrid, setShowGrid] = useState(true);
   const [speciesList, setSpeciesList] = useState([]);
   const [selectedSpecies, setSelectedSpecies] = useState('rastrelliger');
@@ -129,7 +130,7 @@ export default function WebGisPage({ onOpenDrawer }) {
     L.control.scale({ imperial: false, metric: true, position: 'bottomleft' }).addTo(map);
 
     // Base Tile Layer
-    const baseConfig = BASEMAP_OPTIONS.positron;
+    const baseConfig = BASEMAP_OPTIONS.ocean;
     const tile = L.tileLayer(baseConfig.url, baseConfig.options).addTo(map);
     tileLayerRef.current = tile;
 
@@ -286,10 +287,10 @@ export default function WebGisPage({ onOpenDrawer }) {
 
             return {
               fillColor: getColor(val, minVal, maxVal, selectedSpecies),
-              weight: selectedBasemap === 'imagery' ? 0.9 : 0.5,
+              weight: (selectedBasemap === 'imagery' || selectedBasemap === 'canvas') ? 0.9 : 0.5,
               opacity: 0.6,
-              color: selectedBasemap === 'imagery' ? '#ffffff' : '#080d1a',
-              fillOpacity: selectedBasemap === 'imagery' ? 0.65 : 0.72
+              color: (selectedBasemap === 'imagery' || selectedBasemap === 'canvas') ? '#ffffff' : '#080d1a',
+              fillOpacity: (selectedBasemap === 'imagery' || selectedBasemap === 'canvas') ? 0.65 : 0.72
             };
           },
           onEachFeature: (feature, layer) => {
