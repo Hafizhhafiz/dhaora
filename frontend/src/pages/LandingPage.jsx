@@ -91,15 +91,15 @@ export default function LandingPage({ onLoginClick, onExploreGuest }) {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-medium mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#9FD0D8]" />
-            <span>WPPNRI 712 • Teluk Banten & PPN Karangantu</span>
+            <span>ASIK VOL VI • Teluk Banten & PPN Karangantu (WPPNRI 712)</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-            Intelijen Perikanan <span className="font-serif-italic font-normal text-[#E2F1F3]">Teluk Banten.</span>
+            DHAORA: Sistem Analisis <span className="font-serif-italic font-normal text-[#E2F1F3]">Menggunakan YOLO.</span>
           </h1>
 
           <p className="mt-5 text-base sm:text-lg text-slate-200/90 max-w-2xl mx-auto leading-relaxed font-normal">
-            Platform analitika terintegrasi observasi oseanografi, visi komputer deteksi spesimen, dan kepatuhan konservasi perikanan tangkap perairan Banten.
+            Platform analitika perikanan berbasis visi komputer YOLO terintegrasi untuk klasifikasi spesimen, estimasi biometrik morfometri, dan pemantauan perairan Teluk Banten (PPN Karangantu).
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
