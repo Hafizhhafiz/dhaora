@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional
 from fastapi import APIRouter, HTTPException
 
-from ..services.storage_service import get_recent_analyses, get_statistics
+from ..services.storage_service import get_recent_analyses, get_statistics, check_static_file_exists, is_synthetic_test
 from ..config import DATABASE_FILE
 
 router = APIRouter(prefix="/api", tags=["History & Statistics"])
@@ -43,13 +43,17 @@ async def get_unified_sessions(limit: int = 50):
             c = conn.cursor()
             c.execute("SELECT session_id, created_at, module, title, summary, image_url FROM dhaora_sessions ORDER BY created_at DESC LIMIT ?", (limit,))
             for row in c.fetchall():
+                img_url = row["image_url"]
+                img_exists = check_static_file_exists(img_url)
                 sessions.append({
                     "session_id": row["session_id"],
                     "created_at": row["created_at"],
                     "module": row["module"],
                     "title": row["title"],
                     "summary": row["summary"],
-                    "image_url": row["image_url"],
+                    "image_url": img_url if img_exists else None,
+                    "has_image": img_exists,
+                    "is_synthetic": is_synthetic_test(row["title"]),
                     "source": "DHAORA Hub"
                 })
             conn.close()
@@ -60,13 +64,17 @@ async def get_unified_sessions(limit: int = 50):
     try:
         analyses = get_recent_analyses(limit=limit)
         for row in analyses:
+            img_url = row.get("result_image_url") or row.get("image_url")
+            has_img = row.get("has_result_image") or row.get("has_image") or False
             sessions.append({
                 "session_id": row.get("id"),
                 "created_at": row.get("timestamp"),
                 "module": "fishguard",
                 "title": f"FishGuard: {row.get('filename')}",
                 "summary": f"Total cacah: {row.get('total_count', 0)} ekor spesimen",
-                "image_url": row.get("result_image_url"),
+                "image_url": img_url if has_img else None,
+                "has_image": has_img,
+                "is_synthetic": row.get("is_synthetic", False),
                 "source": "FishGuard CV"
             })
     except Exception as e:
@@ -91,6 +99,8 @@ async def get_unified_sessions(limit: int = 50):
                     "title": f"Audit ByCatch: {row['fishing_gear']}",
                     "summary": f"Spesies: {row['detected_species']} ({row['catch_role']})",
                     "image_url": None,
+                    "has_image": False,
+                    "is_synthetic": False,
                     "source": "ByCatch AI"
                 })
             bc_conn.close()

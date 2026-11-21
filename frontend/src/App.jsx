@@ -39,6 +39,7 @@ export default function App() {
   const [activeModule, setActiveModule] = useState('home');
   const [activeTab, setActiveTab] = useState('home');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [healthInfo, setHealthInfo] = useState(null);
   const [bycatchHealth, setBycatchHealth] = useState(null);
   const [selectedAnalysis, setSelectedAnalysis] = useState(null);
@@ -115,7 +116,7 @@ export default function App() {
   // 3. MAIN DASHBOARD PLATFORM VIEW
   return (
     <div className="flex h-screen bg-[#060b17] text-slate-100 font-sans overflow-hidden">
-      {/* Sidebar Navigation */}
+      {/* Sidebar Navigation (with Mobile Drawer Support) */}
       <Sidebar 
         activeModule={activeModule}
         setActiveModule={setActiveModule}
@@ -127,6 +128,8 @@ export default function App() {
         onNavigateLanding={handleNavigateLanding}
         currentUser={currentUser}
         onLogout={handleLogout}
+        isMobileOpen={isMobileSidebarOpen}
+        onCloseMobile={() => setIsMobileSidebarOpen(false)}
       />
 
       {/* Main Content Area */}
@@ -140,12 +143,13 @@ export default function App() {
           currentUser={currentUser}
           onLogout={handleLogout}
           onNavigateLanding={handleNavigateLanding}
+          onToggleMobileSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
         />
 
-        <main className={`flex-1 overflow-y-auto relative ${activeModule === 'catchforecast' ? 'p-0' : 'p-6'}`}>
+        <main className={`flex-1 overflow-y-auto relative ${activeModule === 'catchforecast' ? 'p-0' : 'p-4 sm:p-6'}`}>
           <div className={activeModule === 'catchforecast' ? 'h-full w-full' : 'max-w-7xl mx-auto'}>
             <ErrorBoundary>
-              {/* PLATFORM HOME */}
+              {/* PLATFORM DASHBOARD */}
               {activeModule === 'home' && (
                 <PlatformHome 
                   setActiveModule={setActiveModule}

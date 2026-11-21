@@ -11,6 +11,7 @@ import {
   Filter
 } from 'lucide-react';
 import { getByCatchRecords, createByCatchTrip } from '../../api/client';
+import { formatNumber } from '../../utils/formatters';
 
 export default function ByCatchTripPage() {
   const [data, setData] = useState(null);
@@ -72,10 +73,10 @@ export default function ByCatchTripPage() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-            <ClipboardList className="w-6 h-6 text-blue-400" />
+          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2.5">
+            <ClipboardList className="w-5 h-5 text-blue-400" />
             <span>Pencatatan Trip & Monitoring Tangkapan Sampingan</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1">
@@ -85,14 +86,14 @@ export default function ByCatchTripPage() {
         <div className="flex items-center gap-2">
           <button
             onClick={fetchRecords}
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
-            title="Refresh Data"
+            className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer border border-slate-700"
+            title="Muat Ulang Data"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors cursor-pointer shadow-md shadow-blue-600/20"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all cursor-pointer shadow-md shadow-blue-600/20"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Catat Trip Baru</span>
@@ -110,40 +111,42 @@ export default function ByCatchTripPage() {
       {/* Summary Stat Cards */}
       {data?.summary && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-4">
-            <div className="text-[10px] text-slate-400 uppercase">Total Citra Pendaratan</div>
-            <div className="text-2xl font-bold text-slate-100 mt-1">{data.summary.total_images || 0}</div>
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 shadow-sm">
+            <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Total Citra Pendaratan</div>
+            <div className="text-2xl font-bold text-slate-100 mt-1">{formatNumber(data.summary.total_images || 0)}</div>
           </div>
-          <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-4">
-            <div className="text-[10px] text-slate-400 uppercase">Total Deteksi AI</div>
-            <div className="text-2xl font-bold text-cyan-400 mt-1">{data.summary.total_detections || 0}</div>
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 shadow-sm">
+            <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Total Deteksi AI</div>
+            <div className="text-2xl font-bold text-cyan-400 mt-1">{formatNumber(data.summary.total_detections || 0)}</div>
           </div>
-          <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-4">
-            <div className="text-[10px] text-slate-400 uppercase">Catatan Trip Terdaftar</div>
-            <div className="text-2xl font-bold text-blue-400 mt-1">{data.summary.total_catch_records || 0}</div>
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 shadow-sm">
+            <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Catatan Trip Terdaftar</div>
+            <div className="text-2xl font-bold text-blue-400 mt-1">{formatNumber(data.summary.total_catch_records || 0)}</div>
           </div>
-          <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-4">
-            <div className="text-[10px] text-slate-400 uppercase">Status Basis Data</div>
-            <div className="text-xs font-mono text-emerald-400 mt-2 font-semibold">WAL Mode Active</div>
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 shadow-sm">
+            <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Status Basis Data</div>
+            <div className="text-xs font-mono text-emerald-400 mt-2 font-bold flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5" /> WAL Mode Active
+            </div>
           </div>
         </div>
       )}
 
       {/* Records Table */}
-      <div className="rounded-xl bg-slate-900/90 border border-slate-800 overflow-hidden shadow-lg">
+      <div className="rounded-2xl bg-slate-900/90 border border-slate-800 overflow-hidden shadow-lg">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-slate-200 flex items-center gap-2">
+          <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
             <Database className="w-4 h-4 text-cyan-400" />
             <span>Daftar Riwayat Tangkapan & ByCatch Terkini</span>
           </h2>
-          <span className="text-xs text-slate-500 font-mono">
-            {data?.records?.length || 0} rekaman ditampilkan
+          <span className="text-xs text-slate-400 font-mono">
+            {formatNumber(data?.records?.length || 0)} rekaman ditampilkan
           </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-950 text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-800">
+            <thead className="bg-slate-950 text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Tanggal</th>
                 <th className="py-3 px-4">ID Trip / Kapal</th>
@@ -173,7 +176,7 @@ export default function ByCatchTripPage() {
                     </span>
                   </td>
                   <td className="py-2.5 px-4 capitalize text-slate-300 whitespace-nowrap">{row.catch_handling}</td>
-                  <td className="py-2.5 px-4 text-slate-500 font-sans text-xs max-w-xs truncate">{row.notes || "-"}</td>
+                  <td className="py-2.5 px-4 text-slate-400 font-sans text-xs max-w-xs truncate">{row.notes || "-"}</td>
                 </tr>
               ))}
               {(!data?.records || data.records.length === 0) && !loading && (
@@ -205,7 +208,7 @@ export default function ByCatchTripPage() {
                     type="date"
                     value={landingDate}
                     onChange={(e) => setLandingDate(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                     required
                   />
                 </div>
@@ -215,7 +218,7 @@ export default function ByCatchTripPage() {
                     type="text"
                     value={vesselTripId}
                     onChange={(e) => setVesselTripId(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                     required
                   />
                 </div>
@@ -227,7 +230,7 @@ export default function ByCatchTripPage() {
                   type="text"
                   value={fishingGear}
                   onChange={(e) => setFishingGear(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                   required
                 />
               </div>
@@ -239,7 +242,7 @@ export default function ByCatchTripPage() {
                     type="text"
                     value={targetSpecies}
                     onChange={(e) => setTargetSpecies(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                   />
                 </div>
                 <div className="space-y-1">
@@ -248,7 +251,7 @@ export default function ByCatchTripPage() {
                     type="text"
                     value={detectedSpecies}
                     onChange={(e) => setDetectedSpecies(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                     required
                   />
                 </div>
@@ -260,7 +263,7 @@ export default function ByCatchTripPage() {
                   <select
                     value={catchRole}
                     onChange={(e) => setCatchRole(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                   >
                     <option value="target">Target Catch</option>
                     <option value="incidental_non_target_retained">Incidental Retained Bycatch</option>
@@ -272,7 +275,7 @@ export default function ByCatchTripPage() {
                   <select
                     value={catchHandling}
                     onChange={(e) => setCatchHandling(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200"
                   >
                     <option value="retained">Retained (Simpan)</option>
                     <option value="discarded">Discarded (Buang)</option>
@@ -285,7 +288,7 @@ export default function ByCatchTripPage() {
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 h-16"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 h-16"
                 />
               </div>
 
@@ -293,14 +296,14 @@ export default function ByCatchTripPage() {
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 cursor-pointer"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 cursor-pointer"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 text-white font-semibold cursor-pointer"
+                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold cursor-pointer"
                 >
                   {submitting ? "Menyimpan..." : "Simpan Catatan"}
                 </button>

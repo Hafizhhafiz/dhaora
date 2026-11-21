@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import L from 'leaflet';
 import { 
   Layers, 
-  Map, 
+  Map as MapIcon, 
   Satellite, 
   Mountain, 
   Palette,
@@ -13,9 +13,15 @@ import {
   Thermometer, 
   Info,
   Maximize2,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Crosshair,
+  Calendar
 } from 'lucide-react';
 import { getSpeciesCatalog, getPredictionGeoJSON, getLandingSites, getTelemetry } from '../api/client';
+import { formatNumber, formatWeight, formatDensity, formatPrecision } from '../utils/formatters';
 
 const BASEMAP_OPTIONS = {
   canvas: {
@@ -29,17 +35,17 @@ const BASEMAP_OPTIONS = {
   },
   street: {
     id: 'street',
-    name: 'Street',
-    desc: 'OpenStreetMap Jalan & Pesisir',
+    name: 'Street Maps',
+    desc: 'OpenStreetMap Pesisir',
     url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    options: { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' },
-    icon: Map,
+    options: { maxZoom: 19, attribution: '&copy; OpenStreetMap' },
+    icon: MapIcon,
     accent: 'border-emerald-500 text-emerald-300'
   },
   imagery: {
     id: 'imagery',
-    name: 'Imagery',
-    desc: 'Esri World Imagery Satelit',
+    name: 'Satelit Esri',
+    desc: 'World Imagery Satelit',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     options: { maxZoom: 19, attribution: 'Tiles &copy; Esri' },
     icon: Satellite,
@@ -47,12 +53,12 @@ const BASEMAP_OPTIONS = {
   },
   topographic: {
     id: 'topographic',
-    name: 'Topographic',
-    desc: 'Esri World Topo & Kontur Daratan',
+    name: 'Topografi',
+    desc: 'Kontur Batimetri Darat',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
     options: { maxZoom: 19, attribution: 'Tiles &copy; Esri' },
     icon: Mountain,
-    accent: 'border-emerald-400 text-emerald-200'
+    accent: 'border-cyan-400 text-cyan-200'
   }
 };
 
@@ -65,59 +71,79 @@ export default function WebGisPage({ onOpenDrawer }) {
 
   // States
   const [selectedBasemap, setSelectedBasemap] = useState('canvas');
-  const [showGrid, setShowGrid] = useState(true); // ON/OFF Grid Toggle
+  const [showGrid, setShowGrid] = useState(true);
   const [speciesList, setSpeciesList] = useState([]);
   const [selectedSpecies, setSelectedSpecies] = useState('rastrelliger');
-  const [activeMetric, setActiveMetric] = useState('catch'); // 'catch' or 'sst' or 'depth'
+  const [activeMetric, setActiveMetric] = useState('catch'); // 'catch' | 'sst' | 'depth'
   const [loadingMap, setLoadingMap] = useState(false);
   const [telemetry, setTelemetry] = useState(null);
   const [landingData, setLandingData] = useState(null);
   const [selectedCell, setSelectedCell] = useState(null);
+  const [isControlOpen, setIsControlOpen] = useState(true);
+  const [cursorCoords, setCursorCoords] = useState(null);
+  const [metricRange, setMetricRange] = useState({ min: 0, max: 50 });
 
-  // Color Ramps for Species & Metrics
+  // Sequential & Contrast Color Ramps
   const getColor = (val, min, max, speciesId) => {
     if (val === undefined || val === null) return '#1e293b';
     const norm = Math.max(0, Math.min(1, (val - min) / (max - min || 1)));
 
     if (activeMetric === 'sst') {
-      // SST Thermal Gradient (Blue -> Amber -> Red)
-      return norm > 0.75 ? '#ef4444' : norm > 0.5 ? '#f59e0b' : norm > 0.25 ? '#38bdf8' : '#3b82f6';
+      // SST Thermal Gradient (Cool Cyan -> Yellow -> Coral -> Deep Crimson)
+      return norm > 0.75 ? '#ef4444' : norm > 0.5 ? '#f59e0b' : norm > 0.25 ? '#38bdf8' : '#0284c7';
     }
     if (activeMetric === 'depth') {
-      // Bathymetry Depth (Cyan shallow -> Deep Indigo)
-      return norm > 0.75 ? '#0369a1' : norm > 0.5 ? '#0284c7' : norm > 0.25 ? '#06b6d4' : '#22d3ee';
+      // Bathymetry Depth (Bright Shallow Cyan -> Deep Navy)
+      return norm > 0.75 ? '#0c4a6e' : norm > 0.5 ? '#0284c7' : norm > 0.25 ? '#06b6d4' : '#67e8f9';
     }
 
-    // Catch Density Colors per Species
+    // High Contrast Sequential Catch Palette per Species (Clear over dark sea)
     if (speciesId === 'selaroides') {
-      // Gold / Amber
-      return norm > 0.8 ? '#d97706' : norm > 0.5 ? '#f59e0b' : norm > 0.25 ? '#fbbf24' : '#fef3c7';
+      return norm > 0.8 ? '#d97706' : norm > 0.5 ? '#f59e0b' : norm > 0.25 ? '#fde047' : '#fef08a';
     } else if (speciesId === 'upeneus') {
-      // Orange / Coral
-      return norm > 0.8 ? '#ea580c' : norm > 0.5 ? '#f97316' : norm > 0.25 ? '#fb923c' : '#ffedd5';
+      return norm > 0.8 ? '#ea580c' : norm > 0.5 ? '#f97316' : norm > 0.25 ? '#fb923c' : '#fed7aa';
     } else {
-      // Rastrelliger: Oceanic Cyan / Sky Blue
-      return norm > 0.8 ? '#0284c7' : norm > 0.5 ? '#0ea5e9' : norm > 0.25 ? '#38bdf8' : '#bae6fd';
+      // Rastrelliger (Cyan to Emerald for high contrast over dark navy sea)
+      return norm > 0.8 ? '#059669' : norm > 0.5 ? '#10b981' : norm > 0.25 ? '#06b6d4' : '#38bdf8';
     }
   };
 
-  // 1. Initialize Map with Zoom Control moved to Top-Right (No overlap with Left Control Card!)
+  // 1. Initialize Leaflet Map Instance
   useEffect(() => {
-    if (!mapContainerRef.current) return;
-    if (mapInstanceRef.current) return;
+    if (!mapContainerRef.current || mapInstanceRef.current) return;
 
-    // Center on Teluk Banten (PPN Karangantu & Banten Bay)
+    // Teluk Banten coordinates (Center: -5.98, 106.15, Zoom: 11)
     const map = L.map(mapContainerRef.current, {
       center: [-5.98, 106.15],
       zoom: 11,
-      zoomControl: false, // Turn off default top-left zoom control
-      attributionControl: false
+      minZoom: 9,
+      maxZoom: 18,
+      zoomControl: false,
+      attributionControl: true
     });
 
-    // Place Zoom Control cleanly at topright so it NEVER overlaps with left control card
+    // Custom Zoom Control at Top-Right
     L.control.zoom({ position: 'topright' }).addTo(map);
 
+    // Leaflet Metric Scale Bar at Bottom-Left
+    L.control.scale({ imperial: false, metric: true, position: 'bottomleft' }).addTo(map);
+
+    // Base Tile Layer
+    const baseConfig = BASEMAP_OPTIONS.canvas;
+    const tile = L.tileLayer(baseConfig.url, baseConfig.options).addTo(map);
+    tileLayerRef.current = tile;
+
+    // Layer Groups
     markersLayerRef.current = L.layerGroup().addTo(map);
+
+    // Cursor position tracking
+    map.on('mousemove', (e) => {
+      setCursorCoords({
+        lat: e.latlng.lat.toFixed(4),
+        lng: e.latlng.lng.toFixed(4)
+      });
+    });
+
     mapInstanceRef.current = map;
 
     return () => {
@@ -126,22 +152,16 @@ export default function WebGisPage({ onOpenDrawer }) {
     };
   }, []);
 
-  // 2. Handle Basemap Tile Swapping
+  // 2. Basemap Switcher
   useEffect(() => {
-    if (!mapInstanceRef.current) return;
+    if (!mapInstanceRef.current || !tileLayerRef.current) return;
     const config = BASEMAP_OPTIONS[selectedBasemap] || BASEMAP_OPTIONS.canvas;
-
-    if (tileLayerRef.current) {
-      mapInstanceRef.current.removeLayer(tileLayerRef.current);
-    }
-
-    const newTileLayer = L.tileLayer(config.url, config.options);
-    newTileLayer.addTo(mapInstanceRef.current);
-    newTileLayer.bringToBack();
-    tileLayerRef.current = newTileLayer;
+    mapInstanceRef.current.removeLayer(tileLayerRef.current);
+    const newTile = L.tileLayer(config.url, config.options).addTo(mapInstanceRef.current);
+    tileLayerRef.current = newTile;
   }, [selectedBasemap]);
 
-  // 3. Fetch Meta & Telemetry
+  // 3. Load Species & Landing Metadata
   useEffect(() => {
     async function loadMeta() {
       try {
@@ -171,23 +191,23 @@ export default function WebGisPage({ onOpenDrawer }) {
       const portIcon = L.divIcon({
         className: 'custom-port-icon',
         html: `
-          <div style="background:#ef4444; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid white; box-shadow:0 0 15px rgba(239,68,68,0.8);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+          <div style="background:#ef4444; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid white; box-shadow:0 0 16px rgba(239,68,68,0.9); cursor:pointer;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
           </div>
         `,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14]
+        iconSize: [30, 30],
+        iconAnchor: [15, 15]
       });
 
       const portMarker = L.marker(port.coordinates, { icon: portIcon });
       portMarker.bindPopup(`
-        <div style="font-family:sans-serif; color:#f8fafc; padding:8px;">
-          <h4 style="font-size:13px; font-weight:bold; color:#ef4444; margin-bottom:4px;">${port.name}</h4>
+        <div style="font-family:system-ui, sans-serif; color:#f8fafc; padding:8px; min-width:200px;">
+          <h4 style="font-size:14px; font-weight:bold; color:#ef4444; margin-bottom:4px;">${port.name}</h4>
           <p style="font-size:11px; color:#94a3b8; margin-bottom:6px;">Pangkalan Pendaratan Ikan Utama (WPPNRI 712)</p>
-          <div style="font-size:11px; border-top:1px solid #334155; padding-top:6px; line-height:1.5;">
-            <div>Total Pendaratan: <strong>${port.landing_volume_2026_kg.toLocaleString()} kg</strong></div>
-            <div>Armada: <strong>${port.vessels}</strong></div>
-            <div>Koordinat: <strong>${port.coordinates[0]}°S, ${port.coordinates[1]}°E</strong></div>
+          <div style="font-size:11px; border-top:1px solid #334155; padding-top:6px; line-height:1.6;">
+            <div>Total Pendaratan: <strong>${formatWeight(port.landing_volume_2026_kg, 0)}</strong></div>
+            <div>Armada Kapal: <strong>${port.vessels}</strong></div>
+            <div>Koordinat: <strong>${port.coordinates[0]}° LS, ${port.coordinates[1]}° BT</strong></div>
           </div>
         </div>
       `);
@@ -200,7 +220,7 @@ export default function WebGisPage({ onOpenDrawer }) {
         const stIcon = L.divIcon({
           className: 'custom-station-icon',
           html: `
-            <div style="background:#0ea5e9; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid white; box-shadow:0 0 8px rgba(14,165,233,0.8);">
+            <div style="background:#0ea5e9; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid white; box-shadow:0 0 8px rgba(14,165,233,0.8); cursor:pointer;">
               <div style="width:6px; height:6px; border-radius:50%; background:white;"></div>
             </div>
           `,
@@ -209,9 +229,9 @@ export default function WebGisPage({ onOpenDrawer }) {
         });
         const stMarker = L.marker(st.coordinates, { icon: stIcon });
         stMarker.bindPopup(`
-          <div style="font-family:sans-serif; color:#f8fafc; padding:6px;">
+          <div style="font-family:system-ui, sans-serif; color:#f8fafc; padding:6px; min-width:180px;">
             <div style="font-size:12px; font-weight:bold; color:#38bdf8;">${st.station_id}: ${st.name}</div>
-            <div style="font-size:11px; color:#94a3b8; margin-top:4px;">Zona: ${st.zone} | Kedalaman: ${st.depth_m} m</div>
+            <div style="font-size:11px; color:#94a3b8; margin-top:4px;">Zona: ${st.zone} | Kedalaman: ${formatNumber(st.depth_m, 1)} m</div>
           </div>
         `);
         markersLayerRef.current.addLayer(stMarker);
@@ -223,7 +243,6 @@ export default function WebGisPage({ onOpenDrawer }) {
   useEffect(() => {
     if (!mapInstanceRef.current) return;
 
-    // If grid is toggled OFF, remove layer from map
     if (!showGrid) {
       if (geojsonLayerRef.current) {
         mapInstanceRef.current.removeLayer(geojsonLayerRef.current);
@@ -239,12 +258,10 @@ export default function WebGisPage({ onOpenDrawer }) {
       .then((geojson) => {
         if (!isSubscribed) return;
 
-        // Remove previous GeoJSON layer
         if (geojsonLayerRef.current) {
           mapInstanceRef.current.removeLayer(geojsonLayerRef.current);
         }
 
-        // Determine min and max for active metric
         let minVal = Infinity;
         let maxVal = -Infinity;
 
@@ -258,6 +275,8 @@ export default function WebGisPage({ onOpenDrawer }) {
           if (val > maxVal) maxVal = val;
         });
 
+        setMetricRange({ min: minVal, max: maxVal });
+
         const newLayer = L.geoJSON(geojson, {
           style: (feature) => {
             const props = feature.properties;
@@ -267,10 +286,10 @@ export default function WebGisPage({ onOpenDrawer }) {
 
             return {
               fillColor: getColor(val, minVal, maxVal, selectedSpecies),
-              weight: selectedBasemap === 'imagery' ? 1.0 : 0.6,
-              opacity: 0.85,
+              weight: selectedBasemap === 'imagery' ? 0.9 : 0.5,
+              opacity: 0.6,
               color: selectedBasemap === 'imagery' ? '#ffffff' : '#080d1a',
-              fillOpacity: selectedBasemap === 'imagery' ? 0.6 : 0.68
+              fillOpacity: selectedBasemap === 'imagery' ? 0.65 : 0.72
             };
           },
           onEachFeature: (feature, layer) => {
@@ -280,7 +299,7 @@ export default function WebGisPage({ onOpenDrawer }) {
                 l.setStyle({
                   weight: 2.5,
                   color: '#38bdf8',
-                  fillOpacity: 0.88
+                  fillOpacity: 0.9
                 });
                 l.bringToFront();
                 setSelectedCell(feature.properties);
@@ -312,246 +331,332 @@ export default function WebGisPage({ onOpenDrawer }) {
   const activeSpeciesObj = speciesList.find((s) => s.species_id === selectedSpecies);
 
   return (
-    <div className="relative w-full h-[calc(100vh-4rem)] overflow-hidden flex flex-col bg-[#060b17]">
+    <div className="relative w-full h-[calc(100vh-4rem)] overflow-hidden flex flex-col bg-[#060b17] select-none font-sans">
       {/* Map Canvas */}
       <div ref={mapContainerRef} className="w-full h-full z-0" />
 
-      {/* Floating Control Panel (Top-Left) - Placed cleanly with no zoom buttons underneath */}
-      <div className="absolute top-4 left-4 z-10 w-84 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] overflow-y-auto bg-[#0c1424]/95 border border-[#1e293b] rounded-2xl p-4 shadow-2xl backdrop-blur-md space-y-3.5">
-        <div className="flex items-center justify-between border-b border-[#1e293b] pb-2.5">
-          <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-cyan-400" />
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-              Kontrol WebGIS Teluk Banten
-            </h3>
-          </div>
-          {loadingMap && showGrid && (
-            <span className="text-[10px] text-cyan-400 font-mono animate-pulse">
-              Memuat GeoJSON...
-            </span>
-          )}
-        </div>
-
-        {/* 1. Basemap Selector (4 Clean Options: Canvas Maps, Street, Imagery, Topographic) */}
-        <div className="space-y-1.5">
-          <label className="text-[11px] font-bold text-slate-200 flex items-center justify-between">
-            <span>Pilihan Basemap:</span>
-            <span className="text-[10px] text-cyan-300 font-mono capitalize">
-              {BASEMAP_OPTIONS[selectedBasemap]?.name}
-            </span>
-          </label>
-          <div className="grid grid-cols-2 gap-1.5">
-            {Object.values(BASEMAP_OPTIONS).map((bm) => {
-              const Icon = bm.icon;
-              const isActive = selectedBasemap === bm.id;
-              return (
-                <button
-                  key={bm.id}
-                  onClick={() => setSelectedBasemap(bm.id)}
-                  className={`p-2 rounded-xl border text-left text-xs transition-all flex items-center gap-2 cursor-pointer ${
-                    isActive
-                      ? 'bg-cyan-950/70 border-cyan-400 text-cyan-200 shadow-md shadow-cyan-950/40 font-bold'
-                      : 'bg-[#0f172a] border-[#1e293b] text-slate-400 hover:text-slate-200 hover:border-slate-700'
-                  }`}
-                >
-                  <div className={`p-1.5 rounded-lg flex-shrink-0 ${isActive ? 'bg-cyan-500 text-slate-950' : 'bg-[#131e36] text-slate-400'}`}>
-                    <Icon className="w-3.5 h-3.5" />
-                  </div>
-                  <div className="truncate">
-                    <div className="text-[11px] font-semibold truncate leading-tight">{bm.name}</div>
-                    <div className="text-[9px] text-slate-400 truncate mt-0.5">{bm.desc}</div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* 2. ON/OFF Grid Visibility Toggle Switch */}
-        <div className="pt-2 border-t border-[#1e293b]">
-          <div className="flex items-center justify-between p-2.5 rounded-xl bg-[#090f1d] border border-[#1e293b]">
-            <div className="flex items-center gap-2">
-              {showGrid ? (
-                <Eye className="w-4 h-4 text-cyan-400" />
-              ) : (
-                <EyeOff className="w-4 h-4 text-slate-500" />
-              )}
-              <div>
-                <div className="text-xs font-bold text-slate-200">Grid Prediksi (1 km²)</div>
-                <div className="text-[10px] text-slate-400">
-                  {showGrid ? '798 Sel Poligon Aktif' : 'Grid Dinonaktifkan (Peta Polos)'}
-                </div>
-              </div>
-            </div>
-            
-            {/* Interactive Toggle Switch */}
-            <button
-              type="button"
-              onClick={() => setShowGrid(!showGrid)}
-              className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors cursor-pointer ${
-                showGrid ? 'bg-cyan-500 justify-end' : 'bg-slate-700 justify-start'
-              }`}
-              title={showGrid ? 'Sembunyikan Grid Prediksi' : 'Tampilkan Grid Prediksi'}
-            >
-              <div className="w-4 h-4 rounded-full bg-white shadow-md transform transition-transform" />
-            </button>
-          </div>
-        </div>
-
-        {/* 3. Target Species Selector (Active only when grid is ON, or shows note) */}
-        <div className={`space-y-1.5 pt-2 border-t border-[#1e293b] transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
-          <div className="flex items-center justify-between">
-            <label className="text-[11px] font-bold text-slate-200 block">
-              Target Spesies Prediksi:
-            </label>
-            {!showGrid && (
-              <span className="text-[9px] text-amber-400 font-semibold">(Nyalakan Grid)</span>
-            )}
-          </div>
-          <div className="grid grid-cols-3 gap-1.5">
-            {[
-              { id: 'rastrelliger', label: 'Kembung', color: 'border-cyan-500 text-cyan-300' },
-              { id: 'selaroides', label: 'Selar', color: 'border-amber-500 text-amber-300' },
-              { id: 'upeneus', label: 'Kuniran', color: 'border-orange-500 text-orange-300' },
-            ].map((sp) => (
-              <button
-                key={sp.id}
-                onClick={() => {
-                  setSelectedSpecies(sp.id);
-                  if (!showGrid) setShowGrid(true);
-                }}
-                className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer ${
-                  selectedSpecies === sp.id && showGrid
-                    ? `bg-slate-800 ${sp.color} shadow-sm font-bold`
-                    : 'bg-[#0f172a] border-[#1e293b] text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                {sp.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 4. Metric Switcher */}
-        <div className={`space-y-1.5 pt-2 border-t border-[#1e293b] transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
-          <label className="text-[11px] font-bold text-slate-200 block">
-            Parameter Tampilan Spasial:
-          </label>
-          <div className="grid grid-cols-3 gap-1.5 text-[11px]">
-            <button
-              onClick={() => {
-                setActiveMetric('catch');
-                if (!showGrid) setShowGrid(true);
-              }}
-              className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
-                activeMetric === 'catch' && showGrid
-                  ? 'bg-cyan-950/60 border-cyan-500/50 text-cyan-300 font-bold'
-                  : 'bg-[#0f172a] border-[#1e293b] text-slate-400'
-              }`}
-            >
-              Densitas Tangkapan
-            </button>
-            <button
-              onClick={() => {
-                setActiveMetric('sst');
-                if (!showGrid) setShowGrid(true);
-              }}
-              className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
-                activeMetric === 'sst' && showGrid
-                  ? 'bg-amber-950/60 border-amber-500/50 text-amber-300 font-bold'
-                  : 'bg-[#0f172a] border-[#1e293b] text-slate-400'
-              }`}
-            >
-              Suhu SST
-            </button>
-            <button
-              onClick={() => {
-                setActiveMetric('depth');
-                if (!showGrid) setShowGrid(true);
-              }}
-              className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
-                activeMetric === 'depth' && showGrid
-                  ? 'bg-blue-950/60 border-blue-500/50 text-blue-300 font-bold'
-                  : 'bg-[#0f172a] border-[#1e293b] text-slate-400'
-              }`}
-            >
-              Batimetri
-            </button>
-          </div>
-        </div>
-
-        {/* 5. Species Summary Card */}
-        {activeSpeciesObj && (
-          <div className="p-2.5 rounded-xl bg-[#090f1d] border border-[#1e293b] text-xs space-y-1">
-            <div className="font-bold text-white italic truncate">
-              {activeSpeciesObj.scientific_name}
-            </div>
-            <div className="text-[11px] text-slate-400 flex justify-between">
-              <span>Model Champion:</span>
-              <span className="text-slate-200">{activeSpeciesObj.champion_model}</span>
-            </div>
-            <div className="text-[11px] text-slate-400 flex justify-between">
-              <span>Akurasi Spatial R²:</span>
-              <span className="text-emerald-400 font-mono font-bold">
-                {activeSpeciesObj.spatial_r2_score}
-              </span>
-            </div>
-            <div className="text-[11px] text-slate-400 flex justify-between">
-              <span>Rerata Tangkapan:</span>
-              <span className="text-cyan-300 font-mono font-bold">
-                {activeSpeciesObj.mean_catch_kg_per_sqkm} kg/km²
-              </span>
-            </div>
-          </div>
-        )}
+      {/* Floating Prediction Period Banner (Top-Center) */}
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 shadow-lg text-slate-200 text-xs backdrop-blur-md">
+        <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+        <span className="font-medium">Prediksi Spasial: Siklus Harian (WPPNRI 712 Teluk Banten)</span>
       </div>
 
-      {/* Floating Hover Cell Inspector (Bottom-Left) - Only when grid is ON and cell is selected */}
-      {showGrid && selectedCell && (
-        <div className="absolute bottom-6 left-4 z-10 w-80 bg-[#0c1424]/95 border border-[#1e293b] rounded-2xl p-4 shadow-2xl backdrop-blur-md animate-in fade-in duration-150">
-          <div className="flex items-center justify-between border-b border-[#1e293b] pb-2 mb-2">
-            <div className="text-xs font-bold text-cyan-300 font-mono">
-              Grid Cell: {selectedCell.cell_id}
+      {/* Control Panel Toggle Pill (When collapsed) */}
+      {!isControlOpen && (
+        <button
+          onClick={() => setIsControlOpen(true)}
+          className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/95 border border-slate-700 text-slate-200 text-xs font-bold shadow-2xl backdrop-blur-md hover:bg-slate-800 transition-all cursor-pointer"
+        >
+          <Layers className="w-4 h-4 text-cyan-400" />
+          <span>Buka Kontrol Peta</span>
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+        </button>
+      )}
+
+      {/* Floating Control Panel (Top-Left) */}
+      {isControlOpen && (
+        <div className="absolute top-4 left-4 z-10 w-80 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] overflow-y-auto bg-slate-900/95 border border-slate-800 rounded-2xl p-4 shadow-2xl backdrop-blur-md space-y-3.5 animate-fadeIn">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+            <div className="flex items-center gap-2">
+              <Layers className="w-4 h-4 text-cyan-400" />
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+                Kontrol WebGIS Teluk Banten
+              </h3>
             </div>
-            <span className="text-[10px] text-slate-400">1 km² Domain</span>
+            <div className="flex items-center gap-1.5">
+              {loadingMap && showGrid && (
+                <span className="text-[10px] text-cyan-400 font-mono animate-pulse">
+                  Memuat...
+                </span>
+              )}
+              <button
+                onClick={() => setIsControlOpen(false)}
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                title="Sembunyikan Panel Kontrol"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* 1. Basemap Selector */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-bold text-slate-200 flex items-center justify-between">
+              <span>Pilihan Basemap:</span>
+              <span className="text-[10px] text-cyan-300 font-mono capitalize">
+                {BASEMAP_OPTIONS[selectedBasemap]?.name}
+              </span>
+            </label>
+            <div className="grid grid-cols-2 gap-1.5">
+              {Object.values(BASEMAP_OPTIONS).map((bm) => {
+                const Icon = bm.icon;
+                const isActive = selectedBasemap === bm.id;
+                return (
+                  <button
+                    key={bm.id}
+                    onClick={() => setSelectedBasemap(bm.id)}
+                    className={`p-2 rounded-xl border text-left text-xs transition-all flex items-center gap-2 cursor-pointer ${
+                      isActive
+                        ? 'bg-cyan-950/80 border-cyan-400 text-cyan-200 shadow-md font-bold'
+                        : 'bg-slate-950/80 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                    }`}
+                  >
+                    <div className={`p-1.5 rounded-lg shrink-0 ${isActive ? 'bg-cyan-500 text-slate-950' : 'bg-slate-800 text-slate-400'}`}>
+                      <Icon className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="truncate">
+                      <div className="text-[11px] font-semibold truncate leading-tight">{bm.name}</div>
+                      <div className="text-[9px] text-slate-400 truncate mt-0.5">{bm.desc}</div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 2. ON/OFF Grid Visibility Toggle Switch */}
+          <div className="pt-2 border-t border-slate-800">
+            <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div className="flex items-center gap-2">
+                {showGrid ? (
+                  <Eye className="w-4 h-4 text-cyan-400" />
+                ) : (
+                  <EyeOff className="w-4 h-4 text-slate-500" />
+                )}
+                <div>
+                  <div className="text-xs font-bold text-slate-200">Grid Prediksi (1 km²)</div>
+                  <div className="text-[10px] text-slate-400">
+                    {showGrid ? '798 Sel Poligon Aktif' : 'Grid Dinonaktifkan (Peta Polos)'}
+                  </div>
+                </div>
+              </div>
+              
+              <button
+                type="button"
+                onClick={() => setShowGrid(!showGrid)}
+                className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors cursor-pointer ${
+                  showGrid ? 'bg-cyan-500 justify-end' : 'bg-slate-700 justify-start'
+                }`}
+                title={showGrid ? 'Sembunyikan Grid Prediksi' : 'Tampilkan Grid Prediksi'}
+              >
+                <div className="w-4 h-4 rounded-full bg-white shadow-md transform transition-transform" />
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Target Species Selector */}
+          <div className={`space-y-1.5 pt-2 border-t border-slate-800 transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
+            <div className="flex items-center justify-between">
+              <label className="text-[11px] font-bold text-slate-200 block">
+                Target Spesies Prediksi:
+              </label>
+              {!showGrid && (
+                <span className="text-[9px] text-amber-400 font-semibold">(Nyalakan Grid)</span>
+              )}
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {[
+                { id: 'rastrelliger', label: 'Kembung', color: 'border-emerald-500 text-emerald-300' },
+                { id: 'selaroides', label: 'Selar', color: 'border-amber-500 text-amber-300' },
+                { id: 'upeneus', label: 'Kuniran', color: 'border-orange-500 text-orange-300' },
+              ].map((sp) => (
+                <button
+                  key={sp.id}
+                  onClick={() => {
+                    setSelectedSpecies(sp.id);
+                    if (!showGrid) setShowGrid(true);
+                  }}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer ${
+                    selectedSpecies === sp.id && showGrid
+                      ? `bg-slate-800 ${sp.color} shadow-sm font-bold`
+                      : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  {sp.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* 4. Metric Switcher */}
+          <div className={`space-y-1.5 pt-2 border-t border-slate-800 transition-opacity ${showGrid ? 'opacity-100' : 'opacity-60'}`}>
+            <label className="text-[11px] font-bold text-slate-200 block">
+              Parameter Tampilan Spasial:
+            </label>
+            <div className="grid grid-cols-3 gap-1.5 text-[11px]">
+              <button
+                onClick={() => {
+                  setActiveMetric('catch');
+                  if (!showGrid) setShowGrid(true);
+                }}
+                className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
+                  activeMetric === 'catch' && showGrid
+                    ? 'bg-cyan-950/80 border-cyan-500 text-cyan-300 font-bold'
+                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                }`}
+              >
+                Densitas
+              </button>
+              <button
+                onClick={() => {
+                  setActiveMetric('sst');
+                  if (!showGrid) setShowGrid(true);
+                }}
+                className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
+                  activeMetric === 'sst' && showGrid
+                    ? 'bg-amber-950/80 border-amber-500 text-amber-300 font-bold'
+                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                }`}
+              >
+                Suhu SST
+              </button>
+              <button
+                onClick={() => {
+                  setActiveMetric('depth');
+                  if (!showGrid) setShowGrid(true);
+                }}
+                className={`py-1 px-1.5 rounded-md border text-center transition-all cursor-pointer ${
+                  activeMetric === 'depth' && showGrid
+                    ? 'bg-blue-950/80 border-blue-500 text-blue-300 font-bold'
+                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                }`}
+              >
+                Batimetri
+              </button>
+            </div>
+          </div>
+
+          {/* 5. Species Summary Card */}
+          {activeSpeciesObj && (
+            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-xs space-y-1">
+              <div className="font-bold text-white italic truncate">
+                {activeSpeciesObj.scientific_name}
+              </div>
+              <div className="text-[11px] text-slate-400 flex justify-between">
+                <span>Model Champion:</span>
+                <span className="text-slate-200">{activeSpeciesObj.champion_model}</span>
+              </div>
+              <div className="text-[11px] text-slate-400 flex justify-between">
+                <span>Akurasi Spatial R²:</span>
+                <span className="text-emerald-400 font-mono font-bold">
+                  {formatPrecision(activeSpeciesObj.spatial_r2_score, 4)}
+                </span>
+              </div>
+              <div className="text-[11px] text-slate-400 flex justify-between">
+                <span>Rerata Tangkapan:</span>
+                <span className="text-cyan-300 font-mono font-bold">
+                  {formatDensity(activeSpeciesObj.mean_catch_kg_per_sqkm, 2)}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Dynamic Color Scale Legend & Marker Legend (Bottom-Center / Left) */}
+      {showGrid && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 bg-slate-900/95 border border-slate-800 rounded-xl px-4 py-2 shadow-2xl backdrop-blur-md flex flex-wrap items-center gap-4 text-xs">
+          {/* Gradient Ramp */}
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-slate-400 font-medium">
+              {activeMetric === 'catch' ? 'Densitas:' : activeMetric === 'sst' ? 'Suhu:' : 'Kedalaman:'}
+            </span>
+            <span className="font-mono text-[10px] text-slate-300">
+              {activeMetric === 'catch' ? `${formatNumber(metricRange.min)} kg` : activeMetric === 'sst' ? `${formatNumber(metricRange.min, 1)}°C` : `${formatNumber(metricRange.min, 1)}m`}
+            </span>
+            <div 
+              className="w-24 h-2.5 rounded-full border border-slate-700" 
+              style={{
+                background: activeMetric === 'sst'
+                  ? 'linear-gradient(to right, #0284c7, #38bdf8, #f59e0b, #ef4444)'
+                  : activeMetric === 'depth'
+                  ? 'linear-gradient(to right, #67e8f9, #06b6d4, #0284c7, #0c4a6e)'
+                  : selectedSpecies === 'selaroides'
+                  ? 'linear-gradient(to right, #fef08a, #fde047, #f59e0b, #d97706)'
+                  : selectedSpecies === 'upeneus'
+                  ? 'linear-gradient(to right, #fed7aa, #fb923c, #f97316, #ea580c)'
+                  : 'linear-gradient(to right, #38bdf8, #06b6d4, #10b981, #059669)'
+              }}
+            />
+            <span className="font-mono text-[10px] text-slate-300">
+              {activeMetric === 'catch' ? `${formatNumber(metricRange.max)} kg` : activeMetric === 'sst' ? `${formatNumber(metricRange.max, 1)}°C` : `${formatNumber(metricRange.max, 1)}m`}
+            </span>
+          </div>
+
+          {/* Marker Symbols */}
+          <div className="hidden md:flex items-center gap-3 border-l border-slate-700 pl-3 text-[11px] text-slate-300">
+            <span className="flex items-center gap-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 border border-white" />
+              <span>Stasiun Sampling</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500 border border-white" />
+              <span>PPN Karangantu</span>
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Real-time Cursor Coordinates Readout (Bottom-Left) */}
+      {cursorCoords && (
+        <div className="absolute bottom-1.5 left-20 z-10 hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 border border-slate-800 text-[10px] font-mono text-slate-400 backdrop-blur-sm">
+          <Crosshair className="w-3 h-3 text-cyan-400" />
+          <span>{cursorCoords.lat}° LS, {cursorCoords.lng}° BT</span>
+        </div>
+      )}
+
+      {/* Floating Selected Cell Inspector (Bottom-Left above scale) */}
+      {showGrid && selectedCell && (
+        <div className="absolute bottom-14 left-4 z-10 w-80 max-w-[calc(100vw-2rem)] bg-slate-900/95 border border-slate-800 rounded-2xl p-4 shadow-2xl backdrop-blur-md animate-fadeIn">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
+            <div className="text-xs font-bold text-cyan-300 font-mono">
+              Sel Grid: {selectedCell.cell_id}
+            </div>
+            <button 
+              onClick={() => setSelectedCell(null)}
+              className="text-slate-400 hover:text-white p-0.5"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="bg-[#0f172a] p-2 rounded-lg border border-[#1e293b]">
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
               <div className="text-[10px] text-slate-400">Prediksi Tangkapan:</div>
               <div className="text-sm font-bold text-white font-mono">
-                {selectedCell.predicted_catch_kg} <span className="text-xs font-normal text-slate-400">kg</span>
+                {formatWeight(selectedCell.predicted_catch_kg, 1)}
               </div>
             </div>
-            <div className="bg-[#0f172a] p-2 rounded-lg border border-[#1e293b]">
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
               <div className="text-[10px] text-slate-400">CPUE per Trip:</div>
               <div className="text-sm font-bold text-emerald-400 font-mono">
-                {selectedCell.predicted_cpue_kg_per_trip} <span className="text-xs font-normal text-slate-400">kg</span>
+                {formatWeight(selectedCell.predicted_cpue_kg_per_trip, 1)}
               </div>
             </div>
-            <div className="bg-[#0f172a] p-2 rounded-lg border border-[#1e293b]">
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
               <div className="text-[10px] text-slate-400">Suhu Muka Laut:</div>
               <div className="text-xs font-bold text-amber-300 font-mono">
-                {selectedCell.sst_celsius} °C
+                {formatNumber(selectedCell.sst_celsius, 2)} °C
               </div>
             </div>
-            <div className="bg-[#0f172a] p-2 rounded-lg border border-[#1e293b]">
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
               <div className="text-[10px] text-slate-400">Kedalaman Dasar:</div>
               <div className="text-xs font-bold text-cyan-300 font-mono">
-                {selectedCell.bathymetry_depth_m} m
+                {formatNumber(selectedCell.bathymetry_depth_m, 1)} m
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Floating Action Button for Quick Analysis (Bottom-Right) */}
-      <div className="absolute bottom-6 right-6 z-10">
+      {/* Floating Action Button for Quick Analysis (Top-Right under Zoom controls, avoiding Leaflet attribution) */}
+      <div className="absolute top-14 right-4 z-10">
         <button
           onClick={onOpenDrawer}
-          className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-2xl shadow-cyan-900/50 border border-cyan-400/40 transition-all transform hover:scale-105 cursor-pointer"
+          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-xl border border-cyan-400/40 transition-all cursor-pointer"
         >
-          <Sparkles className="w-4 h-4 text-cyan-200" />
-          <span>Buka Quick Analysis Dock</span>
+          <Sparkles className="w-3.5 h-3.5 text-cyan-200" />
+          <span className="hidden sm:inline">Quick Analysis Dock</span>
+          <span className="sm:hidden">Analysis</span>
         </button>
       </div>
     </div>

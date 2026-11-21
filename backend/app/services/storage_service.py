@@ -1,8 +1,23 @@
 import sqlite3
 import json
+from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any, Optional
-from ..config import DATABASE_FILE
+from ..config import DATABASE_FILE, STATIC_DIR
+
+def check_static_file_exists(rel_url: Optional[str]) -> bool:
+    if not rel_url:
+        return False
+    clean = str(rel_url).lstrip("/")
+    if clean.startswith("static/"):
+        target = STATIC_DIR / clean[len("static/"):]
+    else:
+        target = STATIC_DIR / clean
+    return target.is_file() and target.stat().st_size > 0
+
+def is_synthetic_test(filename: str) -> bool:
+    fn = str(filename).lower()
+    return any(p in fn for p in ["synth_", "blank", "sample_test", "test_pipeline", "synth_val"])
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE_FILE)
@@ -97,12 +112,21 @@ def get_recent_analyses(limit: int = 50) -> List[Dict[str, Any]]:
     rows = cursor.fetchall()
     results = []
     for r in rows:
+        img_exists = check_static_file_exists(r["image_url"])
+        res_exists = check_static_file_exists(r["result_image_url"])
+        is_synth = is_synthetic_test(r["filename"])
+
         results.append({
             "id": r["id"],
             "timestamp": r["timestamp"],
             "filename": r["filename"],
-            "image_url": r["image_url"],
-            "result_image_url": r["result_image_url"],
+            "image_url": r["image_url"] if img_exists else None,
+            "result_image_url": r["result_image_url"] if res_exists else None,
+            "raw_image_url": r["image_url"],
+            "raw_result_image_url": r["result_image_url"],
+            "has_image": img_exists,
+            "has_result_image": res_exists,
+            "is_synthetic": is_synth,
             "total_count": r["total_count"],
             "brachysoma_count": r["brachysoma_count"] if "brachysoma_count" in r.keys() else r["kembung_count"],
             "leptolepis_count": r["leptolepis_count"] if "leptolepis_count" in r.keys() else r["layang_count"],
