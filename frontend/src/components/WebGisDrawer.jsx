@@ -139,7 +139,7 @@ export default function WebGisDrawer({ isOpen, onClose, onNavigateTab }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-y-0 right-0 w-96 md:w-[420px] bg-[#0c1424]/98 border-l border-[#1e293b] shadow-2xl z-40 flex flex-col backdrop-blur-xl animate-in slide-in-from-right duration-200">
+    <div className="fixed inset-y-0 right-0 w-full sm:w-[500px] md:w-[620px] lg:w-[680px] bg-[#0c1424]/98 border-l border-[#1e293b] shadow-2xl z-40 flex flex-col backdrop-blur-xl animate-in slide-in-from-right duration-200">
       {/* Header */}
       <div className="p-4 border-b border-[#1e293b] flex items-center justify-between bg-[#080d1a]">
         <div className="flex items-center gap-2">
@@ -170,17 +170,17 @@ export default function WebGisDrawer({ isOpen, onClose, onNavigateTab }) {
             {!isCameraActive ? (
               <button
                 onClick={startCamera}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
               >
-                <Camera className="w-3.5 h-3.5" />
-                <span>Buka Kamera</span>
+                <Camera className="w-4 h-4" />
+                <span>Buka Kamera Device</span>
               </button>
             ) : (
               <button
                 onClick={stopCamera}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-600/80 hover:bg-rose-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-600/80 hover:bg-rose-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
               >
-                <CameraOff className="w-3.5 h-3.5" />
+                <CameraOff className="w-4 h-4" />
                 <span>Tutup Kamera</span>
               </button>
             )}
@@ -190,10 +190,10 @@ export default function WebGisDrawer({ isOpen, onClose, onNavigateTab }) {
                 stopCamera();
                 fileInputRef.current?.click();
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#131e36] hover:bg-[#1e293b] text-slate-200 border border-[#1e293b] font-semibold text-xs shadow-sm transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#131e36] hover:bg-[#1e293b] text-slate-200 border border-[#1e293b] font-semibold text-xs shadow-sm transition-all cursor-pointer"
             >
-              <Upload className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Unggah</span>
+              <Upload className="w-4 h-4 text-cyan-400" />
+              <span>Unggah Berkas</span>
             </button>
             <input 
               ref={fileInputRef} 
@@ -218,30 +218,32 @@ export default function WebGisDrawer({ isOpen, onClose, onNavigateTab }) {
 
         {/* Live Camera Viewfinder or Previews */}
         {isCameraActive ? (
-          <div className="rounded-2xl overflow-hidden border-2 border-cyan-500/80 bg-black relative flex flex-col items-center justify-center min-h-[260px]">
+          <div className="rounded-2xl overflow-hidden border-2 border-cyan-500/80 bg-black relative flex flex-col items-center justify-center min-h-[320px] shadow-2xl">
             <video 
               ref={videoRef} 
               autoPlay 
               playsInline 
               muted 
-              className="w-full h-56 object-cover"
+              className="w-full h-72 sm:h-96 md:h-[420px] object-cover"
             />
-            <div className="absolute inset-0 pointer-events-none border border-cyan-400/30 m-4 rounded flex items-center justify-center">
-              <div className="w-12 h-12 border-t-2 border-b-2 border-l-2 border-r-2 border-cyan-400/80 rounded" />
-              <span className="absolute bottom-2 text-[10px] text-cyan-300 bg-slate-950/80 px-2 py-0.5 rounded">
-                Arahkan 90° tegak lurus
+            <div className="absolute inset-0 pointer-events-none border border-cyan-400/30 m-4 rounded-xl flex items-center justify-center">
+              <div className="w-16 h-16 border-2 border-cyan-400/80 rounded-lg" />
+              <div className="absolute w-28 h-0.5 bg-cyan-400/40" />
+              <div className="absolute h-28 w-0.5 bg-cyan-400/40" />
+              <span className="absolute bottom-3 text-xs font-medium text-cyan-300 bg-slate-950/85 px-3 py-1 rounded-full border border-cyan-500/40 shadow">
+                Arahkan 90° tegak lurus ortogonal
               </span>
             </div>
-            <div className="p-2 w-full bg-[#080d1a] border-t border-[#1e293b] flex gap-2">
+            <div className="p-3 w-full bg-[#080d1a] border-t border-[#1e293b] flex gap-3">
               <button
                 onClick={capturePhoto}
-                className="flex-1 py-1.5 px-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                className="flex-1 py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/20 active:scale-95 transition-all"
               >
-                <Camera className="w-3.5 h-3.5" /> Ambil Foto (Snap)
+                <Camera className="w-4 h-4" /> Ambil Foto (Snap)
               </button>
               <button
                 onClick={stopCamera}
-                className="py-1.5 px-3 rounded-lg bg-slate-800 text-slate-300 text-xs cursor-pointer"
+                className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs cursor-pointer transition-colors"
               >
                 Batal
               </button>

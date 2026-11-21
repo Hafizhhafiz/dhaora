@@ -208,14 +208,44 @@ dist_to_use = FRONTEND_DIST if FRONTEND_DIST.is_dir() else (DHAORA_FRONTEND_DIST
 
 if dist_to_use and dist_to_use.is_dir():
     assets_dir = dist_to_use / "assets"
-    if assets_dir.is_dir():
-        app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="spa_assets")
+    
+    @app.get("/assets/{asset_name:path}")
+    async def serve_asset(asset_name: str):
+        if not assets_dir.is_dir():
+            raise HTTPException(status_code=404, detail="Assets directory not found")
+        
+        target = assets_dir / asset_name
+        if target.is_file():
+            return FileResponse(str(target))
+        
+        # Case-insensitive lookup (cures Linux case sensitivity discrepancy with browser cache)
+        lower_name = asset_name.lower()
+        for f in assets_dir.iterdir():
+            if f.is_file() and f.name.lower() == lower_name:
+                return FileResponse(str(f))
+        
+        # Graceful fallback for outdated hashed bundles from cached client index.html
+        if asset_name.endswith(".js"):
+            # Find the most recently modified .js bundle in assets
+            js_files = sorted([f for f in assets_dir.glob("*.js")], key=lambda x: x.stat().st_mtime, reverse=True)
+            if js_files:
+                return FileResponse(str(js_files[0]), media_type="application/javascript")
+        elif asset_name.endswith(".css"):
+            css_files = sorted([f for f in assets_dir.glob("*.css")], key=lambda x: x.stat().st_mtime, reverse=True)
+            if css_files:
+                return FileResponse(str(css_files[0]), media_type="text/css")
+                
+        raise HTTPException(status_code=404, detail="Asset Not Found")
 
     @app.get("/{full_path:path}", response_class=HTMLResponse)
     async def serve_spa(full_path: str, request: Request):
         if full_path.startswith("api/") or full_path.startswith("static/") or full_path.startswith("datasets/"):
             raise HTTPException(status_code=404, detail="Not Found")
         
+        # Handle direct root requests for index-* bundles (e.g. /index-xxxx.js)
+        if full_path.startswith("index-") and assets_dir.is_dir():
+            return await serve_asset(full_path)
+            
         # If client is an API client (TestClient, curl, python-requests) on root rather than browser
         accept = request.headers.get("accept", "")
         if full_path == "" and not accept.startswith("text/html"):
@@ -233,7 +263,14 @@ if dist_to_use and dist_to_use.is_dir():
         
         index_file = dist_to_use / "index.html"
         if index_file.is_file():
-            return FileResponse(str(index_file))
+            return FileResponse(
+                str(index_file),
+                headers={
+                    "Cache-Control": "no-cache, no-store, must-revalidate",
+                    "Pragma": "no-cache",
+                    "Expires": "0"
+                }
+            )
         return HTMLResponse("<h1>DHAORA / ASIK Platform Backend Active</h1><p>Frontend build in progress...</p>")
 else:
     @app.get("/", response_class=HTMLResponse)
