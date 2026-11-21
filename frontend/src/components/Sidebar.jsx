@@ -67,9 +67,11 @@ export default function Sidebar({
         }}
         className="p-4 border-b border-slate-800 flex items-center gap-3 cursor-pointer hover:bg-slate-800/40 transition-colors"
       >
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-white shrink-0">
-          <Compass className="w-5 h-5 animate-pulse" />
-        </div>
+        <img 
+          src="/logo-dhaora.webp" 
+          alt="DHAORA" 
+          className="w-10 h-10 rounded-xl object-contain shadow-lg shadow-cyan-500/20 bg-slate-950/60 p-1 border border-slate-800 shrink-0" 
+        />
         <div className="min-w-0">
           <h1 className="text-base font-bold text-white tracking-wide flex items-center gap-1.5 truncate">
             DHAORA <span className="text-cyan-400 font-extrabold text-[10px] px-1.5 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/60">ASIK VI</span>

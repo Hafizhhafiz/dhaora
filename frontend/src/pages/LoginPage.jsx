@@ -103,9 +103,15 @@ export default function LoginPage({ onLoginSuccess, onBackToLanding, onGuestAcce
         
         {/* Brand Header */}
         <div className="flex flex-col items-center text-center mb-6">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-600 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-white mb-3">
-            <Compass className="w-6 h-6 animate-pulse" />
-          </div>
+          <img 
+            src="/logotulisan.webp" 
+            alt="DHAORA Logo" 
+            className="h-16 w-auto object-contain mb-3 drop-shadow-md cursor-pointer"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = '/logo-dhaora.webp';
+            }}
+          />
           <h2 className="text-xl font-black text-white tracking-wide">
             Masuk ke DHAORA
           </h2>

@@ -29,20 +29,18 @@ export default function LandingPage({ onLoginClick, onExploreGuest }) {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-white">
-              <Compass className="w-5 h-5 animate-pulse" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-lg font-black tracking-wider text-white">DHAORA</span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-700/60 font-mono font-semibold">
-                  ASIK VOL VI
-                </span>
-              </div>
-              <p className="text-[10px] text-slate-400 hidden sm:block">
-                Digital Holistic Aquatic Observation & Research Analytics
-              </p>
-            </div>
+            <img 
+              src="/logotulisan.webp" 
+              alt="DHAORA Logo" 
+              className="h-10 w-auto object-contain cursor-pointer"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/logo-dhaora.webp';
+              }}
+            />
+            <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-700/60 font-mono font-semibold">
+              ASIK VOL VI
+            </span>
           </div>
 
           <div className="hidden md:flex items-center gap-6 text-sm text-slate-300">
@@ -387,8 +385,12 @@ export default function LandingPage({ onLoginClick, onExploreGuest }) {
       {/* Footer */}
       <footer className="py-8 bg-[#040710] border-t border-slate-800/80 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Compass className="w-4 h-4 text-cyan-400" />
+          <div className="flex items-center gap-2.5">
+            <img 
+              src="/logo-dhaora.webp" 
+              alt="DHAORA" 
+              className="w-6 h-6 object-contain" 
+            />
             <span className="font-bold text-slate-300">DHAORA / ASIK VOL VI</span>
             <span>• Integrated Marine AI Platform</span>
           </div>
