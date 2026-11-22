@@ -43,3 +43,5 @@ bycatch/runs/
 
 # Large public archives (untracked)
 dataset_pipeline/data/public/deepfish/raw/*.zip
+
+Dataset_DHAORA_FishGuard_YOLO.zip
